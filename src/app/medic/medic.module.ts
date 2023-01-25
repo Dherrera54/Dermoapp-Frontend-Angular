@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MedicSingupComponent } from './medic-singup/medic-singup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MedicLoginComponent } from './medic-login/medic-login.component';
+import { AppHeaderModule } from '../app-header/app-header.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppHeaderModule
   ],
 
   declarations: [
