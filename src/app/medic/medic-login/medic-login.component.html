@@ -1,12 +1,10 @@
 <app-header></app-header>
-<div class="container align-items-center">
+<div class="container align-items-center top-header">
   <div class="row align-items-center">
-    <app-header></app-header>
-
     <div class="col-xs-10 col-lg-5 container" >
-      <div class="row">
+      <div class="row ">
 
-        <div class="my-2 row">
+        <div class="my-2 row ">
           <h1 class="text-left text-bold">Iniciar sesión</h1>
         </div>
         <div *ngIf="error">
@@ -26,7 +24,7 @@
             <input #contrasena type="password" class="form-control" placeholder="Contraseña">
           </div>
           <div class="col-6 text-center mt-3">
-            <button (click)="onLogInMedic(usuario.value, contrasena.value)" type="button" class="btn btn-cancel col-12">Cancelar</button>
+            <button (click)="goHome()" type="button" class="btn btn-cancel col-12">Cancelar</button>
           </div>
           <div class="col-6 text-center mt-3">
               <button (click)="onLogInMedic(usuario.value, contrasena.value)" type="button" class="btn btn-continue col-12">Ingresar</button>

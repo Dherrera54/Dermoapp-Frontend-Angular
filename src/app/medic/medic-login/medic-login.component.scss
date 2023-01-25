@@ -1,3 +1,10 @@
+.top-header{
+  position: relative;
+  top:30px;
+}
+h1{
+  font-size:x-large
+}
 .form-control{
     outline-width: 1px;
     outline-style: solid;
@@ -5,7 +12,7 @@
   }
 
 .btn-cancel{
-  background-color:aliceblue ;
+  background-color:rgb(243, 249, 254) ;
   :hover{
     background-color:  #d9c6f1;
   }

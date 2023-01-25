@@ -38,6 +38,9 @@ export class MedicLoginComponent implements OnInit {
   goRegister() {
     this.routerPath.navigate([`/singup/`])
   }
+  goHome() {
+    this.routerPath.navigate([`/`])
+  }
 
 
 }

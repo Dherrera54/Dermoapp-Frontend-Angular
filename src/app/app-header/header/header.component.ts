@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     const userId = parseInt(this.router.snapshot.params.userId)
     const token = this.router.snapshot.params.userToken
     if(menu === "logIn"){
-      this.routerPath.navigate([`/`])
+      this.routerPath.navigate([`/login/`])
     }
     else if(menu === "singUp"){
       this.routerPath.navigate([`/singup/`])
