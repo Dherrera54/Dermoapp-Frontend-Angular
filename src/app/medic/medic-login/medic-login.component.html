@@ -1,9 +1,43 @@
+<app-header></app-header>
 <div class="container align-items-center">
   <div class="row align-items-center">
     <app-header></app-header>
-    <p>
-      medic-login works!
-    </p>
+
+    <div class="col-xs-10 col-lg-5 container" >
+      <div class="row">
+
+        <div class="my-2 row">
+          <h1 class="text-left text-bold">Iniciar sesión</h1>
+        </div>
+        <div *ngIf="error">
+          <div class="alert alert-danger col-lg-12 " role="alert">
+            Usuario o contraseña incorrectos
+          </div>
+        </div>
+        <div class="mb-3 row">
+
+          <div class="col-lg-12 input-box">
+            <input #usuario type="text" class="form-control" placeholder="Correo electrónico">
+          </div>
+        </div>
+        <div class="mb-3 row">
+
+          <div class="col-lg-12 input-box">
+            <input #contrasena type="password" class="form-control" placeholder="Contraseña">
+          </div>
+          <div class="col-6 text-center mt-3">
+            <button (click)="onLogInMedic(usuario.value, contrasena.value)" type="button" class="btn btn-cancel col-12">Cancelar</button>
+          </div>
+          <div class="col-6 text-center mt-3">
+              <button (click)="onLogInMedic(usuario.value, contrasena.value)" type="button" class="btn btn-continue col-12">Ingresar</button>
+          </div>
+          <div class="col-12 text-center mt-4" >
+            <p>¿Aún no te has registrado? </p>
+          </div>
+          <div class="col-12 text-center hyperlink" >
+            <p>Crea tu cuenta <a class="text_hyperlink"(click)="goRegister()" >aquí</a></p>
+          </div>
+          </div>
   </div>
 </div>
 

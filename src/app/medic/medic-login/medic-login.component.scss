@@ -1,0 +1,35 @@
+.form-control{
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #cfb1fa; /* light purple */
+  }
+
+.btn-cancel{
+  background-color:aliceblue ;
+  :hover{
+    background-color:  #d9c6f1;
+  }
+}
+.btn-cancel:hover{
+  background-color:  #d9c6f1;
+}
+
+.btn-continue{
+  background-color:  #6223ee;
+  color: white;
+
+}
+.btn-continue:hover{
+  background-color:  #782cf0;
+}
+
+.hyperlink{
+  position: relative;
+  top:-15px;
+}
+.text-hyperlink{
+  color:  #782cf0
+}
+.text-hyperlink_hover{
+  background-color:  #d9c6f1;
+}

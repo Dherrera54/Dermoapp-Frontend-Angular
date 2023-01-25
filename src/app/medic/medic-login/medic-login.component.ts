@@ -16,21 +16,27 @@ export class MedicLoginComponent implements OnInit {
 
   constructor(
     private medicService : MedicService,
-    private router: Router
+    private routerPath: Router
   ) { }
 
+  error: boolean = false
 
   ngOnInit() {
   }
   onLogInMedic(nombre: string, password: string){
-
+    this.error = false
 
     this.medicService.userLogIn(nombre, password)
     .subscribe(res => {
       const decodedToken = this.helper.decodeToken(res.token);
-      //this.router.navigate([`/consultas/${decodedToken.sub}/${res.token}`])*
+      this.routerPath.navigate([`/signin/${decodedToken.sub}/${res.token}`])
     },
-    )
+    error => {
+      this.error=true
+    })
+  }
+  goRegister() {
+    this.routerPath.navigate([`/singup/`])
   }
 
 
