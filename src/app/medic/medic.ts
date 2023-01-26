@@ -2,10 +2,12 @@ export class Medic {
   id: number;
   email: string;
   password: string;
-  nombre: string;
-  pais: string;
-  direccion: string;
-  especialidad: string;
+  name: string;
+  lastName: string;
+  country: string;
+  address: string;
+  specialty: string;
+  profesionalId: string;
   lat: string;
   lon: string;
 
@@ -14,20 +16,24 @@ export class Medic {
     id: number,
     email: string,
     password: string,
-    nombre: string,
-    pais: string,
-    direccion: string,
-    especialidad: string,
+    name: string,
+    lastName: string,
+    country: string,
+    address: string,
+    specialty: string,
+    profesionalId: string,
     lat: string,
     lon: string,
   ){
       this.id = id;
       this.email=email;
       this.password=password;
-      this.nombre = nombre;
-      this.pais=pais;
-      this.direccion=direccion;
-      this.especialidad =especialidad;
+      this.name = name;
+      this.lastName= lastName;
+      this.country=country;
+      this.address=address;
+      this.specialty =specialty;
+      this.profesionalId=profesionalId;
       this.lat=lat;
       this.lon=lon;
 

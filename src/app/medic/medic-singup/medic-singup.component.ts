@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Medic } from '../medic';
+import { MedicService } from '../medic.service';
+import { Router } from '@angular/router';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 
 @Component({
@@ -10,25 +13,30 @@ import { Medic } from '../medic';
 })
 export class MedicSingupComponent implements OnInit {
 
-  //medicForm: FormGroup;
+  helper = new JwtHelperService();
+  medicForm!: FormGroup;
 
   constructor(
+    private MedicService:MedicService,
     private formBuilder: FormBuilder,
+    private routerPath: Router,
 
   ) { }
 
   ngOnInit() {
-   /*
+
    this.medicForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
       confirmPassword: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
-      nombre: ["", [Validators.required, Validators.maxLength(50)]],
-      pais:["", [Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
-      direccion: ["", Validators.required, Validators.maxLength(50)],
+      name: ["", [Validators.required, Validators.maxLength(50)]],
+      lastName: ["", [Validators.required, Validators.maxLength(50)]],
+      country:["", [Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
+      address: ["", Validators.required, Validators.maxLength(50)],
+      profesionalId: ["", [Validators.required, Validators.maxLength(10)]],
 
     })
-    */
+
   }
   registerMedic(){
     /*this.usuarioService.medicSignUp(this.medicForm.get('nombre')?.value, this.medicForm.get('password')?.value)
