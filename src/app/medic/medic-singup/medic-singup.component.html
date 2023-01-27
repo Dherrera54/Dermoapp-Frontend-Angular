@@ -10,7 +10,6 @@
         <h1 class="text-center">Bienvenido a DermoApp</h1>
       </div>
 
-
       <div class="col-xs-10 col-lg-5 form-container">
         <div class="row">
           <div class="form-group input-box">
@@ -71,6 +70,7 @@
                 <input
                   #profilePicture
                   type="text"
+                  formControlName="profilePicture"
                   class="form-control"
                   placeholder="Foto de Perfil"
                 />
@@ -90,7 +90,7 @@
                   formControlName="email"
                   type="text"
                   class="form-control"
-                  placeholder="user@domain.com"
+                  placeholder="Correo Electronico"
                 />
               </div>
             </div>
@@ -137,9 +137,23 @@
             </div>
           </div>
         </div>
-        <div class="my-2 col-lg-6 specialty-header">
-        <h5 class="text-left ">Especialidades</h5>
-      </div>
+        <div class="mb-3 row">
+          <div class="my-2 col-lg-12  dropdown">
+            <mat-form-field class="dropdown" appearance="fill">
+              <mat-label >Especialidades</mat-label>
+              <mat-select formControlName="specialty"
+                          type="text"
+                          [(value)]="selected">
+                <mat-option></mat-option>
+                <mat-option  value="pediatry" selected>Pediatria</mat-option>
+                <mat-option  value="elder">Adulto mayor</mat-option>
+                <mat-option  value="cancer">Cáncer</mat-option>
+                <mat-option  value="cosmetic">Cosmética</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
       </div>
     </div>
   </form>

@@ -23,10 +23,10 @@ export class MedicLoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  onLogInMedic(nombre: string, password: string){
+  onLogInMedic(email: string, password: string){
     this.error = false
 
-    this.medicService.userLogIn(nombre, password)
+    this.medicService.userLogIn(email, password)
     .subscribe(res => {
       const decodedToken = this.helper.decodeToken(res.token);
       this.routerPath.navigate([`/signin/${decodedToken.sub}/${res.token}`])

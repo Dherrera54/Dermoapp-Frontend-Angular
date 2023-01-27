@@ -8,9 +8,7 @@ export class Medic {
   address: string;
   specialty: string;
   profesionalId: string;
-  lat: string;
-  lon: string;
-
+  profilePicture: string;
 
   constructor(
     id: number,
@@ -22,8 +20,8 @@ export class Medic {
     address: string,
     specialty: string,
     profesionalId: string,
-    lat: string,
-    lon: string,
+    profilePicture: string,
+
   ){
       this.id = id;
       this.email=email;
@@ -34,8 +32,8 @@ export class Medic {
       this.address=address;
       this.specialty =specialty;
       this.profesionalId=profesionalId;
-      this.lat=lat;
-      this.lon=lon;
+      this.profilePicture= profilePicture;
+
 
   }
 }

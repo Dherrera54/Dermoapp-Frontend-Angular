@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MedicModule } from './medic/medic.module';
 import { AppHeaderModule } from './app-header/app-header.module';
 import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     MedicModule,
     HttpClientModule,
-    AppHeaderModule
-  ],
+    AppHeaderModule,
+    FormsModule,
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })
