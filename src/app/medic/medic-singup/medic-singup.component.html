@@ -94,15 +94,15 @@
                 />
               </div>
             </div>
-            <div
-              class="alert alert-danger my-3"
+            <mat-error
+              class="alert-danger my-3"
               *ngIf="
                 medicForm.get('email')?.hasError('required') &&
                 medicForm.get('email')?.touched
               "
             >
               Debe ingresar un correo valido para registrarse
-            </div>
+            </mat-error>
             <div
               class="alert alert-danger my-3"
               *ngIf="medicForm.get('nombre')?.hasError('maxlength')"
@@ -138,23 +138,46 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <div class="my-2 col-lg-12  dropdown">
+          <div class="my-2 col-lg-12 dropdown">
             <mat-form-field class="dropdown" appearance="fill">
-              <mat-label >Especialidades</mat-label>
-              <mat-select formControlName="specialty"
-                          type="text"
-                          [(value)]="selected">
+              <mat-label>Especialidades</mat-label>
+              <mat-select
+                formControlName="specialty"
+                type="text"
+                [(value)]="selected"
+              >
                 <mat-option></mat-option>
-                <mat-option  value="pediatry" selected>Pediatria</mat-option>
-                <mat-option  value="elder">Adulto mayor</mat-option>
-                <mat-option  value="cancer">Cáncer</mat-option>
-                <mat-option  value="cosmetic">Cosmética</mat-option>
-
+                <mat-option value="pediatry" selected>Pediatria</mat-option>
+                <mat-option value="elder">Adulto mayor</mat-option>
+                <mat-option value="cancer">Cáncer</mat-option>
+                <mat-option value="cosmetic">Cosmética</mat-option>
               </mat-select>
+              <mat-error
+                *ngIf="medicForm.get('specialty')?.hasError('required')"
+                >Por favor selecciona especialidad</mat-error
+              >
             </mat-form-field>
           </div>
         </div>
       </div>
     </div>
   </form>
+  <div class="container row submit-buttons" >
+    <ul class="col me-auto mb-3 mb-lg-0"></ul>
+    <div class="col-2 text-center mt-3 ">
+      <button (click)="goLogIn()" type="button" class="btn btn-cancel col-12">
+        Cancelar
+      </button>
+    </div>
+    <div class="col-2 text-center mt-3">
+      <button
+        (click)="registerMedic()"
+        type="button"
+        class="btn btn-continue col-12"
+      >
+        Ingresar
+      </button>
+    </div>
+  </div>
 </div>
+

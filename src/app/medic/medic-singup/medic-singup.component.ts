@@ -69,6 +69,9 @@ export class MedicSingupComponent implements OnInit {
     */
     )
   }
+  goLogIn() {
+    this.routerPath.navigate([`/login/`])
+  }
 
 
 }

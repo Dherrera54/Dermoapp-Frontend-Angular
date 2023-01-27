@@ -27,3 +27,31 @@ h1{
   background-color:white;
 }
 
+.submit-buttons{
+
+  padding-top: 30px;
+  position: relative;
+  display:flex;
+  align-items: center;
+}
+.btn-cancel{
+  background-color:rgb(243, 249, 254) ;
+  :hover{
+    background-color:  #d9c6f1;
+  }
+}
+.btn-cancel:hover{
+  background-color:  #d9c6f1;
+}
+
+.btn-continue{
+  background-color:  #6223ee;
+  color: white;
+
+}
+.btn-continue:hover{
+  background-color:  #782cf0;
+}
+
+
+
