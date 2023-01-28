@@ -8,6 +8,7 @@ import { MedicModule } from './medic/medic.module';
 import { AppHeaderModule } from './app-header/app-header.module';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { InquiriesModule } from './inquiries/inquiries.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     MedicModule,
     HttpClientModule,
     AppHeaderModule,
+    InquiriesModule,
     FormsModule,
  ],
   providers: [],
