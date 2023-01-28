@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { Medic } from '../medic';
+import { FormBuilder, FormGroup, Validators,  } from "@angular/forms";
 import { MedicService } from '../medic.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { identifierModuleUrl } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 
@@ -25,6 +25,7 @@ export class MedicSingupComponent implements OnInit {
     private medicService:MedicService,
     private formBuilder: FormBuilder,
     private routerPath: Router,
+    private toastr: ToastrService
 
   ) { }
 
@@ -64,14 +65,14 @@ export class MedicSingupComponent implements OnInit {
 
       .subscribe(res => {
       const decodedToken = this.helper.decodeToken(res.token);
-      this.routerPath.navigate([`/albumes/${decodedToken.sub}/${res.token}`])
-      //this.showSuccess()
+      this.routerPath.navigate([`/inquiries/${decodedToken.sub}/${res.token}`])
+      this.showSuccess()
     },
-    /*
+
     error => {
       this.showError(`Ha ocurrido un error: ${error.message}`)
     }
-    */
+
     )
   }
   goLogIn() {
@@ -95,6 +96,14 @@ export class MedicSingupComponent implements OnInit {
       }
 
     };
+  }
+
+  showError(error: string){
+    this.toastr.error(error, "Error")
+  }
+
+  showSuccess() {
+    this.toastr.success(`Se ha registrado exitosamente`, "Registro exitoso");
   }
 
 }

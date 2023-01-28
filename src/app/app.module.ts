@@ -9,6 +9,8 @@ import { AppHeaderModule } from './app-header/app-header.module';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { InquiriesModule } from './inquiries/inquiries.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,12 @@ import { InquiriesModule } from './inquiries/inquiries.module';
     AppHeaderModule,
     InquiriesModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 7000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
  ],
   providers: [],
   bootstrap: [AppComponent]
