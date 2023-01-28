@@ -5,7 +5,7 @@ export class Medic {
   name: string;
   lastName: string;
   country: string;
-  address: string;
+
   specialty: string;
   profesionalId: string;
   profilePicture: string;
@@ -17,7 +17,6 @@ export class Medic {
     name: string,
     lastName: string,
     country: string,
-    address: string,
     specialty: string,
     profesionalId: string,
     profilePicture: string,
@@ -29,7 +28,6 @@ export class Medic {
       this.name = name;
       this.lastName= lastName;
       this.country=country;
-      this.address=address;
       this.specialty =specialty;
       this.profesionalId=profesionalId;
       this.profilePicture= profilePicture;

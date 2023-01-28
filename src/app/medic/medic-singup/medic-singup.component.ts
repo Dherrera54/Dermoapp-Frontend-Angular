@@ -4,6 +4,7 @@ import { Medic } from '../medic';
 import { MedicService } from '../medic.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { identifierModuleUrl } from '@angular/compiler';
 
 
 
@@ -30,18 +31,22 @@ export class MedicSingupComponent implements OnInit {
   ngOnInit() {
 
    this.medicForm = this.formBuilder.group({
-      email: ["", [Validators.required, Validators.email]],
+      email: ["", [Validators.required, Validators.email, Validators.maxLength(50)]],
       password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
-      confirmPassword: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
+      confirmPassword: ["", [Validators.required]],
       name: ["", [Validators.required, Validators.maxLength(50)]],
       lastName: ["", [Validators.required, Validators.maxLength(50)]],
-      country:["", [Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
-      address: ["", Validators.required, Validators.maxLength(50)],
+      country:["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
       profesionalId: ["", [Validators.required, Validators.maxLength(10)]],
-      profilePicture:["",Validators.required],
+      profilePicture:[""],
       specialty: ["",Validators.required]
 
-    })
+    },{
+      validators:this.mustMatch('password','confirmPassword')
+    }
+
+
+    )
 
   }
   registerMedic(){
@@ -70,8 +75,26 @@ export class MedicSingupComponent implements OnInit {
     )
   }
   goLogIn() {
-    this.routerPath.navigate([`/login/`])
+    this.routerPath.navigate([`/login/`]);
   }
 
+  mustMatch(password:any, confirmPassword:any){
+    return (formGroup:FormGroup)=>{
+
+      const passwordControl=formGroup.controls[password]
+      const confirmPasswordControl=formGroup.controls[confirmPassword]
+
+      if(confirmPasswordControl.errors && !confirmPasswordControl.errors['mustMatch']){
+        return;
+      }
+      if( passwordControl.value!==confirmPasswordControl.value){
+        confirmPasswordControl.setErrors({mustMach:true});
+      }
+      else{
+        confirmPasswordControl.setErrors(null);
+      }
+
+    };
+  }
 
 }
