@@ -24,7 +24,7 @@ jobs:
         run: |
           npm install --save --legacy-peer-deps
 
-    build:
+  build:
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -42,7 +42,7 @@ jobs:
           name: dist
           path: dist
 
-   deploy:
+  deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
