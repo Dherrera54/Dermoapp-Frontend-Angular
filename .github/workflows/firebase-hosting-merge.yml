@@ -26,11 +26,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Instalación de librerías y dependencias
         run: |
-          npm install --save
+          npm install --save --legacy-peer-deps
       - name: Build
         run: |
 
-          npm run build -- --prod
+          npm --openssl-legacy-provider start run build -- --prod
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
