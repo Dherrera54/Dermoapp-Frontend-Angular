@@ -30,7 +30,7 @@ jobs:
       - name: Build
         run: |
 
-          npm --openssl-legacy-provider start run build -- --prod
+          npm run build --openssl-legacy-provider -- --prod
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
