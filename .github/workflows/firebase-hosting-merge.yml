@@ -29,8 +29,7 @@ jobs:
         uses: actions/checkout@master
       - name: Build
         run: |
-          export NODE_OPTIONS=--openssl-legacy-provider; ng build
-          npm run build
+          npm run build --save --legacy-peer-deps
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
