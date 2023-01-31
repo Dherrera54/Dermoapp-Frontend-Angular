@@ -4,6 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "dermoAppWeb": {
+
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,6 +40,14 @@
             "scripts": []
           },
           "configurations": {
+            "en": {
+              "aot": true,
+              "outputPath": "dist/dermoAppWeb-en/",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en",
+              "i18nMissingTranslation": "error"
+            },
             "production": {
               "budgets": [
                 {
@@ -76,6 +85,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dermoAppWeb:build:production"
+            },
+            "en": {
+              "browserTarget": "dermoAppWeb:build:en"
             },
             "development": {
               "browserTarget": "dermoAppWeb:build:development"

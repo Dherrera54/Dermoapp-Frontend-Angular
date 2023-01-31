@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es-CO" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="4680210736168544412" datatype="html">
+        <source>Consultas</source>
+        <target>Inquiries</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-header/header-logged/header-logged.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="202672472292620975" datatype="html">
+        <source>Pacientes</source>
+        <target>Patients</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-header/header-logged/header-logged.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1744447689214641829" datatype="html">
+        <source>Agenda</source>
+        <target>Agenda</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-header/header-logged/header-logged.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1294390259244223882" datatype="html">
+        <source>Cerrar sesión</source>
+         <target>Log out</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-header/header-logged/header-logged.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3854215443743812691" datatype="html">
+        <source>Registrarse</source>
+         <target>Sing up</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-header/header/header.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8024932591315166082" datatype="html">
+        <source>Iniciar Sesión</source>
+         <target>Log in</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-header/header/header.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8537771722470313814" datatype="html">
+        <source>Bienvenido a DermoApp</source>
+         <target>Welcome to DermoApp</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2213788097915223276" datatype="html">
+        <source>Inicie sesión o registrese para conectar con pacientes alrededor del mundo</source>
+         <target>Please Log in or sing up to conect with patients around the world</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4311569858228721961" datatype="html">
+        <source>Iniciar sesión</source>
+         <target>Log in</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-login/medic-login.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8164954346734442598" datatype="html">
+        <source> Usuario o contraseña incorrectos </source>
+         <target>Incorrect user name or password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-login/medic-login.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6060080757060540228" datatype="html">
+        <source> Cancelar </source>
+         <target>Cancel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-login/medic-login.component.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">277,279</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7904313455104046575" datatype="html">
+        <source> Ingresar </source>
+         <target>Enter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-login/medic-login.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3637645207984516792" datatype="html">
+        <source> Crea tu cuenta <x id="START_LINK" ctype="x-a" equiv-text="&lt;a class=&quot;text_hyperlink&quot; (click)=&quot;goRegister()&quot;&gt;"/>aquí<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+         <target>Create your account</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-login/medic-login.component.html</context>
+          <context context-type="linenumber">55,57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5357661269973482487" datatype="html">
+        <source>Nombre</source>
+         <target>Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5522837826626085278" datatype="html">
+        <source> Debe ingresar su nombre </source>
+         <target>Your name must be entered</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8833117587899503232" datatype="html">
+        <source> El nombre no debe exceder los 50 carácteres </source>
+         <target>The name cannot exceed 50 characters</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">39,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6121280062403357056" datatype="html">
+        <source>Apellido</source>
+         <target>Last name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8542921223819142883" datatype="html">
+        <source> Debe ingresar su apellido </source>
+         <target>Your last name must be enterded</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">61,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4218871523922503345" datatype="html">
+        <source> El apellido no debe exceder los 50 carácteres </source>
+         <target>The last name cannot exceed 50 characters</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">67,69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2814390016214831270" datatype="html">
+        <source>País</source>
+         <target>Country</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3635785031826594184" datatype="html">
+        <source> Debe ingresar su país de residencia </source>
+         <target>You must enter your country of residence</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">89,91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="319636073049328607" datatype="html">
+        <source> El país debe superar los 4 carácteres </source>
+         <target>The country must be longer than 4 characters</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">95,97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5890698884109238080" datatype="html">
+        <source> El país no debe exceder los 50 carácteres </source>
+         <target>The country cannot exceed 50 characters </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">101,103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2194239499074856216" datatype="html">
+        <source>Número de licencia profesional</source>
+         <target>Profesional ID number</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5503253476666884875" datatype="html">
+        <source> Debe ingresar su número de licencia profesional </source>
+         <target>Your profesional ID must be entered</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">123,125</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5681133717833257305" datatype="html">
+        <source> El numero no debe exceder los 10 dígitos </source>
+         <target>The profesional ID number cannot exceed 10 digits</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">129,131</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1884037374608228538" datatype="html">
+        <source>Foto de Perfil (opcional)</source>
+         <target>Profile picture (optional)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">141</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3654848893989739917" datatype="html">
+        <source>Correo Electronico</source>
+         <target>E-mail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">159</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8403788237950248314" datatype="html">
+        <source> Debe ingresar un correo valido para registrarse </source>
+         <target>A valid email must be entered</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">169,171</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9111078561813560191" datatype="html">
+        <source> El correo no debe exceder los 50 carácteres </source>
+         <target>The email cannot exceed 50 characters</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">175,177</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7132730488496169673" datatype="html">
+        <source>Contraseña</source>
+         <target>Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">188</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4224103193976724893" datatype="html">
+        <source> Debe ingresar una contraseña </source>
+         <target>You must enter a password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">198,200</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="188359126145763310" datatype="html">
+        <source> La contraseña debe superar los 8 carácteres </source>
+         <target>The password should be longer than 8 characters</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">204,206</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6551637795384691640" datatype="html">
+        <source> La contraseña no debe exceder los 50 carácteres </source>
+         <target>The password cannot exceed 50 characters</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">210,212</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4538720711278608121" datatype="html">
+        <source>Confirmar contraseña</source>
+         <target>Confirm Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">222</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1358135000081746765" datatype="html">
+        <source> Debe confirmar su contraseña </source>
+         <target>You must confirm your password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">233,235</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2120854701985117807" datatype="html">
+        <source> Las contraseñas no coinciden </source>
+         <target>The passwords don't match</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">241,243</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2983933913912999967" datatype="html">
+        <source>Por favor selecciona especialidad</source>
+         <target>Please select specialty</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">261</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5582468551242558191" datatype="html">
+        <source>Acepto términos y condiciones</source>
+         <target>Accept terms and conditions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">269</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3431432917436045134" datatype="html">
+        <source> Registrarse </source>
+         <target>Sign up</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/medic/medic-singup/medic-singup.component.html</context>
+          <context context-type="linenumber">287,289</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
