@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { InquiriesModule } from './inquiries/inquiries.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MedicService } from './medic/medic.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
     }),
  ],
-  providers: [],
+  providers: [MedicService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

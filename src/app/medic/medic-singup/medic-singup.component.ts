@@ -6,10 +6,6 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from 'ngx-toastr';
 
 
-
-
-
-
 @Component({
   selector: 'app-medic-singup',
   templateUrl: './medic-singup.component.html',
@@ -25,7 +21,8 @@ export class MedicSingupComponent implements OnInit {
     private medicService:MedicService,
     private formBuilder: FormBuilder,
     private routerPath: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+
 
   ) { }
 
@@ -33,7 +30,7 @@ export class MedicSingupComponent implements OnInit {
 
    this.medicForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email, Validators.maxLength(50)]],
-      password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
+      password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(8)]],
       confirmPassword: ["", [Validators.required]],
       name: ["", [Validators.required, Validators.maxLength(50)]],
       lastName: ["", [Validators.required, Validators.maxLength(50)]],
