@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule,HttpClient } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { MedicService } from './medic/medic.service';
     BrowserModule,
     AppRoutingModule,
     MedicModule,
+    HttpClient,
     HttpClientModule,
     AppHeaderModule,
     InquiriesModule,
