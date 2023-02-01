@@ -3,6 +3,7 @@
 import { TestBed, async, inject, getTestBed } from '@angular/core/testing';
 import { MedicService } from './medic.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 describe('Service: Medic', () => {
   let injector: TestBed;
@@ -12,7 +13,11 @@ describe('Service: Medic', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [MedicService]
+      providers: [MedicService,
+        HttpClient,
+        {
+          provide: HttpClient
+        },]
     });
     injector = getTestBed();
     service = injector.get(MedicService);
