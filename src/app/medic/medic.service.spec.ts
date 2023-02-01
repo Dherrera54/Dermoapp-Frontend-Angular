@@ -13,19 +13,10 @@ describe('Service: Medic', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, HttpClientModule],
-      providers: [MedicService,
-        HttpClientModule,
-        HttpClient,
-        {
-          provide: HttpClient
-        },
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          },
-        },]
+      imports: [HttpClientTestingModule],
+      providers: [MedicService
+
+        ]
     });
     // Inject the http service and test controller for each test
     injector = getTestBed();
