@@ -8,6 +8,10 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
+import { FormBuilder } from '@angular/forms';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
+
+
 
 describe('MedicSingupComponent', () => {
   let component: MedicSingupComponent;
@@ -17,7 +21,7 @@ describe('MedicSingupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, , ToastrModule.forRoot()],
       providers: [
         {
           provide: Router,
@@ -31,6 +35,8 @@ describe('MedicSingupComponent', () => {
               snapshot: {params: {id: 100}}
             }
           },
+          {provide: FormBuilder},
+          {provide: ToastrService},
 
       ]
 
