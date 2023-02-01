@@ -14,7 +14,7 @@ export class MedicService {
   constructor(private http: HttpClient) { }
 
   userLogIn(name: string, password: string):Observable<any>{
-    return this.http.post<any>(`${this.backUrl}/logIn`, {"name": name, "password": password });
+    return this.http.post<any>(`${this.backUrl}/user/logIn`, {"name": name, "password": password });
 }
 userSignUp(name: string,
            lastName: string,
@@ -24,7 +24,14 @@ userSignUp(name: string,
            email: string,
            password: string,
            specialty: string,): Observable<any>{
-  return this.http.post<any>(`${this.backUrl}/medics`, {"name": name, "password": password})
+  return this.http.post<any>(`${this.backUrl}/medics`, {"name": name,
+                                                        "lastName": lastName,
+                                                         "country": country,
+                                                         "profLicense": profesionalId,
+                                                         "profilePicture":profilePicture,
+                                                         "email":email,
+                                                         "password": password,
+                                                         "specialty":specialty})
 }
 
 }
