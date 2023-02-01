@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +33,7 @@ import { MedicService } from './medic/medic.service';
       preventDuplicates: true,
     }),
  ],
-  providers: [MedicService],
+  providers: [MedicService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
