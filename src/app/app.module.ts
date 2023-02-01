@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { InquiriesModule } from './inquiries/inquiries.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MedicService } from './medic/medic.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
     }),
  ],
-  providers: [],
+  providers: [MedicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

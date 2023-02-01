@@ -12,7 +12,6 @@ import { FormBuilder } from '@angular/forms';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 
 
-
 describe('MedicSingupComponent', () => {
   let component: MedicSingupComponent;
   let fixture: ComponentFixture<MedicSingupComponent>;

@@ -6,10 +6,6 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from 'ngx-toastr';
 
 
-
-
-
-
 @Component({
   selector: 'app-medic-singup',
   templateUrl: './medic-singup.component.html',

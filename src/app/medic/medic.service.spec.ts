@@ -15,6 +15,7 @@ describe('Service: Medic', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [MedicService,
+        HttpClientModule,
         HttpClient,
         {
           provide: HttpClient
