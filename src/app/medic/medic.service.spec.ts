@@ -13,7 +13,7 @@ describe('Service: Medic', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, HttpClientModule],
       providers: [MedicService,
         HttpClientModule,
         HttpClient,
