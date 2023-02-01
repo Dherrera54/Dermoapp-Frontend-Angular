@@ -16,7 +16,7 @@ describe('Service: Medic', () => {
       imports: [HttpClientTestingModule,
         HttpClientModule,
       ],
-      providers: [MedicService
+      providers: [MedicService,HttpClient
 
         ]
     });
