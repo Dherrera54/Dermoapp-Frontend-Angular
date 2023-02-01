@@ -30,7 +30,7 @@ export class MedicSingupComponent implements OnInit {
 
    this.medicForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email, Validators.maxLength(50)]],
-      password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(8)]],
+      password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(8),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
       confirmPassword: ["", [Validators.required]],
       name: ["", [Validators.required, Validators.maxLength(50)]],
       lastName: ["", [Validators.required, Validators.maxLength(50)]],
