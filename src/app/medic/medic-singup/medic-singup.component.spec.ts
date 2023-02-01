@@ -21,7 +21,7 @@ describe('MedicSingupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule, , ToastrModule.forRoot(), HttpClientModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule],
       providers: [
         {
           provide: Router,
