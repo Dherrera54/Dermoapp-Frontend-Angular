@@ -10,8 +10,6 @@ describe('Service: Medic', () => {
   let injector: TestBed;
   let service: MedicService;
   let httpMock: HttpTestingController;
-  let httpClient: HttpClient;
-  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -32,8 +30,6 @@ describe('Service: Medic', () => {
         },]
     });
     // Inject the http service and test controller for each test
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
     injector = getTestBed();
     service = injector.get(MedicService);
     httpMock = injector.get(HttpTestingController);
