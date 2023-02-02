@@ -77,7 +77,7 @@ it('Should have an element patients', () => {
 it('Should have an element Log Out', () => {
 
   expect(debug.query(By.css('#logOutBtn')).nativeElement.innerText).toContain(
-    "Cerrar Sesión"
+    "Cerrar sesión"
   );
 });
 });
