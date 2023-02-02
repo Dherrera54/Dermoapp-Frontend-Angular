@@ -4,7 +4,7 @@
     <div class="col-xs-10 col-lg-5 container">
       <div class="row">
         <div class="my-2 row">
-          <h1 class="text-left text-bold"i18n>Iniciar sesión</h1>
+          <h1 class="text-left text-bold" id="logInHeader" i18n>Iniciar sesión</h1>
         </div>
         <div *ngIf="error">
           <div class="alert alert-danger col-lg-12" role="alert"i18n>
@@ -34,7 +34,7 @@
             <button
               (click)="goHome()"
               type="button"
-              class="btn btn-cancel col-12"
+              class="btn btn-cancel col-12" id='cancelBtn'
               i18n>
               Cancelar
             </button>
@@ -43,13 +43,13 @@
             <button
               (click)="onLogInMedic(usuario.value, contrasena.value)"
               type="button"
-              class="btn btn-continue col-12"
+              class="btn btn-continue col-12" id='logInBtn'
               i18n>
               Ingresar
             </button>
           </div>
           <div class="col-12 text-center mt-4">
-            <p>¿Aún no te has registrado?</p>
+            <p id='registerQ'>¿Aún no te has registrado?</p>
           </div>
           <div class="col-12 text-center hyperlink">
             <p i18n>
