@@ -53,7 +53,7 @@ describe('HeaderComponent', () => {
   it('Should have an element nav brand', () => {
 
     fixture.detectChanges();
-    expect(debug.query(By.css('#navbrand')).nativeElement.innerText).toContain(
+    expect(debug.query(By.css('#navBrand')).nativeElement.innerText).toContain(
       "DermoApp"
     );
   });
