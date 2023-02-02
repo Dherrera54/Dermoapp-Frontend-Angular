@@ -43,6 +43,7 @@ describe('MedicLoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MedicLoginComponent);
     component = fixture.componentInstance;
+    debug = fixture.debugElement;
     fixture.detectChanges();
   });
 

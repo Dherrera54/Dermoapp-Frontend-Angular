@@ -42,6 +42,7 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
+    debug = fixture.debugElement;
     fixture.detectChanges();
   });
 
