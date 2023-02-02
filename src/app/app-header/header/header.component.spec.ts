@@ -50,6 +50,7 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
   it('Should have an element nav brand', () => {
 
     fixture.detectChanges();
