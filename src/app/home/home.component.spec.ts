@@ -48,9 +48,9 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('Should have an element wlecome message', () => {
+  it('Should have an element welcome message', () => {
 
-    expect(debug.query(By.css('#welcome MSG')).nativeElement.innerText).toContain(
+    expect(debug.query(By.css('#welcomeMsg')).nativeElement.innerText).toContain(
       "Benvenido a DermoApp"
     );
   });
