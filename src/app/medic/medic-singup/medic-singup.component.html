@@ -90,6 +90,7 @@
             Debe ingresar su país de residencia
           </mat-error>
           <mat-error
+            id="countryLenErr"
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('country')?.hasError('minlength')"
             i18n>

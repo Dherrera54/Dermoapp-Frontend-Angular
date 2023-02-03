@@ -83,7 +83,8 @@ describe('MedicLoginComponent', () => {
 
     userNameInput.dispatchEvent(new Event('input'));
     passwordInput.dispatchEvent(new Event('input'));
-    logInBtn.dispatchEvent(new Event('click'));
+
+    logInBtn.click;
 
     expect(debug.query(By.css('#errorMsg')).nativeElement.innerText).toContain('Usuario o contraseña incorrectos');
 
