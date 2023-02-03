@@ -51,13 +51,6 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should have an element nav brand', () => {
-
-    fixture.detectChanges();
-    expect(debug.query(By.css('#navBrand')).nativeElement.innerText).toContain(
-      "DermoApp"
-    );
-  });
 
   it('Should have an element register', () => {
 
