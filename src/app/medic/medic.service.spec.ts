@@ -12,7 +12,7 @@ import { Medic } from './medic';
 describe('Service: Medic', () => {
   let injector: TestBed;
   let service: MedicService;
-
+  let resp:any;
   const medicMock: Medic=createRandoMedic();
 
 
@@ -60,16 +60,17 @@ describe('Service: Medic', () => {
     service = TestBed.get(MedicService);
     const spyService = TestBed.get(HttpClient);
     spyOn(spyService, 'post').and.returnValue(medicMock);
-    service.userSignUp(medicMock.name,
+    resp=service.userSignUp(medicMock.name,
                        medicMock.lastName,
                        medicMock.country,
                        medicMock.profesionalId,
                        medicMock.profilePicture,
                        medicMock.email,
                        medicMock.password,
-                       medicMock.specialty).subscribe((resp: Medic) => {
+                       medicMock.specialty)
       expect(resp.name).toEqual(medicMock.name);
+      expect(resp.email).toEqual(medicMock.email);
+      expect(resp.lastName).toEqual(medicMock.lastName);
 
-      });
   });
 });
