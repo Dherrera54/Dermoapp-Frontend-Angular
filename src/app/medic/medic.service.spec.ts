@@ -70,7 +70,11 @@ describe('Service: Medic', () => {
                        medicMock.specialty)
       expect(resp.name).toEqual(medicMock.name);
       expect(resp.email).toEqual(medicMock.email);
-      expect(resp.lastName).toEqual(medicMock.lastName);
+      expect(resp.country).toEqual(medicMock.country);
+      expect(resp.profesionalId).toEqual(medicMock.profesionalId);
+      expect(resp.profilePicture).toEqual(medicMock.profilePicture);
+      expect(resp.password).toEqual(medicMock.password);
+      expect(resp.specialty).toEqual(medicMock.specialty);
 
   });
 });
