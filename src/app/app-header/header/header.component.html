@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg" >
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">DermoApp</a>
+    <a class="navbar-brand" href="/" id="navBrand">
+      <img src="./assets/headerLogo.png" id="navBarLogo" alt="DermoApp Logo" width="135" ></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,12 +9,12 @@
       <ul class="navbar-nav me-auto col-lg-auto"></ul>
       <ul class="navbar-nav me-2 mb-3 mb-lg-0 col-lg-3">
         <li class="nav-item col-lg-6">
-          <a class="nav-link btn-singup" (click)="goTo('singUp')"
-          i18n>Registrarse</a
+          <a class="nav-link btn-singup" id='registerBtn' (click)="goTo('singUp')"
+          i18n >Registrarse</a
           >
         </li>
         <li class="nav-item col-lg-6">
-          <a class="nav-link btn-login" (click)="goTo('logIn')"
+          <a class="nav-link btn-login"  id='logInBtn' (click)="goTo('logIn')"
           i18n>Iniciar Sesión</a
           >
         </li>

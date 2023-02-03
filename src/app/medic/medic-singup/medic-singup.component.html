@@ -90,6 +90,7 @@
             Debe ingresar su país de residencia
           </mat-error>
           <mat-error
+            id="countryLenErr"
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('country')?.hasError('minlength')"
             i18n>
@@ -142,6 +143,12 @@
                   i18n-placeholder/>
               </div>
             </div>
+            <mat-error
+            class="alert-danger validator-message my-3"
+            *ngIf="medicForm.get('profilePicture')?.hasError('pattern')"
+            i18n>
+            La foto de perfil debe ser una URL
+          </mat-error>
           </div>
         </div>
       </div>
@@ -209,6 +216,12 @@
             *ngIf="medicForm.get('password')?.hasError('maxlength')"
             i18n>
             La contraseña no debe exceder los 50 carácteres
+          </mat-error>
+          <mat-error
+            class="alert-danger validator-message my-3"
+            *ngIf="medicForm.get('password')?.hasError('pattern')"
+            i18n>
+            La contraseña debe contener al menos una letra mayuscula, una minuscula, un numero y un caracter especial [$@!%*?&].
           </mat-error>
         </div>
         <div class="form-group input-box">

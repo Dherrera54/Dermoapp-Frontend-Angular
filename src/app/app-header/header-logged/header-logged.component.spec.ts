@@ -41,10 +41,43 @@ describe('HeaderLoggedComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderLoggedComponent);
     component = fixture.componentInstance;
+    debug = fixture.debugElement;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('Should have an element nav brand', () => {
+
+    fixture.detectChanges();
+    expect(debug.query(By.css('#navBrand')).nativeElement.innerText).toContain(
+    "DermoApp"
+  );
+});
+
+it('Should have an element inquiry', () => {
+
+  expect(debug.query(By.css('#inquiryBtn')).nativeElement.innerText).toContain(
+    "Consultas"
+  );
+});
+it('Should have an element agenda', () => {
+
+  expect(debug.query(By.css('#agendaBtn')).nativeElement.innerText).toContain(
+    "Agenda"
+  );
+});
+it('Should have an element patients', () => {
+
+  expect(debug.query(By.css('#patientBtn')).nativeElement.innerText).toContain(
+    "Pacientes"
+  );
+});
+it('Should have an element Log Out', () => {
+
+  expect(debug.query(By.css('#logOutBtn')).nativeElement.innerText).toContain(
+    "Cerrar sesión"
+  );
+});
 });

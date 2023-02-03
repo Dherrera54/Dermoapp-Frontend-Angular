@@ -42,10 +42,17 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
+    debug = fixture.debugElement;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('Should have an element welcome message', () => {
+
+    expect(debug.query(By.css('#welcomeMsg')).nativeElement.innerText).toContain(
+      "Bienvenido a DermoApp"
+    );
   });
 });
