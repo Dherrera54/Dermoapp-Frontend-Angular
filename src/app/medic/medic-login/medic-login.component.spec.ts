@@ -69,4 +69,23 @@ describe('MedicLoginComponent', () => {
       "Ingresar"
     );
   });
+
+  it('should test invalid login', () => {
+
+    let hostElement = fixture.nativeElement;
+    let userNameInput: HTMLInputElement = hostElement.querySelector('#user');
+    let passwordInput: HTMLInputElement = hostElement.querySelector('#password');
+    let logInBtn: HTMLButtonElement = hostElement.querySelector('#logInBtn')
+
+    fixture.detectChanges();
+    userNameInput.value="user@user.com";
+    passwordInput.value="testtest";
+
+    userNameInput.dispatchEvent(new Event('input'));
+    passwordInput.dispatchEvent(new Event('input'));
+    logInBtn.dispatchEvent(new Event('click'));
+
+    expect(hostElement.querySelector('#errorMsg').innerText).toContain('Usuario o contraseña incorrectos');
+
+  });
 });

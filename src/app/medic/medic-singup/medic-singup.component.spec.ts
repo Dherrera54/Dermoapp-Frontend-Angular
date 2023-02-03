@@ -53,4 +53,5 @@ describe('MedicSingupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
