@@ -60,7 +60,7 @@ describe('Service: Medic', () => {
     service = TestBed.get(MedicService);
     const spyService = TestBed.get(HttpClient);
     spyOn(spyService, 'post').and.returnValue(medicMock);
-    resp=service.userSignUp(medicMock.name,
+    resp=service.medicCreate(medicMock.name,
                        medicMock.lastName,
                        medicMock.country,
                        medicMock.profesionalId,

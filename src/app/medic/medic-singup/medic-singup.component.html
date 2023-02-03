@@ -143,6 +143,12 @@
                   i18n-placeholder/>
               </div>
             </div>
+            <mat-error
+            class="alert-danger validator-message my-3"
+            *ngIf="medicForm.get('profilePicture')?.hasError('pattern')"
+            i18n>
+            La foto de perfil debe ser una URL
+          </mat-error>
           </div>
         </div>
       </div>

@@ -10,13 +10,26 @@ import { environment } from '../../environments/environment';
 })
 export class MedicService {
 
+  private defaul_profile_picture="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
+
   private backUrl: string = environment.URL_PRODUCTION
   constructor(private http: HttpClient) { }
 
   userLogIn(name: string, password: string):Observable<any>{
-    return this.http.post<any>(`${this.backUrl}/user/logIn`, {"name": name, "password": password });
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
+    headers.set('Access-Control-Allow-Origin', '*');
+    return this.http.post<any>(`${this.backUrl}/auth/login`, {"name": name, "password": password },{headers} );
 }
-userSignUp(name: string,
+
+userSignUp(email: string, password: string, roles:[string]):Observable<any>{
+  const headers = new HttpHeaders();
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', '*');
+  return this.http.post<any>(`${this.backUrl}/users/signup`, {"email": email, "password": password, "roles":roles },{headers} );
+}
+
+medicCreate(name: string,
            lastName: string,
            country: string,
            profesionalId: string,
@@ -25,17 +38,26 @@ userSignUp(name: string,
            password: string,
            specialty: string): Observable<any>{
 
-  const headers = new HttpHeaders();
-  headers.set('Content-Type', 'application/json; charset=utf-8');
+  let headers = new HttpHeaders();
+  headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', '*');
-  return this.http.post<any>(`${this.backUrl}/medics`, {"name": name,
-                                                        "lastName": lastName,
-                                                         "country": country,
-                                                         "profLicense": profesionalId,
-                                                         "profilePicture":profilePicture,
-                                                         "email":email,
-                                                         "password": password,
-                                                         "specialty":specialty})
+
+  if(profilePicture== null ||profilePicture==""){
+    profilePicture=this.defaul_profile_picture;
+  }
+  console.log(profilePicture);
+
+  let body={"name": name,
+            "lastName": lastName,
+             "country": country,
+             "profLicense": profesionalId,
+             "profilePicture":profilePicture,
+             "email":email,
+             "password": password,
+             "specialty":specialty}
+
+  return  this.http.post<any>(`${this.backUrl}/medics`, body ,{headers} )
+
 }
 
 }
