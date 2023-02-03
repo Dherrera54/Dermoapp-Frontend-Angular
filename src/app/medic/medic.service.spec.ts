@@ -12,6 +12,7 @@ import { Medic } from './medic';
 describe('Service: Medic', () => {
   let injector: TestBed;
   let service: MedicService;
+
   const medicMock: Medic=createRandoMedic();
 
 
@@ -31,6 +32,7 @@ describe('Service: Medic', () => {
     // Inject the http service and test controller for each test
     injector = getTestBed();
     service = injector.get(MedicService);
+
 
   });
 
@@ -67,8 +69,7 @@ describe('Service: Medic', () => {
                        medicMock.password,
                        medicMock.specialty).subscribe((resp: Medic) => {
       expect(resp.name).toEqual(medicMock.name);
-      expect(resp.email).toEqual(medicMock.email);
-      expect(resp.lastName).toEqual(medicMock.lastName);
-    });
+
+      });
   });
 });

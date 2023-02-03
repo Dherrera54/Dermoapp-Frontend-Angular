@@ -23,7 +23,11 @@ userSignUp(name: string,
            profilePicture: string,
            email: string,
            password: string,
-           specialty: string,): Observable<any>{
+           specialty: string): Observable<any>{
+
+  const headers = new HttpHeaders();
+  headers.set('Content-Type', 'application/json; charset=utf-8');
+  headers.set('Access-Control-Allow-Origin', '*');
   return this.http.post<any>(`${this.backUrl}/medics`, {"name": name,
                                                         "lastName": lastName,
                                                          "country": country,
