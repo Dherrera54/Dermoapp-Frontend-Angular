@@ -19,7 +19,7 @@ export class MedicService {
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
     headers.set('Access-Control-Allow-Origin', '*');
-    return this.http.post<any>(`${this.backUrl}/auth/login`, {"name": name, "password": password },{headers} );
+    return this.http.post<any>(`${this.backUrl}/auth/login`, {"username": name, "password": password },{headers} );
 }
 
 userSignUp(email: string, password: string, roles:[string]):Observable<any>{
@@ -58,6 +58,13 @@ medicCreate(name: string,
 
   return  this.http.post<any>(`${this.backUrl}/medics`, body ,{headers} )
 
+}
+getUserByEmail(email: string, token: string):Observable<any>{
+  const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', '*');
+
+  return this.http.get<any>(`${this.backUrl}/users/${email}`, {headers: headers} );
 }
 
 }

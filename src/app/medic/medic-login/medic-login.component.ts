@@ -28,8 +28,14 @@ export class MedicLoginComponent implements OnInit {
 
     this.medicService.userLogIn(email, password)
     .subscribe(res => {
+      const token=res.token;
+      console.log(token);
+
       const decodedToken = this.helper.decodeToken(res.token);
-      this.routerPath.navigate([`/inquiries/${decodedToken.sub}/${res.token}`])
+      this.medicService.getUserByEmail(email,token).subscribe(res=>{
+        this.routerPath.navigate([`/inquiries/${res.id}/${token}`])
+      });
+
     },
     error => {
       this.error=true
