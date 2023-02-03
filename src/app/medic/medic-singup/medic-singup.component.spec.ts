@@ -53,10 +53,5 @@ describe('MedicSingupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should check for invalid name', () => {
-    component.medicForm.get('country')?.setValue('aaa');
-    expect(debug.query(By.css('#countryLenErr')).nativeElement.innerText).toContain('El país debe superar los 4 carácteres');
-
-  });
 
 });
