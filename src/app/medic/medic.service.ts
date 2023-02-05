@@ -22,7 +22,7 @@ export class MedicService {
     return this.http.post<any>(`${this.backUrl}/auth/login`, {"username": name, "password": password },{headers} );
 }
 
-userSignUp(email: string, password: string, roles:[string]):Observable<any>{
+userSignUp(email: string, password: string, roles:string):Observable<any>{
   const headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', '*');
