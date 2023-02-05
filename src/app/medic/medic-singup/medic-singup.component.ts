@@ -58,7 +58,7 @@ export class MedicSingupComponent implements OnInit {
 
     this.medicService.userSignUp(this.medicForm.get('email')?.value,
     this.medicForm.get('password')?.value,
-    ["Medico"]).subscribe(res=>{
+    "Medico").subscribe(res=>{
 
       let token:string=res.token;
       this.showSuccess('Perfil de usuario creado con exito')
