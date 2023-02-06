@@ -56,7 +56,7 @@ describe('Service: Medic', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('check the success services', () => {
+  it('check the success sign up medicservices', () => {
     service = TestBed.get(MedicService);
     const spyService = TestBed.get(HttpClient);
     spyOn(spyService, 'post').and.returnValue(medicMock);
@@ -77,4 +77,28 @@ describe('Service: Medic', () => {
       expect(resp.specialty).toEqual(medicMock.specialty);
 
   });
+
+  it('check the success  log in user services', () => {
+    service = TestBed.get(MedicService);
+    const spyService = TestBed.get(HttpClient);
+    spyOn(spyService, 'post').and.returnValue(medicMock);
+    resp=service.userLogIn(medicMock.name,
+                       medicMock.password,
+                       )
+      expect(resp.token).toBeDefined;
+      });
+
+      it('check the success sign up medicservices', () => {
+        service = TestBed.get(MedicService);
+        const spyService = TestBed.get(HttpClient);
+        spyOn(spyService, 'post').and.returnValue(medicMock);
+        resp=service.userSignUp(medicMock.name,
+                           medicMock.password,
+                           'Medico')
+          expect(resp.name).toEqual(medicMock.name);
+          expect(resp.password).toEqual(medicMock.password);
+          expect(resp.roles).toEqual('Medico');
+
+      });
+
 });
