@@ -11,7 +11,6 @@ module.exports = function (config) {
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('karma-sonarqube-unit-reporter'),
-      require('karma-coverage-istanbul-reporter'),      
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -30,15 +29,10 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/dermoAppWeb'),
       subdir: '.',
       reporters: [
+        { type: 'lcov', subdir: 'lcov-report' },
         { type: 'html', subdir: 'html-report' },
-        { type: 'text-summary' },
-        { type: 'lcov', subdir: 'lcov-report' }
+        { type: 'text-summary' }
       ]
-    },
-    coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/dermoAppWeb'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
     },
     sonarQubeUnitReporter: {
       sonarQubeVersion: 'LATEST',
