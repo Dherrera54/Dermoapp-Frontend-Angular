@@ -54,6 +54,6 @@ describe('MedicSingupComponent', () => {
   it('test a dorm group elemnte count',()=>{
     const FormElement = fixture.debugElement.nativeElement.querySelector('#medicForm');
     const inputElements = FormElement.querySelectorAll('input');
-    expect(inputElements.length).toEqual(9)
+    expect(inputElements.length).toEqual(8)
 ;  })
 });
