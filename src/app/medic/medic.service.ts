@@ -18,14 +18,14 @@ export class MedicService {
   userLogIn(name: string, password: string):Observable<any>{
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    headers.set('Access-Control-Allow-Origin', '*');
+    headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
     return this.http.post<any>(`${this.backUrl}/auth/login`, {"username": name, "password": password },{headers} );
 }
 
 userSignUp(email: string, password: string, roles:string):Observable<any>{
   const headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
-  headers.set('Access-Control-Allow-Origin', '*');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
   return this.http.post<any>(`${this.backUrl}/users/signup`, {"email": email, "password": password, "roles":roles },{headers} );
 }
 
@@ -40,7 +40,7 @@ medicCreate(name: string,
 
   let headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
-  headers.set('Access-Control-Allow-Origin', '*');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
   if(profilePicture== null ||profilePicture==""){
     profilePicture=this.defaul_profile_picture;
@@ -62,7 +62,7 @@ medicCreate(name: string,
 getUserByEmail(email: string, token: string):Observable<any>{
   const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
   headers.set('Content-Type', 'application/json');
-  headers.set('Access-Control-Allow-Origin', '*');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
   return this.http.get<any>(`${this.backUrl}/users/${email}`, {headers: headers} );
 }
