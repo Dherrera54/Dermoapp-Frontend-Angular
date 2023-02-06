@@ -6,7 +6,6 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/template';
 
 
 @Component({
@@ -74,7 +73,6 @@ export class MedicSingupComponent implements OnInit {
         )
 
       .subscribe(res => {
-      const decodedToken = this.helper.decodeToken(res.token);
       this.routerPath.navigate([`/inquiries/${res.id}/${token}`])
       this.showSuccess('Perfil de medico creado con exito')
       },
