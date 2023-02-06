@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Medic } from '../medic';
+
 import { MedicService } from '../medic.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
@@ -31,8 +31,7 @@ export class MedicLoginComponent implements OnInit {
       const token=res.token;
       console.log(token);
 
-      const decodedToken = this.helper.decodeToken(res.token);
-      this.medicService.getUserByEmail(email,token).subscribe(res=>{
+        this.medicService.getUserByEmail(email,token).subscribe(res=>{
         this.routerPath.navigate([`/inquiries/${res.id}/${token}`])
       });
 

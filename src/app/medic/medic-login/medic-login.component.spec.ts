@@ -7,7 +7,6 @@ import { MedicLoginComponent } from './medic-login.component';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
-import {Observable, of} from 'rxjs';
 
 
 describe('MedicLoginComponent', () => {
