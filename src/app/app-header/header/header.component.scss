@@ -7,9 +7,16 @@
 
 .nav-link{
   color:white;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
 }
 .nav-link:hover{
   font-weight: bold;
 
     background-color:  #782cf0;
+}
+.navBarLogo{
+  display: block;
+
 }

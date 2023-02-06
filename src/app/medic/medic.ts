@@ -1,5 +1,5 @@
 export class Medic {
-  id: number;
+  id: string;
   email: string;
   password: string;
   name: string;
@@ -11,7 +11,7 @@ export class Medic {
   profilePicture: string;
 
   constructor(
-    id: number,
+    id: string,
     email: string,
     password: string,
     name: string,

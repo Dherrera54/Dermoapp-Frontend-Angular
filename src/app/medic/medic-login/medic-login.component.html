@@ -4,17 +4,18 @@
     <div class="col-xs-10 col-lg-5 container">
       <div class="row">
         <div class="my-2 row">
-          <h1 class="text-left text-bold"i18n>Iniciar sesión</h1>
+          <h1 class="text-left text-bold" id="logInHeader" i18n>Iniciar sesión</h1>
         </div>
         <div *ngIf="error">
-          <div class="alert alert-danger col-lg-12" role="alert"i18n>
+          <div class="alert alert-danger col-lg-12" id="errorMsg" role="alert"i18n>
             Usuario o contraseña incorrectos
           </div>
         </div>
         <div class="mb-3 row">
           <div class="col-lg-12 input-box">
             <input
-              #usuario
+              #user
+              id="user"
               type="text"
               class="form-control"
               placeholder="Correo electrónico"
@@ -24,32 +25,34 @@
         <div class="mb-3 row">
           <div class="col-lg-12 input-box">
             <input
-              #contrasena
+              #password
+              id="password"
               type="password"
               class="form-control"
               placeholder="Contraseña"
+
             />
           </div>
           <div class="col-6 text-center mt-3">
             <button
               (click)="goHome()"
               type="button"
-              class="btn btn-cancel col-12"
+              class="btn btn-cancel col-12" id='cancelBtn'
               i18n>
               Cancelar
             </button>
           </div>
           <div class="col-6 text-center mt-3">
             <button
-              (click)="onLogInMedic(usuario.value, contrasena.value)"
+              (click)="onLogInMedic(user.value, password.value)"
               type="button"
-              class="btn btn-continue col-12"
+              class="btn btn-continue col-12" id='logInBtn'
               i18n>
               Ingresar
             </button>
           </div>
           <div class="col-12 text-center mt-4">
-            <p>¿Aún no te has registrado?</p>
+            <p id='registerQ'>¿Aún no te has registrado?</p>
           </div>
           <div class="col-12 text-center hyperlink">
             <p i18n>

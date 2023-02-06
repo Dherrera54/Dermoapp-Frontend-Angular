@@ -43,10 +43,32 @@ describe('MedicLoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MedicLoginComponent);
     component = fixture.componentInstance;
+    debug = fixture.debugElement;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should have an element log in header', () => {
+
+    expect(debug.query(By.css('#logInHeader')).nativeElement.innerText).toContain(
+      "Iniciar sesión"
+    );
+  });
+  it('Should have an element cancelbutton', () => {
+
+    expect(debug.query(By.css('#cancelBtn')).nativeElement.innerText).toContain(
+      "Cancel"
+    );
+  });
+  it('Should have an element Log in button', () => {
+
+    expect(debug.query(By.css('#logInBtn')).nativeElement.innerText).toContain(
+      "Ingresar"
+    );
+  });
+
+
 });
