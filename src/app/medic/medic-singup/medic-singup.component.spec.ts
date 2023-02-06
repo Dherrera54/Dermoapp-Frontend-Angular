@@ -51,9 +51,14 @@ describe('MedicSingupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('test a dorm group elemnte count',()=>{
+  it('test a form group elemnte count',()=>{
     const FormElement = fixture.debugElement.nativeElement.querySelector('#medicForm');
     const inputElements = FormElement.querySelectorAll('input');
-    expect(inputElements.length).toEqual(8)
-;  })
+    expect(inputElements.length).toEqual(8); })
+
+  /*it('CHECK LOGH IN FORM IS VALID WHE VALIDATIONS ARE FULFILLED',()=>{
+    const createMedicFormElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#medicForm');
+    const inputElements = FormElement.querySelectorAll('input');
+    expect(inputElements.length).toEqual(8); })*/
+
 });
