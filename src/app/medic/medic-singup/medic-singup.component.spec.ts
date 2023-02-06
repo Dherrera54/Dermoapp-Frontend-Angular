@@ -1,12 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { asNativeElements, DebugElement } from '@angular/core';
 
 import { MedicSingupComponent } from './medic-singup.component';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -51,5 +51,9 @@ describe('MedicSingupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
+  it('test a dorm group elemnte count',()=>{
+    const FormElement = fixture.debugElement.nativeElement.querySelector('#medicForm');
+    const inputElements = FormElement.querySelectorAll('input');
+    expect(inputElements.length).toEqual(9)
+;  })
 });

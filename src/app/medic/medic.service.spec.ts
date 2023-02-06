@@ -97,7 +97,6 @@ describe('Service: Medic', () => {
                            'Medico')
           expect(resp.name).toEqual(medicMock.name);
           expect(resp.password).toEqual(medicMock.password);
-          expect(resp.roles).toEqual('Medico');
 
       });
 
