@@ -10,6 +10,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-sonarqube-unit-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -28,16 +29,31 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/dermoAppWeb'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
+        { type: 'lcov', subdir: 'lcov-report' },
+        { type: 'html', subdir: 'html-report' },
         { type: 'text-summary' }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    sonarQubeUnitReporter: {
+      sonarQubeVersion: 'LATEST',
+      outputFile: 'reports/ut_report.xml',
+      overrideTestDescription: true,
+      testPaths: ['./src'],
+      testFilePattern: '.spec.ts',
+      useBrowserName: false
+ },
+    reporters: ['progress', 'kjhtml', 'sonarqubeUnit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });

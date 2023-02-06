@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  URL_PRODUCTION: "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1"
 };
 
 /*
