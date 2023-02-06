@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container align-items-center top-header">
+  <div class="row align-items-center">
+    <div class="col-xs-10 col-lg-5 container">
+      <div class="row">
+        <div class="my-2 row">
+          <h1 class="text-left text-bold" id="logInHeader" i18n>Iniciar sesión</h1>
+        </div>
+        <div *ngIf="error">
+          <div class="alert alert-danger col-lg-12" id="errorMsg" role="alert"i18n>
+            Usuario o contraseña incorrectos
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-lg-12 input-box">
+            <input
+              #user
+              id="user"
+              type="text"
+              class="form-control"
+              placeholder="Correo electrónico"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-lg-12 input-box">
+            <input
+              #password
+              id="password"
+              type="password"
+              class="form-control"
+              placeholder="Contraseña"
+
+            />
+          </div>
+          <div class="col-6 text-center mt-3">
+            <button
+              (click)="goHome()"
+              type="button"
+              class="btn btn-cancel col-12" id='cancelBtn'
+              i18n>
+              Cancelar
+            </button>
+          </div>
+          <div class="col-6 text-center mt-3">
+            <button
+              (click)="onLogInMedic(user.value, password.value)"
+              type="button"
+              class="btn btn-continue col-12" id='logInBtn'
+              i18n>
+              Ingresar
+            </button>
+          </div>
+          <div class="col-12 text-center mt-4">
+            <p id='registerQ'>¿Aún no te has registrado?</p>
+          </div>
+          <div class="col-12 text-center hyperlink">
+            <p i18n>
+              Crea tu cuenta
+              <a class="text_hyperlink" (click)="goRegister()">aquí</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

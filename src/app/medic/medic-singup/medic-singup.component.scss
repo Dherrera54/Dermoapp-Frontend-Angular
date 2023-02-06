@@ -1,0 +1,62 @@
+.main-container{
+  position: relative;
+  top:30px;
+}
+h1{
+  font-size:x-large
+}
+
+.welcome-header{
+  padding-bottom: 25px;
+}
+.form-control{
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: #cfb1fa; /* light purple */
+}
+
+.specialty-header{
+  border-bottom-style: solid;
+  border-bottom-color:rgb(187, 187, 187);
+  padding-left: 10px;
+}
+.dropdown{
+  background-color: white;
+}
+:host ::ng-deep .mat-form-field-appearance-fill {
+  background-color:white;
+}
+
+.submit-buttons{
+
+  padding-top: 30px;
+  position: relative;
+  display:flex;
+  align-items: center;
+}
+.btn-cancel{
+  background-color:rgb(243, 249, 254) ;
+  :hover{
+    background-color:  #d9c6f1;
+  }
+}
+.btn-cancel:hover{
+  background-color:  #d9c6f1;
+}
+
+.btn-continue{
+  background-color:  #6223ee;
+  color: white;
+
+}
+.btn-continue:hover{
+  background-color:  #782cf0;
+}
+.validator-message{
+  padding-left: 15px;
+}
+.form-column{
+  align-items: flex-start
+}
+
+
