@@ -29,7 +29,8 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/dermoAppWeb'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
+        { type: 'lcov', subdir: 'lcov-report' },
+        { type: 'html', subdir: 'html-report' },
         { type: 'text-summary' }
       ]
     },
