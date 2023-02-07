@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MedicSingupComponent } from './medic/medic-singup/medic-singup.component';
 import { MedicLoginComponent } from './medic/medic-login/medic-login.component';
 import { HomeComponent } from './home/home.component';
-import { InquiriesComponent } from './inquiries/inquiries/inquiries.component';
+import { InquiriesListComponent } from './inquiries/inquiries-list/inquiries-list.component';
 
 
 const routes: Routes = [
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'inquiries/:medicId/:userToken',
-    component: InquiriesComponent,
+    component: InquiriesListComponent,
     pathMatch: 'full'
   },
 

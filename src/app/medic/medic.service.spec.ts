@@ -13,7 +13,7 @@ describe('Service: Medic', () => {
   let injector: TestBed;
   let service: MedicService;
   let resp:any;
-  const medicMock: Medic=createRandoMedic();
+  const medicMock: Medic=createRandomMedic();
 
 
   beforeEach(() => {
@@ -36,7 +36,7 @@ describe('Service: Medic', () => {
 
   });
 
-  function createRandoMedic(): Medic{
+  function createRandomMedic(): Medic{
     return{
       id:faker.datatype.uuid() ,
       name: faker.name.firstName(),

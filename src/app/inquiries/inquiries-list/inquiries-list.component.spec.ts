@@ -3,20 +3,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { InquiriesComponent } from './inquiries.component';
+import { InquiriesListComponent } from './inquiries-list.component';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
 
 describe('InquiriesComponent', () => {
-  let component: InquiriesComponent;
-  let fixture: ComponentFixture<InquiriesComponent>;
+  let component: InquiriesListComponent;
+  let fixture: ComponentFixture<InquiriesListComponent>;
   let debug: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InquiriesComponent ],
+      declarations: [ InquiriesListComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         {
@@ -39,7 +39,7 @@ describe('InquiriesComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InquiriesComponent);
+    fixture = TestBed.createComponent(InquiriesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
