@@ -8,7 +8,7 @@
   >
     <div class="row align-items-center">
       <div class="my-2 row welcome-header">
-        <h1 class="text-center" i18n>Bienvenido a DermoApp</h1>
+        <h1 class="text-center" i18n>{{'welcomeMsg'|translate}}</h1>
       </div>
 
       <div class="col-xs-10 col-lg-5 form-container form-column">
@@ -21,7 +21,7 @@
                   formControlName="name"
                   type="text"
                   class="form-control"
-                  placeholder="Nombre"
+                  placeholder="{{'name'|translate}}"
                   i18n-placeholder/>
               </div>
             </div>
@@ -32,13 +32,13 @@
               medicForm.get('name')?.touched
             "
             i18n>
-            Debe ingresar su nombre
+            {{'nameReqErr'|translate}}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('name')?.hasError('maxlength')"
             i18n>
-            El nombre no debe exceder los 50 carácteres
+            {{'nameMaxLenght'|translate}}
           </mat-error>
           </div>
           <div class="form-group input-box">
@@ -49,7 +49,7 @@
                   formControlName="lastName"
                   type="text"
                   class="form-control"
-                  placeholder="Apellido"
+                  placeholder="{{'lastName'|translate}}"
                   i18n-placeholder/>
               </div>
             </div>
@@ -60,13 +60,13 @@
               medicForm.get('lastName')?.touched
             "
             i18n>
-            Debe ingresar su apellido
+            {{'lastNameReqErr'|translate}}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('lastName')?.hasError('maxlength')"
             i18n>
-            El apellido no debe exceder los 50 carácteres
+            {{'lastNameMaxLenght'|translate}}
           </mat-error>
           </div>
           <div class="form-group input-box">
@@ -77,7 +77,7 @@
                   formControlName="country"
                   type="text"
                   class="form-control"
-                  placeholder="País"
+                  placeholder="{{'country'|translate}}"
                   i18n-placeholder/>
               </div>
             </div>
@@ -88,20 +88,20 @@
               medicForm.get('country')?.touched
             "
             i18n>
-            Debe ingresar su país de residencia
+            {{'countryReqErr'|translate}}
           </mat-error>
           <mat-error
             id="countryLenErr"
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('country')?.hasError('minlength')"
             i18n>
-            El país debe superar los 4 carácteres
+            {{'countryMinLenght'|translate}}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('country')?.hasError('maxlength')"
             i18n>
-            El país no debe exceder los 50 carácteres
+            {{'countryMaxLenght'|translate}}
           </mat-error>
           </div>
           <div class="form-group input-box">
@@ -112,7 +112,7 @@
                   formControlName="profesionalId"
                   type="text"
                   class="form-control"
-                  placeholder="Número de licencia profesional"
+                  placeholder=" {{'profesionalId'|translate}}"
                   i18n-placeholder/>
               </div>
             </div>
@@ -123,13 +123,13 @@
               medicForm.get('profesionalId')?.touched
             "
             i18n>
-            Debe ingresar su número de licencia profesional
+            {{'profIdReqErr'|translate}}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('profesionalId')?.hasError('maxlength')"
             i18n>
-            El numero no debe exceder los 10 dígitos
+            {{'profIdMaxLenght'|translate}}
           </mat-error>
           </div>
           <div class="form-group input-box">
@@ -140,7 +140,7 @@
                   type="url"
                   formControlName="profilePicture"
                   class="form-control"
-                  placeholder="Foto de Perfil (opcional)"
+                  placeholder="{{'profilePicture'|translate}}"
                   i18n-placeholder/>
               </div>
             </div>
@@ -148,7 +148,7 @@
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('profilePicture')?.hasError('pattern')"
             i18n>
-            La foto de perfil debe ser una URL
+            {{'profPicUrlErr'|translate}}
           </mat-error>
           </div>
         </div>
@@ -164,7 +164,7 @@
                   formControlName="email"
                   type="email"
                   class="form-control"
-                  placeholder="Correo Electronico"
+                  placeholder="{{'email'|translate}}"
                   i18n-placeholder/>
               </div>
             </div>
@@ -175,13 +175,13 @@
                 medicForm.get('email')?.touched || medicForm.get('email')?.hasError('email')
               "
               i18n>
-              Debe ingresar un correo valido para registrarse
+              {{'emailReqErr'|translate}}
             </mat-error>
             <mat-error
               class=" alert-danger validator-message my-3"
               *ngIf="medicForm.get('email')?.hasError('maxlength')"
               i18n>
-              El correo no debe exceder los 50 carácteres
+              {{'emailMaxLenght'|translate}}
             </mat-error>
           </div>
         </div>
@@ -193,7 +193,7 @@
                 formControlName="password"
                 type="password"
                 class="form-control"
-                placeholder="Contraseña"
+                placeholder="{{'password'|translate}}"
                 i18n-placeholder/>
             </div>
           </div>
@@ -204,25 +204,25 @@
               medicForm.get('password')?.touched
             "
             i18n>
-            Debe ingresar una contraseña
+            {{'passwordReqErr'|translate}}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('password')?.hasError('minlength')"
             i18n>
-            La contraseña debe superar los 8 carácteres
+            {{'passwordMinLenght'|translate}}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('password')?.hasError('maxlength')"
             i18n>
-            La contraseña no debe exceder los 50 carácteres
+            {{'passwordMaxLenght'|translate}}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('password')?.hasError('pattern')"
             i18n>
-            La contraseña debe contener al menos una letra mayuscula, una minuscula, un numero y un caracter especial [$@!%*?&].
+            {{'passwordNotStrongErr'|translate}}
           </mat-error>
         </div>
         <div class="form-group input-box">
@@ -233,7 +233,7 @@
                 formControlName="confirmPassword"
                 type="password"
                 class="form-control"
-                placeholder="Confirmar contraseña"
+                placeholder="{{'confirmPsw'|translate}}"
                 i18n-placeholder/>
             </div>
           </div>
@@ -245,7 +245,7 @@
               medicForm.get('confirmPassword')?.touched
             "
             i18n>
-            Debe confirmar su contraseña
+            {{'confirmPswReqErr'|translate}}
           </mat-error>
         <mat-error
         class="alert-danger validator-message my-3"
@@ -253,26 +253,26 @@
           medicForm.get('confirmPassword')?.getError('mustMach')!=null
         "
         i18n>
-        Las contraseñas no coinciden
+        {{'confirmPswMatchErr'|translate}}
       </mat-error>
         <div class="mb-3 row">
           <div class="my-2 col-lg-12 dropdown">
             <mat-form-field class="dropdown" appearance="fill">
-              <mat-label>Especialidades</mat-label>
+              <mat-label>{{'specialty'|translate}}</mat-label>
               <mat-select
                 formControlName="specialty"
                 type="text"
                 [(value)]="selected"
               >
                 <mat-option></mat-option>
-                <mat-option value="pediatry" selected>Pediatria</mat-option>
-                <mat-option value="elder">Adulto mayor</mat-option>
-                <mat-option value="cancer">Cáncer</mat-option>
-                <mat-option value="cosmetic">Cosmética</mat-option>
+                <mat-option value="pediatry" selected>{{'pediatrics'|translate}}</mat-option>
+                <mat-option value="elder">{{'elderly'|translate}}</mat-option>
+                <mat-option value="cancer">{{'oncology'|translate}}</mat-option>
+                <mat-option value="cosmetic">{{'cosmetic'|translate}}</mat-option>
               </mat-select>
               <mat-error
                 *ngIf="medicForm.get('specialty')?.hasError('required')"
-                i18n>Por favor selecciona especialidad</mat-error
+                i18n>{{'specialtyReqErr'|translate}}</mat-error
               >
             </mat-form-field>
           </div>
@@ -280,7 +280,7 @@
         <div class="row">
         <ul class="col-lg-6"></ul>
         <div class="form-check col-lg-6">
-          <mat-checkbox #termsCheck i18n>Acepto términos y condiciones</mat-checkbox>
+          <mat-checkbox #termsCheck i18n>{{'termsAndCond'|translate}}</mat-checkbox>
                   </div>
       </div></div>
     </div>
@@ -289,7 +289,7 @@
     <ul class="col-lg-8 me-auto mb-3 mb-lg-0"></ul>
     <div class="col-lg-2 text-center mt-3 ">
       <button (click)="goLogIn()" type="button" class="btn btn-cancel col-12" i18n>
-        Cancelar
+        {{'cancel'|translate}}
       </button>
     </div>
     <div class="col-lg-2 text-center mt-3">
@@ -299,7 +299,7 @@
         class="btn btn-continue col-12 "
         [disabled]="!medicForm.valid || !termsCheck.checked"
         i18n>
-        Registrarse
+        {{'register'|translate}}
       </button>
     </div>
   </div>
