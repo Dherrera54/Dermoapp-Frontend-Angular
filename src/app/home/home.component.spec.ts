@@ -53,7 +53,7 @@ describe('HomeComponent', () => {
   it('Should have an element welcome message', () => {
 
     expect(debug.query(By.css('#welcomeMsg')).nativeElement.innerText).toContain(
-      "Bienvenido a DermoApp"
+      "welcomeMsg"
     );
   });
 });

@@ -55,19 +55,19 @@ describe('MedicLoginComponent', () => {
   it('Should have an element log in header', () => {
 
     expect(debug.query(By.css('#logInHeader')).nativeElement.innerText).toContain(
-      "Iniciar sesión"
+      "logIn"
     );
   });
   it('Should have an element cancelbutton', () => {
 
     expect(debug.query(By.css('#cancelBtn')).nativeElement.innerText).toContain(
-      "Cancel"
+      "cancel"
     );
   });
   it('Should have an element Log in button', () => {
 
     expect(debug.query(By.css('#logInBtn')).nativeElement.innerText).toContain(
-      "Ingresar"
+      "enter"
     );
   });
 

@@ -54,25 +54,25 @@ describe('HeaderLoggedComponent', () => {
 it('Should have an element inquiry', () => {
 
   expect(debug.query(By.css('#inquiryBtn')).nativeElement.innerText).toContain(
-    "Consultas"
+    "inquiries"
   );
 });
 it('Should have an element agenda', () => {
 
   expect(debug.query(By.css('#agendaBtn')).nativeElement.innerText).toContain(
-    "Agenda"
+    "agenda"
   );
 });
 it('Should have an element patients', () => {
 
   expect(debug.query(By.css('#patientBtn')).nativeElement.innerText).toContain(
-    "Pacientes"
+    "patients"
   );
 });
 it('Should have an element Log Out', () => {
 
   expect(debug.query(By.css('#logOutBtn')).nativeElement.innerText).toContain(
-    "Cerrar sesión"
+    "logOut"
   );
 });
 });

@@ -57,13 +57,13 @@ describe('HeaderComponent', () => {
   it('Should have an element register', () => {
 
     expect(debug.query(By.css('#registerBtn')).nativeElement.innerText).toContain(
-      "Registrarse"
+      "signUp"
     );
   });
   it('Should have an element Log in', () => {
 
     expect(debug.query(By.css('#logInBtn')).nativeElement.innerText).toContain(
-      "Iniciar Sesión"
+      "logIn"
     );
   });
 });
