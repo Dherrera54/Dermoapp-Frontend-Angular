@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MedicService } from '../../medic/medic.service';
-import { TranslateService } from '@ngx-translate/core';
+
 
 
 
@@ -16,8 +16,7 @@ export class HeaderComponent implements OnInit {
     private routerPath: Router,
     private router: ActivatedRoute,
     private medicService: MedicService,
-    public translate: TranslateService
-  ) { }
+      ) { }
 
   ngOnInit() {
   }

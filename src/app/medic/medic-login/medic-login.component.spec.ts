@@ -8,6 +8,7 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {  TranslateModule } from '@ngx-translate/core';
 
 
 describe('MedicLoginComponent', () => {
@@ -18,7 +19,7 @@ describe('MedicLoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MedicLoginComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule],
+      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,

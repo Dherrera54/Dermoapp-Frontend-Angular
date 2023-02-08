@@ -8,6 +8,7 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -19,7 +20,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,

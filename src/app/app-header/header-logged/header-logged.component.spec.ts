@@ -9,6 +9,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('HeaderLoggedComponent', () => {
   let component: HeaderLoggedComponent;
@@ -18,7 +19,7 @@ describe('HeaderLoggedComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderLoggedComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule],
+      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,

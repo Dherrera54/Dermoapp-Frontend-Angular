@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { HeaderLoggedComponent } from './header-logged/header-logged.component';
-import { AppModule } from '../app.module';
-import { SwitchLangComponent } from '../shared/components/switch-lang/switch-lang.component';
 import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   imports: [
-    CommonModule,SharedModule
+    CommonModule,SharedModule,
   ],
   declarations: [
     HeaderComponent,

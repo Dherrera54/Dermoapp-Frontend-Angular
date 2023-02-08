@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import {  TranslateModule } from '@ngx-translate/core';
 
 import { SwitchLangComponent } from './switch-lang.component';
 
@@ -11,6 +12,7 @@ describe('SwitchLangComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[TranslateModule.forRoot()],
       declarations: [ SwitchLangComponent ]
     })
     .compileComponents();
