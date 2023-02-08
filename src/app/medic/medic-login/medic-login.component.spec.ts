@@ -7,6 +7,7 @@ import { MedicLoginComponent } from './medic-login.component';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 describe('MedicLoginComponent', () => {
@@ -17,7 +18,7 @@ describe('MedicLoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MedicLoginComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule],
       providers: [
         {
           provide: Router,

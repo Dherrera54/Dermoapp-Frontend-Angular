@@ -8,6 +8,7 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('HeaderLoggedComponent', () => {
   let component: HeaderLoggedComponent;
@@ -17,7 +18,7 @@ describe('HeaderLoggedComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderLoggedComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule],
       providers: [
         {
           provide: Router,

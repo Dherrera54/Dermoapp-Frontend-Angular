@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
 
 import { HeaderComponent } from './header.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -17,7 +18,7 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, SharedModule],
       providers: [
         {
           provide: Router,

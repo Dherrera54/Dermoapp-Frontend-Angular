@@ -7,6 +7,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Router} from '@angular/router';
 import { faker } from '@faker-js/faker';
 import { Medic } from './medic';
+import { SharedModule } from '../shared/shared.module';
 
 
 describe('Service: Medic', () => {
@@ -19,7 +20,7 @@ describe('Service: Medic', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,RouterTestingModule
+        HttpClientModule,RouterTestingModule,SharedModule
       ],
       providers: [MedicService,
         HttpClient,
