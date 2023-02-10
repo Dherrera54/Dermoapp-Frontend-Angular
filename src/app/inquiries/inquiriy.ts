@@ -1,6 +1,6 @@
+import { Patient } from '../shared/models/patient';
 export class Inquiry {
   id: string;
-  patientId: string;
   creatioDate: string;
   injuryType: string;
   shape: string;
@@ -8,21 +8,22 @@ export class Inquiry {
 
   distribution: string;
   location: string;
+  patient: Patient;
 
   constructor(
     id: string,
-    patientId: string,
     creatioDate: string,
     injuryType: string,
     shape: string,
     injuryQuantity: string,
     distribution: string,
     location: string,
+    patient: Patient
 
 
   ){
       this.id = id;
-      this.patientId=patientId;
+      this.patient=patient;
       this.creatioDate=creatioDate;
       this.injuryType = injuryType;
       this.shape= shape;

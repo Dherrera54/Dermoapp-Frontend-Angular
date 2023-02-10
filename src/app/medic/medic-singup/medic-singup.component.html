@@ -255,11 +255,13 @@
         i18n>
         {{'confirmPswMatchErr'|translate}}
       </mat-error>
-        <div class="mb-3 row">
+        <div class="mb-3 row bg-white dropdown">
           <div class="my-2 col-lg-12 dropdown">
-            <mat-form-field class="dropdown" appearance="fill">
-              <mat-label>{{'specialty'|translate}}</mat-label>
+            <mat-form-field class="bg-white" >
+              <mat-label class="mat-select-label"  >{{'specialty'|translate}}</mat-label>
               <mat-select
+                class="mat-select"
+                panelClass="mat-select-class"
                 formControlName="specialty"
                 type="text"
                 [(value)]="selected"
@@ -302,6 +304,6 @@
         {{'register'|translate}}
       </button>
     </div>
-  </div>
+   </div>
 </div>
 

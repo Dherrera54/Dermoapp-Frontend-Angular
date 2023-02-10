@@ -11,7 +11,7 @@
   "signUpMsg": "Not registered yet?",
   "signUpHere": "Sign up",
   "here":"here",
-  "logInErrorMsg": "Wrong username or password",
+  "logInErrorMsg": "Invalid username or password",
   "name":"Name",
   "nameReqErr":"A name must be entered",
   "nameMaxLenght":"The name cannot exceed 50 characters",

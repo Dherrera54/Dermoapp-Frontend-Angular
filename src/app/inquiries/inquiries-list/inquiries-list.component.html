@@ -1,4 +1,33 @@
 <app-header-logged></app-header-logged>
-<p class="align-center text-bg-info text-center">
-  inquiries under construction!
-</p>
+<div class="main-container">
+<div class="container-fluid">
+
+      <div class="container-inquiries media-scroller snaps-inline">
+        <div class="col " *ngFor="let inquiry of showInquiries;let i=index" class="card-inquiry" (click)="onSelectedInquiry(inquiry)" >
+            <div class="img-driver">
+              <img id='patient-image-{{i}}' src="{{inquiry.patient.profilePicture}}" alt="">
+            </div>
+            <div class="patient-name">
+              <h5><span id='patient-name-{{i}}'class="patient-name card-content">Nombre: {{inquiry.patient.name}}</span></h5>
+            </div>
+            <div class="patient-age">
+              <h5><span id='patient-age-{{i}}'class="patient-age card-content">Edad: {{inquiry.patient.age}}</span></h5>
+            </div>
+            <div class="inquiry-date">
+              <h5><span id='inquiry-date-{{i}}'class="inquiry-date card-content">Fecha creación: {{inquiry.creatioDate}}</span></h5>
+            </div>
+            <div class="inquiry-injury-type">
+              <h5><span id='inquiry-injury-type-{{i}}'class="inquiry-injury-type card-content">Tipo de lesión: {{inquiry.injuryType}}</span></h5>
+            </div>
+
+
+      </div>
+
+    </div>
+
+    <div class="col-12 center inquiry-detail " *ngIf="selected===true">
+      <app-inquiry-detail></app-inquiry-detail>
+    </div>
+  </div>
+
+</div>

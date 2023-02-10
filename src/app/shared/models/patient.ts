@@ -1,9 +1,10 @@
-export class patient {
+export class Patient {
   id: string;
   name: string;
   age: number;
   birthday: string;
   country: string;
+  profilePicture: string;
 
   constructor(
     id: string,
@@ -11,6 +12,7 @@ export class patient {
     age: number,
     birthday: string,
     country: string,
+    profilePicture: string
 
    ){
       this.id = id;
@@ -18,5 +20,6 @@ export class patient {
       this.birthday=birthday;
       this.name = name;
       this.country=country;
+      this.profilePicture=profilePicture;
   }
 }

@@ -30,7 +30,7 @@
   "profPicUrlErr":"La foto de perfil debe ser una URL",
   "emailReqErr":"Debe ingresar un correo valido para registrarse",
   "emailMaxLenght":"El correo no debe exceder los 50 carácteres",
-  "passwordReqErr":"Debe ingresar una contraseñapara registrarse",
+  "passwordReqErr":"Debe ingresar una contraseña para registrarse",
   "passwordMaxLenght":"La contraseña no debe exceder los 50 carácteres",
   "passwordMinLenght":"La contraseña debe superar los 8 carácteres",
   "passwordNotStrongErr":"The password must contain at least one lower and upper case letter, one number and one special character [$@!%*?&]",
