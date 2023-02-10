@@ -13,7 +13,7 @@ export const InquiryMock = {
         specialty:"Cosmetic",
         patient: {
           id:101,
-          name:"Dario",
+          name:"Dario1",
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
@@ -34,7 +34,7 @@ export const InquiryMock = {
         specialty:"Pediatrics",
         patient: {
           id:101,
-          name:"Dario",
+          name:"Dario2",
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
@@ -55,7 +55,7 @@ export const InquiryMock = {
         specialty:"Cosmetic",
         patient: {
           id:101,
-          name:"Dario",
+          name:"Dario3",
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
@@ -77,7 +77,7 @@ export const InquiryMock = {
         specialty:"Cosmetic",
         patient: {
           id:101,
-          name:"Dario",
+          name:"Dario4",
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
@@ -98,7 +98,7 @@ export const InquiryMock = {
         specialty:"Pediatrics",
         patient: {
           id:101,
-          name:"Dario",
+          name:"Dario5",
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
@@ -119,7 +119,7 @@ export const InquiryMock = {
         specialty:"Pediatrics",
         patient: {
           id:101,
-          name:"Dario",
+          name:"Dario6",
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",

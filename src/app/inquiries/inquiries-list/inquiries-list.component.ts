@@ -22,8 +22,9 @@ export class InquiriesListComponent implements OnInit {
   medicId!: number;
   token!: string;
   showInquiries!:Array<any>;//Array<Inquiries>;
-  selected:boolean= false;
+  selected:Boolean= false;
   selectedInquiry!:Inquiry;
+  inquiry:any;
 
   ngOnInit() {
     this.medicId = parseInt(this.router.snapshot.params.medicId)
@@ -54,13 +55,16 @@ export class InquiriesListComponent implements OnInit {
   onSelectedInquiry(inquiry: Inquiry):void{
     this.selected=true;
     this.selectedInquiry=inquiry;
-    
+    this.inquiry=this.selectedInquiry;
+
+  }
+  onCancel(cancel:Boolean){
+    this.selected=cancel;
   }
 
 
-
   showError(error: string){
-    this.toastr.error(error, "{{'AuthErr'|translate}}")
+    this.toastr.error(error, "{{'AuthErr'|translate}}");
   }
 
 }

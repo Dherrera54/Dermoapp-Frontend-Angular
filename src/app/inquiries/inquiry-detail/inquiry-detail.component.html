@@ -1,3 +1,103 @@
-<p>
-  inquiry-detail works!
-</p>
+<div class="main-container">
+  <div class="detail-inquiry">
+    <div class="img-driver col-1">
+      <img
+        id="patient-image-"
+        src="{{ selectedInquiry.patient.profilePicture }}"
+        alt=""
+      />
+    </div>
+    <div class="column-2 column">
+      <div class="patient-name content-top-row">
+        <h2>
+          <span id="patient-name" class="patient-name"
+            >{{"name"|translate}}: {{ selectedInquiry.patient.name }}</span
+          >
+        </h2>
+      </div>
+      <div class="patient-age content-row">
+        <h2>
+          <span id="patient-age" class="patient-age"
+            >{{"age"|translate}}: {{ selectedInquiry.patient.age }}</span
+          >
+        </h2>
+      </div>
+      <div class="patient-age content-row">
+        <h2>
+          <span id="patient-age" class="patient-age"
+            >{{"birthDay"|translate}}: {{ selectedInquiry.patient.birthday }}</span
+          >
+        </h2>
+      </div>
+      <div class="inquiry-date content-row">
+        <h2>
+          <span id="inquiry-date" class="inquiry-date"
+            >{{"creationDate"|translate}}: {{ selectedInquiry.creatioDate}}</span
+          >
+        </h2>
+      </div>
+      <div class="patient-age content-row">
+        <h2>
+          <span id="patient-age" class="patient-age"
+            >{{"country"|translate}}: {{ selectedInquiry.patient.country }}</span
+          >
+        </h2>
+      </div>
+    </div>
+    <div class="column-3 column">
+      <div class="injury-type content-top-row">
+        <h2>
+          <span id="injury-type" class="injury-type"
+            >{{"injuryType"|translate}}: {{ selectedInquiry.injuryType}}</span
+          >
+        </h2>
+      </div>
+      <div class="injury-shape content-row">
+        <h2>
+          <span id="injury-shape" class="injury-shape"
+            >{{"shape"|translate}}: {{ selectedInquiry.shape}}</span
+          >
+        </h2>
+      </div>
+      <div class="injury-quantity content-row">
+        <h2>
+          <span id="injury-quantity" class="injury-quantity"
+            >{{"injuryQuantity"|translate}}: {{ selectedInquiry.injuryQuantity }}</span
+          >
+        </h2>
+      </div>
+      <div class="injury-distribution content-row">
+        <h2>
+          <span id="injury-distribution" class="injury-distribution"
+            >{{"distribution"|translate}}: {{ selectedInquiry.distribution }}</span
+          >
+        </h2>
+      </div>
+      <div class="injury-location content-row">
+        <h2>
+          <span id="injury-location" class="injury-location"
+            >{{"location"|translate}}: {{ selectedInquiry.location }}</span
+          >
+        </h2>
+      </div>
+      <div class="container row submit-buttons" >
+      <div class="col-lg-4 text-center mt-3 ">
+        <button (click)="cancel()"
+        type="button"
+        class="btn btn-cancel col-12" >
+          {{'cancel'|translate}}
+        </button>
+      </div>
+      <div class="col-lg-4 text-center mt-3">
+        <button
+          (click)="claim()"
+          type="button"
+          class="btn btn-continue col-12"
+           >
+          {{'claim'|translate}}
+        </button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

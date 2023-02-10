@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
+import { Inquiry } from '../inquiriy';
 
 @Component({
   selector: 'app-inquiry-detail',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InquiryDetailComponent implements OnInit {
 
+  @Input() selectedInquiry!:any;
+  @Output() cancelOutput = new EventEmitter<Boolean>();
+
   constructor() { }
 
   ngOnInit() {
-  }
+  };
+  cancel(){
+    this.cancelOutput.emit(false)
+  };
+  claim(){};
+
 
 }

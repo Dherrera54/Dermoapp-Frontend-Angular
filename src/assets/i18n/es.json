@@ -48,8 +48,17 @@
   "inquiries":"Consultas",
   "patients":"Pacientes",
   "agenda":"Agenda",
-  "logOut":"Cerrar sesión"
+  "logOut":"Cerrar sesión",
 
 
+  "age":"Edad",
+  "creationDate":"Fecha de creación",
+  "injuryType":"Tipo de lesión",
+  "birthDay":"Fecha de cumpleaños",
+  "shape":"Forma",
+  "injuryQuantity":"Cantidad de lesiones",
+  "distribution":"Distribución",
+  "location":"Ubicación",
+  "claim":"Reclamar"
 
 }

@@ -47,5 +47,15 @@
   "inquiries":"Inquiries",
   "patients":"Patients",
   "agenda":"Agenda",
-  "logOut":"Log out"
+  "logOut":"Log out",
+
+  "age":"Age",
+  "creationDate":"Creation date",
+  "injuryType":"Type of injury",
+  "birthDay":"Birthday",
+  "shape":"Shape",
+  "injuryQuantity":"Number of injuries",
+  "distribution":"Distribution",
+  "location":"Location",
+  "claim":"Claim"
 }
