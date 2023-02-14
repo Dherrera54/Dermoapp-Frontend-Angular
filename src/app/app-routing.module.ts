@@ -23,7 +23,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'inquiries/:medicId/:userToken',
+    path: 'inquiries/:medicId/:medicSpecialty/:userToken',
     component: InquiriesListComponent,
     pathMatch: 'full'
   },

@@ -23,6 +23,7 @@
     "@angular/router": "~12.2.0",
     "@auth0/angular-jwt": "^5.1.2",
     "@faker-js/faker": "^7.6.0",
+    "@google-cloud/storage": "^6.9.2",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "bootstrap": "^5.2.3",

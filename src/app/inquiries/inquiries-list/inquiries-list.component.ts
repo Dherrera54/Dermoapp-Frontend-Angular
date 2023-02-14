@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { InquiryMock } from '../../shared/mocks/inquiry.mock';
 import { Inquiry } from '../inquiriy';
+import { InquiryService } from '../inquiry.service';
 //mock for development
 
 
@@ -17,41 +18,53 @@ export class InquiriesListComponent implements OnInit {
   constructor(
     private routerPath: Router,
     private router: ActivatedRoute,
+    private inquiryService:InquiryService,
     private toastr: ToastrService
   ) { }
   medicId!: number;
   token!: string;
-  showInquiries!:Array<any>;//Array<Inquiries>;
+  showInquiries!:Array<Inquiry>;
   selected:Boolean= false;
   selectedInquiry!:Inquiry;
-  inquiry:any;
+  inquiry!:Inquiry;
+  @Input() specialty!:String;
 
   ngOnInit() {
-    this.medicId = parseInt(this.router.snapshot.params.medicId)
+    //testing mock
+    this.medicId = this.router.snapshot.params.medicId
       this.token = this.router.snapshot.params.userToken
-      this.getInquiries();
+      this.specialty = this.router.snapshot.params.medicSpecialty
+      this.getInquiriesBySpecialty();
+
+    //Consuming service
     if(!parseInt(this.router.snapshot.params.medicId) || this.router.snapshot.params.userToken === " "){
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else{
       this.medicId = parseInt(this.router.snapshot.params.medicId)
       this.token = this.router.snapshot.params.userToken
-      this.getInquiries();
+      this.specialty = this.router.snapshot.params.medicSpecialty
+      this.getInquiriesBySpecialty();
 
     }
   }
-  getInquiries():void{
-    /*
-    this.inquiryService.getCancionesPorUsuario(this.medicId, this.token)
+  getInquiriesBySpecialty():void{
+  
+    this.inquiryService.getInquiriesBySpecialty(this.specialty, this.token)
     .subscribe(inquiries => {
-      this.inquiries = inquiries
-      this.inquiries = inquiries
+      this.showInquiries = inquiries
+
     })
-    */
+
+
+    //testing mock
+    /*
     this.showInquiries= InquiryMock.response.data;
     console.log(this.showInquiries);
+    */
 
   }
+
   onSelectedInquiry(inquiry: Inquiry):void{
     this.selected=true;
     this.selectedInquiry=inquiry;
@@ -64,7 +77,7 @@ export class InquiriesListComponent implements OnInit {
 
 
   showError(error: string){
-    this.toastr.error(error, "{{'AuthErr'|translate}}");
+    this.toastr.error(error, "Error");
   }
 
 }

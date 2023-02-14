@@ -32,7 +32,7 @@ export class MedicLoginComponent implements OnInit {
       console.log(token);
 
         this.medicService.getUserByEmail(email,token).subscribe(res=>{
-        this.routerPath.navigate([`/inquiries/${res.id}/${token}`])
+        this.routerPath.navigate([`/inquiries/${res.id}/${res.specialty}/${token}`])
       });
 
     },

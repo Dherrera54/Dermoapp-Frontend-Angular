@@ -137,20 +137,18 @@
               <div class="col-lg-12">
                 <input
                   #profilePicture
-                  type="url"
+                  (change)="catchFile($event)"
+                  type="file"
                   formControlName="profilePicture"
                   class="form-control"
                   placeholder="{{'profilePicture'|translate}}"
-                  i18n-placeholder/>
+                  />
+              </div>
+              <div *ngIf="imgPrev">
+                <img class="img-prev" [src]="imgPrev">
               </div>
             </div>
-            <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="medicForm.get('profilePicture')?.hasError('pattern')"
-            i18n>
-            {{'profPicUrlErr'|translate}}
-          </mat-error>
-          </div>
+            </div>
         </div>
       </div>
 
@@ -267,9 +265,9 @@
                 [(value)]="selected"
               >
                 <mat-option></mat-option>
-                <mat-option value="pediatry" selected>{{'pediatrics'|translate}}</mat-option>
-                <mat-option value="elder">{{'elderly'|translate}}</mat-option>
-                <mat-option value="cancer">{{'oncology'|translate}}</mat-option>
+                <mat-option value="pediatrics" selected>{{'pediatrics'|translate}}</mat-option>
+                <mat-option value="elderly">{{'elderly'|translate}}</mat-option>
+                <mat-option value="oncology">{{'oncology'|translate}}</mat-option>
                 <mat-option value="cosmetic">{{'cosmetic'|translate}}</mat-option>
               </mat-select>
               <mat-error

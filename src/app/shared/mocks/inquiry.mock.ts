@@ -17,7 +17,7 @@ export const InquiryMock = {
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
-          profilePicture:"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg"
+          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
 
@@ -38,7 +38,7 @@ export const InquiryMock = {
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
-          profilePicture:"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg"
+          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
 
@@ -81,7 +81,7 @@ export const InquiryMock = {
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
-          profilePicture:"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg"
+          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
 
@@ -102,7 +102,7 @@ export const InquiryMock = {
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
-          profilePicture:"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg"
+          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
 
@@ -123,7 +123,7 @@ export const InquiryMock = {
           age:30,
           birthday:"1984-08-01",
           country:"Colombian",
-          profilePicture:"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg"
+          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
 

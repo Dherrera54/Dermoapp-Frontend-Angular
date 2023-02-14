@@ -6,6 +6,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -19,15 +20,16 @@ export class MedicSingupComponent implements OnInit {
   medicForm!: FormGroup;
   selected!: string;
   respLogin!: Observable<any>;
+  imgFile:any;
+  imgPrev!:String;
   strongPasswordRegex='(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}';
-  urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-
 
   constructor(
     private medicService:MedicService,
     private formBuilder: FormBuilder,
     private routerPath: Router,
     private toastr: ToastrService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class MedicSingupComponent implements OnInit {
       lastName: ["", [Validators.required, Validators.maxLength(50)]],
       country:["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
       profesionalId: ["", [Validators.required, Validators.maxLength(10)]],
-      profilePicture:["",[Validators.pattern(this.urlRegex)]],
+      profilePicture:[""],
       specialty: ["",Validators.required]
 
     },{
@@ -73,7 +75,9 @@ export class MedicSingupComponent implements OnInit {
         )
 
       .subscribe(res => {
-      this.routerPath.navigate([`/inquiries/${res.id}/${token}`])
+      console.log(res.id, res.specialty);
+
+      this.routerPath.navigate([`/login`])
       this.showSuccess('Perfil de medico creado con exito')
       },
       error => {
@@ -121,5 +125,31 @@ export class MedicSingupComponent implements OnInit {
   showSuccess(message:string) {
     this.toastr.success(message, "Registro exitoso");
   }
+  catchFile(event:any):any{
+    const capturedFile = event.target.files[0];
+    this.extractBase64(capturedFile).then((img:any)=>{
+      this.imgPrev=img.base;
+
+    })
+  }
+
+  extractBase64 = async ($event: any) => new Promise(resolve => {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+
+
+  })
 
 }
