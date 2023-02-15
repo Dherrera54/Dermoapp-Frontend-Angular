@@ -49,7 +49,7 @@ export class InquiriesListComponent implements OnInit {
     }
   }
   getInquiriesBySpecialty():void{
-  
+
     this.inquiryService.getInquiriesBySpecialty(this.specialty, this.token)
     .subscribe(inquiries => {
       this.showInquiries = inquiries
@@ -58,10 +58,10 @@ export class InquiriesListComponent implements OnInit {
 
 
     //testing mock
-    /*
+  /*
     this.showInquiries= InquiryMock.response.data;
     console.log(this.showInquiries);
-    */
+  */
 
   }
 

@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
 @Component({
   selector: 'app-medic-singup',
   templateUrl: './medic-singup.component.html',
@@ -16,11 +15,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class MedicSingupComponent implements OnInit {
 
+
   helper = new JwtHelperService();
   medicForm!: FormGroup;
   selected!: string;
   respLogin!: Observable<any>;
-  imgFile:any;
+  imgFiles:any=[];
   imgPrev!:String;
   strongPasswordRegex='(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}';
 
@@ -30,7 +30,8 @@ export class MedicSingupComponent implements OnInit {
     private routerPath: Router,
     private toastr: ToastrService,
     private sanitizer: DomSanitizer
-  ) { }
+
+   ) { }
 
   ngOnInit() {
 
@@ -61,14 +62,24 @@ export class MedicSingupComponent implements OnInit {
     this.medicForm.get('password')?.value,
     "Medico").subscribe(res=>{
 
+      this.uploadImg(this.medicForm.get('email')?.value)
+
       let token:string=res.token;
+      let profilePicUrl:String="";
       this.showSuccess('Perfil de usuario creado con exito')
+
+      //this.medicForm.get('profilePicture')?.value,
+
+      if (this.medicForm.get('profesionalId')?.value!==""){
+        this.medicService.imgUpload(this.medicForm.get('email')?.value+"_"+Date.now(),this.imgFiles[0])
+      }
+
       this.medicService.medicCreate(
         this.medicForm.get('name')?.value,
         this.medicForm.get('lastName')?.value,
         this.medicForm.get('country')?.value,
         this.medicForm.get('profesionalId')?.value,
-        this.medicForm.get('profilePicture')?.value,
+        profilePicUrl,
         this.medicForm.get('email')?.value,
         this.medicForm.get('password')?.value,
         this.medicForm.get('specialty')?.value
@@ -127,29 +138,29 @@ export class MedicSingupComponent implements OnInit {
   }
   catchFile(event:any):any{
     const capturedFile = event.target.files[0];
-    this.extractBase64(capturedFile).then((img:any)=>{
-      this.imgPrev=img.base;
 
-    })
+    let reader =new FileReader();
+    reader.readAsDataURL(capturedFile);
+    reader.onloadend=()=>{
+      console.log(reader.result);
+      this.imgFiles.push(reader.result);
+
+    }
+
   }
 
-  extractBase64 = async ($event: any) => new Promise(resolve => {
-      const unsafeImg = window.URL.createObjectURL($event);
-      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-      const reader = new FileReader();
-      reader.readAsDataURL($event);
-      reader.onload = () => {
-        resolve({
-          base: reader.result
-        });
-      };
-      reader.onerror = error => {
-        resolve({
-          base: null
-        });
-      };
 
+  uploadImg(email:string):any{
+    const dataForm= new FormData();
+    this.imgFiles.forEach((file:any) =>{
+      dataForm.append('files', file);
+    })
+    dataForm.append('email', email);
 
-  })
+ /* this.medicService.post('https://us-central1-proyectogrupo-14.cloudfunctions.net/function-bucket-img-uploader',dataForm)
+    .subscribe(res=>{
+      console.log(res);}) */
+
+  }
 
 }

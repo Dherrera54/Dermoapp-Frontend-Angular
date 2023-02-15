@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import firebase from 'firebase/compat';
+import 'firebase/compat/storage';
+
 
 
 @Injectable({
@@ -28,14 +31,14 @@ userSignUp(email: string, password: string, roles:string):Observable<any>{
   return this.http.post<any>(`${this.backUrl}/users/signup`, {"email": email, "password": password, "roles":roles },{headers} );
 }
 
-medicCreate(name: string,
-           lastName: string,
-           country: string,
-           profesionalId: string,
-           profilePicture: string,
-           email: string,
-           password: string,
-           specialty: string): Observable<any>{
+medicCreate(name: String,
+           lastName: String,
+           country: String,
+           profesionalId: String,
+           profilePicture: String,
+           email: String,
+           password: String,
+           specialty: String): Observable<any>{
 
   let headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
@@ -64,6 +67,13 @@ getUserByEmail(email: string, token: string):Observable<any>{
   headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
   return this.http.get<any>(`${this.backUrl}/users/${email}`, {headers: headers} );
+}
+
+public imgUpload(email:string, imgBase64:any ){
+  const headers = new HttpHeaders();
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', '*');
+  //return this.http.post(url,body);
 }
 
 }

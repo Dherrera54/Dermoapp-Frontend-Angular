@@ -32,7 +32,7 @@
   "passwordReqErr":"A password must be entered",
   "passwordMaxLenght":"The password cannot exceed 50 characters",
   "passwordMinLenght":"The password must be longer than 4 characters",
-  "passwordNotStrongErr":"The password must contain at least one lower and upper case letter, one number and one special character [$@!%*?&]",
+  "passwordNotStrongErr":"The password must contain at least one lower case letter, one upper case letter, one number and one special character [$@!%*?&]",
   "confirmPsw":"Confirmn password",
   "confirmPswReqErr":"The password must be confirmed",
   "confirmPswMatchErr":"The passwords do not match",

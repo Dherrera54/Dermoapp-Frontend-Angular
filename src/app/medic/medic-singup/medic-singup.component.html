@@ -139,13 +139,14 @@
                   #profilePicture
                   (change)="catchFile($event)"
                   type="file"
+                  accept=".png, .jpeg, .jpeg"
                   formControlName="profilePicture"
                   class="form-control"
                   placeholder="{{'profilePicture'|translate}}"
                   />
               </div>
-              <div *ngIf="imgPrev">
-                <img class="img-prev" [src]="imgPrev">
+              <div *ngIf="imgFiles[0]">
+                <img class="img-prev" src="{{imgFiles[0]}}">
               </div>
             </div>
             </div>
@@ -284,24 +285,25 @@
                   </div>
       </div></div>
     </div>
+    <div class="container row submit-buttons" >
+      <ul class="col-lg-8 me-auto mb-3 mb-lg-0"></ul>
+      <div class="col-lg-2 text-center mt-3 ">
+        <button (click)="goLogIn()" type="button" class="btn btn-cancel col-12" i18n>
+          {{'cancel'|translate}}
+        </button>
+      </div>
+      <div class="col-lg-2 text-center mt-3">
+        <button
+          (click)="registerMedic()"
+          type="button"
+          class="btn btn-continue col-12 "
+          [disabled]="!medicForm.valid || !termsCheck.checked"
+          i18n>
+          {{'register'|translate}}
+        </button>
+      </div>
+     </div>
   </form>
-  <div class="container row submit-buttons" >
-    <ul class="col-lg-8 me-auto mb-3 mb-lg-0"></ul>
-    <div class="col-lg-2 text-center mt-3 ">
-      <button (click)="goLogIn()" type="button" class="btn btn-cancel col-12" i18n>
-        {{'cancel'|translate}}
-      </button>
-    </div>
-    <div class="col-lg-2 text-center mt-3">
-      <button
-        (click)="registerMedic()"
-        type="button"
-        class="btn btn-continue col-12 "
-        [disabled]="!medicForm.valid || !termsCheck.checked"
-        i18n>
-        {{'register'|translate}}
-      </button>
-    </div>
-   </div>
+
 </div>
 
