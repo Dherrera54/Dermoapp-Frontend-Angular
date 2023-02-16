@@ -6,8 +6,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
-
+import { async, waitForAsync } from '@angular/core/testing';
 @Component({
   selector: 'app-medic-singup',
   templateUrl: './medic-singup.component.html',
@@ -23,13 +22,15 @@ export class MedicSingupComponent implements OnInit {
   imgFiles:any=[];
   imgPrev!:String;
   strongPasswordRegex='(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}';
+  profilePicUrl!:String;
+  private default_profile_picture="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
   constructor(
     private medicService:MedicService,
     private formBuilder: FormBuilder,
     private routerPath: Router,
     private toastr: ToastrService,
-    private sanitizer: DomSanitizer
+
 
    ) { }
 
@@ -62,38 +63,25 @@ export class MedicSingupComponent implements OnInit {
     this.medicForm.get('password')?.value,
     "Medico").subscribe(res=>{
 
-      this.uploadImg(this.medicForm.get('email')?.value)
 
-      let token:string=res.token;
-      let profilePicUrl:String="";
       this.showSuccess('Perfil de usuario creado con exito')
 
-      //this.medicForm.get('profilePicture')?.value,
+      if (this.medicForm.get('profilePicture')?.value!=""){
 
-      if (this.medicForm.get('profesionalId')?.value!==""){
-        this.medicService.imgUpload(this.medicForm.get('email')?.value+"_"+Date.now(),this.imgFiles[0])
+        this.medicService.imgUpload(this.medicForm.get('profilePicture')?.value+"_"+Date.now(),this.imgFiles[0]).then( urlImg =>{
+          this.profilePicUrl=urlImg;
+          this.createMedic();
+
+      })
+
+        }
+      else
+      {
+       this.profilePicUrl=this.default_profile_picture;
+       this.createMedic();
       }
 
-      this.medicService.medicCreate(
-        this.medicForm.get('name')?.value,
-        this.medicForm.get('lastName')?.value,
-        this.medicForm.get('country')?.value,
-        this.medicForm.get('profesionalId')?.value,
-        profilePicUrl,
-        this.medicForm.get('email')?.value,
-        this.medicForm.get('password')?.value,
-        this.medicForm.get('specialty')?.value
-        )
 
-      .subscribe(res => {
-      console.log(res.id, res.specialty);
-
-      this.routerPath.navigate([`/login`])
-      this.showSuccess('Perfil de medico creado con exito')
-      },
-      error => {
-        this.showError(`Ha ocurrido un error: ${error.message}`)
-      });
 
     },
     (error: HttpErrorResponse) => {
@@ -142,25 +130,32 @@ export class MedicSingupComponent implements OnInit {
     let reader =new FileReader();
     reader.readAsDataURL(capturedFile);
     reader.onloadend=()=>{
-      console.log(reader.result);
       this.imgFiles.push(reader.result);
 
     }
 
   }
+   createMedic(){
+    this.medicService.medicCreate(
+      this.medicForm.get('name')?.value,
+      this.medicForm.get('lastName')?.value,
+      this.medicForm.get('country')?.value,
+      this.medicForm.get('profesionalId')?.value,
+      this.profilePicUrl,
+      this.medicForm.get('email')?.value,
+      this.medicForm.get('password')?.value,
+      this.medicForm.get('specialty')?.value
+      )
 
+    .subscribe(res => {
+    console.log(res.id, res.specialty);
 
-  uploadImg(email:string):any{
-    const dataForm= new FormData();
-    this.imgFiles.forEach((file:any) =>{
-      dataForm.append('files', file);
-    })
-    dataForm.append('email', email);
-
- /* this.medicService.post('https://us-central1-proyectogrupo-14.cloudfunctions.net/function-bucket-img-uploader',dataForm)
-    .subscribe(res=>{
-      console.log(res);}) */
-
-  }
+    this.routerPath.navigate([`/login`])
+    this.showSuccess('Perfil de medico creado con exito')
+    },
+    error => {
+      this.showError(`Ha ocurrido un error: ${error.message}`)
+    });
+   }
 
 }

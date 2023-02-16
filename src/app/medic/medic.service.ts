@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import firebase from 'firebase/compat';
-import 'firebase/compat/storage';
+import firebase from 'firebase/app';
+import 'firebase/storage';
 
-
+firebase.initializeApp(environment.firebaseConfig);
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicService {
 
-  private defaul_profile_picture="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
+
+  storageRef= firebase.storage().ref();
 
   private backUrl: string = environment.URL_PRODUCTION
   constructor(private http: HttpClient) { }
@@ -44,11 +45,6 @@ medicCreate(name: String,
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
-  if(profilePicture== null ||profilePicture==""){
-    profilePicture=this.defaul_profile_picture;
-  }
-  console.log(profilePicture);
-
   let body={"name": name,
             "lastName": lastName,
              "country": country,
@@ -69,11 +65,19 @@ getUserByEmail(email: string, token: string):Observable<any>{
   return this.http.get<any>(`${this.backUrl}/users/${email}`, {headers: headers} );
 }
 
-public imgUpload(email:string, imgBase64:any ){
+async imgUpload(imgname:string, imgBase64:any ){
   const headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', '*');
-  //return this.http.post(url,body);
+
+  try{
+    let resp=await this.storageRef.child("medic/profilePics/"+imgname).putString(imgBase64, "data_url");
+    return await resp.ref.getDownloadURL();
+
+  }catch(err){
+    console.log(err);
+    return null;
+  }
 }
 
 }
