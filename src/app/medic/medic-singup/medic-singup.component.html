@@ -134,18 +134,36 @@
           </div>
           <div class="form-group input-box">
             <div class="mb-3 row">
-              <div class="col-lg-12">
+
+              <div class="col-lg-12 imgFileUploader form-floating">
+                <input class="form-control imgUpload"
+                        type="text"
+                        placeholder="{{'profilePicture'|translate}}"
+                        disabled>
+                  <label *ngIf="selectedFileName; else notSelected" class="uploadedFileName" >{{selectedFileName}}</label>
+                  <ng-template class="uploadedFileName" #notSelected>
+                    <label class="uploadedFileName" >{{'profilePicture'|translate}}</label>
+                  </ng-template>
+                </div>
+              <div class="col-lg-12 imgFileUploader">
                 <input
                   #profilePicture
                   (change)="catchFile($event)"
                   type="file"
                   accept=".png, .jpeg, .jpeg"
                   formControlName="profilePicture"
-                  class="form-control"
-                  placeholder="{{'profilePicture'|translate}}"
-                  />
+                  class="form-control form-file"
+                  placeholder=""
+                  id="img-uploader"/>
+
+                  <label for="img-uploader" class="labelInputFile">
+                    <img src="./assets/cloud-arrow-up-fill.svg" alt="upload_icon">
+                  </label>
               </div>
-              <div *ngIf="imgFiles[0]">
+              <div *ngIf="imgFiles[0]" class="selectedImage">
+                <h3 calss="selectedImgLabel">
+                  {{"selectedImg"|translate}}:
+                </h3>
                 <img class="img-prev" src="{{imgFiles[0]}}">
               </div>
             </div>

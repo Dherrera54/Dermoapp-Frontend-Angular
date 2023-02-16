@@ -59,6 +59,7 @@
   "injuryQuantity":"Cantidad de lesiones",
   "distribution":"Distribución",
   "location":"Ubicación",
-  "claim":"Reclamar"
+  "claim":"Reclamar",
 
+  "selectedImg":"Imagen seleccionada"
 }

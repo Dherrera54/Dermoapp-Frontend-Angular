@@ -20,9 +20,9 @@ export class MedicSingupComponent implements OnInit {
   selected!: string;
   respLogin!: Observable<any>;
   imgFiles:any=[];
-  imgPrev!:String;
   strongPasswordRegex='(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}';
   profilePicUrl!:String;
+  selectedFileName!:String;
   private default_profile_picture="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
   constructor(
@@ -130,9 +130,13 @@ export class MedicSingupComponent implements OnInit {
     let reader =new FileReader();
     reader.readAsDataURL(capturedFile);
     reader.onloadend=()=>{
-      this.imgFiles.push(reader.result);
+      this.imgFiles[0]=reader.result;
 
     }
+    if(event.target.files.length > 0)
+  {
+    this.selectedFileName = event.target.files[0].name;
+  }
 
   }
    createMedic(){

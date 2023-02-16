@@ -57,5 +57,7 @@
   "injuryQuantity":"Number of injuries",
   "distribution":"Distribution",
   "location":"Location",
-  "claim":"Claim"
+  "claim":"Claim",
+
+  "selectedImg":"Selected image"
 }
