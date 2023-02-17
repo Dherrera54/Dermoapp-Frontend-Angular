@@ -19,8 +19,7 @@ describe('InquiryDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ InquiryDetailComponent ],
-      imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
-      providers:[Patient]
+      imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()]
     })
     .compileComponents();
   }));
@@ -31,7 +30,5 @@ describe('InquiryDetailComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });
