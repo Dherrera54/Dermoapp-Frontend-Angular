@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Inquiry } from '../inquiriy';
 import { InquiryService } from '../inquiry.service';
-import { MedicService } from '../../medic/medic.service';
+
 
 
 @Component({
@@ -14,11 +14,10 @@ import { MedicService } from '../../medic/medic.service';
 export class InquiriesListComponent implements OnInit {
 
   constructor(
-    private routerPath: Router,
     private router: ActivatedRoute,
     private inquiryService:InquiryService,
     private toastr: ToastrService,
-    private medicService:MedicService
+
   ) { }
   medicId!: String;
   token!: String;
