@@ -6,7 +6,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { async, waitForAsync } from '@angular/core/testing';
+import { Country }  from 'country-state-city';
+import { ICountry } from 'country-state-city'
 @Component({
   selector: 'app-medic-singup',
   templateUrl: './medic-singup.component.html',
@@ -17,13 +18,16 @@ export class MedicSingupComponent implements OnInit {
 
   helper = new JwtHelperService();
   medicForm!: FormGroup;
-  selected!: string;
+  selectedSpecialty!: string;
+  selectedCountry!: string;
   respLogin!: Observable<any>;
   imgFiles:any=[];
   strongPasswordRegex='(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}';
   profilePicUrl!:String;
   selectedFileName!:String;
   private default_profile_picture="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
+  countries!:ICountry[];
+
 
   constructor(
     private medicService:MedicService,
@@ -36,13 +40,14 @@ export class MedicSingupComponent implements OnInit {
 
   ngOnInit() {
 
+    this.countries=Country.getAllCountries();
    this.medicForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email, Validators.maxLength(50)]],
       password: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(8),Validators.pattern(this.strongPasswordRegex)]],
       confirmPassword: ["", [Validators.required]],
       name: ["", [Validators.required, Validators.maxLength(50)]],
       lastName: ["", [Validators.required, Validators.maxLength(50)]],
-      country:["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
+      country:["", [Validators.required]],
       profesionalId: ["", [Validators.required, Validators.maxLength(10)]],
       profilePicture:[""],
       specialty: ["",Validators.required]
@@ -52,10 +57,7 @@ export class MedicSingupComponent implements OnInit {
     })
 
   }
-  userLogin(){
 
-    return
-  }
   registerMedic(){
 
 

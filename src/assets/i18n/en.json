@@ -19,7 +19,7 @@
   "lastNameReqErr":"A last name must be entered",
   "lastNameMaxLenght":"The last name can not exceed 50 characters",
   "country":"Country",
-  "countryReqErr":"A country must be entered",
+  "countryReqErr":"Please select your country of residence",
   "countryMaxLenght":"The country cannot exceed 50 characters",
   "countryMinLenght":"The country must be longer than 4 characters",
   "profesionalId":"Profesional Id",

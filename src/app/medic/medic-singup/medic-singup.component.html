@@ -8,7 +8,7 @@
   >
     <div class="row align-items-center">
       <div class="my-2 row welcome-header">
-        <h1 class="text-center" i18n>{{'welcomeMsg'|translate}}</h1>
+        <h1 class="text-center" i18n>{{ "welcomeMsg" | translate }}</h1>
       </div>
 
       <div class="col-xs-10 col-lg-5 form-container form-column">
@@ -21,25 +21,28 @@
                   formControlName="name"
                   type="text"
                   class="form-control"
-                  placeholder="{{'name'|translate}}"
-                  i18n-placeholder/>
+                  placeholder="{{ 'name' | translate }}"
+                  i18n-placeholder
+                />
               </div>
             </div>
             <mat-error
-            class="alert-danger  validator-message my-3"
-            *ngIf="
-              medicForm.get('name')?.hasError('required') &&
-              medicForm.get('name')?.touched
-            "
-            i18n>
-            {{'nameReqErr'|translate}}
-          </mat-error>
-          <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="medicForm.get('name')?.hasError('maxlength')"
-            i18n>
-            {{'nameMaxLenght'|translate}}
-          </mat-error>
+              class="alert-danger validator-message my-3"
+              *ngIf="
+                medicForm.get('name')?.hasError('required') &&
+                medicForm.get('name')?.touched
+              "
+              i18n
+            >
+              {{ "nameReqErr" | translate }}
+            </mat-error>
+            <mat-error
+              class="alert-danger validator-message my-3"
+              *ngIf="medicForm.get('name')?.hasError('maxlength')"
+              i18n
+            >
+              {{ "nameMaxLenght" | translate }}
+            </mat-error>
           </div>
           <div class="form-group input-box">
             <div class="mb-3 row">
@@ -49,61 +52,30 @@
                   formControlName="lastName"
                   type="text"
                   class="form-control"
-                  placeholder="{{'lastName'|translate}}"
-                  i18n-placeholder/>
+                  placeholder="{{ 'lastName' | translate }}"
+                  i18n-placeholder
+                />
               </div>
             </div>
             <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="
-              medicForm.get('lastName')?.hasError('required') &&
-              medicForm.get('lastName')?.touched
-            "
-            i18n>
-            {{'lastNameReqErr'|translate}}
-          </mat-error>
-          <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="medicForm.get('lastName')?.hasError('maxlength')"
-            i18n>
-            {{'lastNameMaxLenght'|translate}}
-          </mat-error>
-          </div>
-          <div class="form-group input-box">
-            <div class="mb-3 row">
-              <div class="col-lg-12">
-                <input
-                  #country
-                  formControlName="country"
-                  type="text"
-                  class="form-control"
-                  placeholder="{{'country'|translate}}"
-                  i18n-placeholder/>
-              </div>
-            </div>
+              class="alert-danger validator-message my-3"
+              *ngIf="
+                medicForm.get('lastName')?.hasError('required') &&
+                medicForm.get('lastName')?.touched
+              "
+              i18n
+            >
+              {{ "lastNameReqErr" | translate }}
+            </mat-error>
             <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="
-              medicForm.get('country')?.hasError('required') &&
-              medicForm.get('country')?.touched
-            "
-            i18n>
-            {{'countryReqErr'|translate}}
-          </mat-error>
-          <mat-error
-            id="countryLenErr"
-            class="alert-danger validator-message my-3"
-            *ngIf="medicForm.get('country')?.hasError('minlength')"
-            i18n>
-            {{'countryMinLenght'|translate}}
-          </mat-error>
-          <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="medicForm.get('country')?.hasError('maxlength')"
-            i18n>
-            {{'countryMaxLenght'|translate}}
-          </mat-error>
+              class="alert-danger validator-message my-3"
+              *ngIf="medicForm.get('lastName')?.hasError('maxlength')"
+              i18n
+            >
+              {{ "lastNameMaxLenght" | translate }}
+            </mat-error>
           </div>
+
           <div class="form-group input-box">
             <div class="mb-3 row">
               <div class="col-lg-12">
@@ -112,39 +84,49 @@
                   formControlName="profesionalId"
                   type="text"
                   class="form-control"
-                  placeholder=" {{'profesionalId'|translate}}"
-                  i18n-placeholder/>
+                  placeholder=" {{ 'profesionalId' | translate }}"
+                  i18n-placeholder
+                />
               </div>
             </div>
             <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="
-              medicForm.get('profesionalId')?.hasError('required') &&
-              medicForm.get('profesionalId')?.touched
-            "
-            i18n>
-            {{'profIdReqErr'|translate}}
-          </mat-error>
-          <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="medicForm.get('profesionalId')?.hasError('maxlength')"
-            i18n>
-            {{'profIdMaxLenght'|translate}}
-          </mat-error>
+              class="alert-danger validator-message my-3"
+              *ngIf="
+                medicForm.get('profesionalId')?.hasError('required') &&
+                medicForm.get('profesionalId')?.touched
+              "
+              i18n
+            >
+              {{ "profIdReqErr" | translate }}
+            </mat-error>
+            <mat-error
+              class="alert-danger validator-message my-3"
+              *ngIf="medicForm.get('profesionalId')?.hasError('maxlength')"
+              i18n
+            >
+              {{ "profIdMaxLenght" | translate }}
+            </mat-error>
           </div>
           <div class="form-group input-box">
             <div class="mb-3 row">
-
               <div class="col-lg-12 imgFileUploader form-floating">
-                <input class="form-control imgUpload"
-                        type="text"
-                        placeholder="{{'profilePicture'|translate}}"
-                        disabled>
-                  <label *ngIf="selectedFileName; else notSelected" class="uploadedFileName" >{{selectedFileName}}</label>
-                  <ng-template class="uploadedFileName" #notSelected>
-                    <label class="uploadedFileName" >{{'profilePicture'|translate}}</label>
-                  </ng-template>
-                </div>
+                <input
+                  class="form-control imgUpload"
+                  type="text"
+                  placeholder="{{ 'profilePicture' | translate }}"
+                  disabled
+                />
+                <label
+                  *ngIf="selectedFileName; else notSelected"
+                  class="uploadedFileName"
+                  >{{ selectedFileName }}</label
+                >
+                <ng-template class="uploadedFileName" #notSelected>
+                  <label class="uploadedFileName">{{
+                    "profilePicture" | translate
+                  }}</label>
+                </ng-template>
+              </div>
               <div class="col-lg-12 imgFileUploader">
                 <input
                   #profilePicture
@@ -154,24 +136,28 @@
                   formControlName="profilePicture"
                   class="form-control form-file"
                   placeholder=""
-                  id="img-uploader"/>
+                  id="img-uploader"
+                />
 
-                  <label for="img-uploader" class="labelInputFile">
-                    <img src="./assets/cloud-arrow-up-fill.svg" alt="upload_icon">
-                  </label>
+                <label for="img-uploader" class="labelInputFile">
+                  <img
+                    src="./assets/cloud-arrow-up-fill.svg"
+                    alt="upload_icon"
+                  />
+                </label>
               </div>
               <div *ngIf="imgFiles[0]" class="selectedImage">
                 <h3 calss="selectedImgLabel">
-                  {{"selectedImg"|translate}}:
+                  {{ "selectedImg" | translate }}:
                 </h3>
-                <img class="img-prev" src="{{imgFiles[0]}}">
+                <img class="img-prev" src="{{ imgFiles[0] }}" />
               </div>
             </div>
-            </div>
+          </div>
         </div>
       </div>
 
-      <div class="col-xs-10 col-lg-5 container  form-column">
+      <div class="col-xs-10 col-lg-5 container form-column">
         <div class="row">
           <div class="form-group input-box">
             <div class="mb-3 row">
@@ -181,28 +167,32 @@
                   formControlName="email"
                   type="email"
                   class="form-control"
-                  placeholder="{{'email'|translate}}"
-                  i18n-placeholder/>
+                  placeholder="{{ 'email' | translate }}"
+                  i18n-placeholder
+                />
               </div>
             </div>
             <mat-error
-              class=" alert-danger validator-message my-3"
+              class="alert-danger validator-message my-3"
               *ngIf="
-                medicForm.get('email')?.hasError('required') &&
-                medicForm.get('email')?.touched || medicForm.get('email')?.hasError('email')
+                (medicForm.get('email')?.hasError('required') &&
+                  medicForm.get('email')?.touched) ||
+                medicForm.get('email')?.hasError('email')
               "
-              i18n>
-              {{'emailReqErr'|translate}}
+              i18n
+            >
+              {{ "emailReqErr" | translate }}
             </mat-error>
             <mat-error
-              class=" alert-danger validator-message my-3"
+              class="alert-danger validator-message my-3"
               *ngIf="medicForm.get('email')?.hasError('maxlength')"
-              i18n>
-              {{'emailMaxLenght'|translate}}
+              i18n
+            >
+              {{ "emailMaxLenght" | translate }}
             </mat-error>
           </div>
         </div>
-        <div class="form-group  input-box">
+        <div class="form-group input-box">
           <div class="mb-3 row">
             <div class="col-lg-12">
               <input
@@ -210,8 +200,9 @@
                 formControlName="password"
                 type="password"
                 class="form-control"
-                placeholder="{{'password'|translate}}"
-                i18n-placeholder/>
+                placeholder="{{ 'password' | translate }}"
+                i18n-placeholder
+              />
             </div>
           </div>
           <mat-error
@@ -220,26 +211,30 @@
               medicForm.get('password')?.hasError('required') &&
               medicForm.get('password')?.touched
             "
-            i18n>
-            {{'passwordReqErr'|translate}}
+            i18n
+          >
+            {{ "passwordReqErr" | translate }}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('password')?.hasError('minlength')"
-            i18n>
-            {{'passwordMinLenght'|translate}}
+            i18n
+          >
+            {{ "passwordMinLenght" | translate }}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('password')?.hasError('maxlength')"
-            i18n>
-            {{'passwordMaxLenght'|translate}}
+            i18n
+          >
+            {{ "passwordMaxLenght" | translate }}
           </mat-error>
           <mat-error
             class="alert-danger validator-message my-3"
             *ngIf="medicForm.get('password')?.hasError('pattern')"
-            i18n>
-            {{'passwordNotStrongErr'|translate}}
+            i18n
+          >
+            {{ "passwordNotStrongErr" | translate }}
           </mat-error>
         </div>
         <div class="form-group input-box">
@@ -250,78 +245,132 @@
                 formControlName="confirmPassword"
                 type="password"
                 class="form-control"
-                placeholder="{{'confirmPsw'|translate}}"
-                i18n-placeholder/>
+                placeholder="{{ 'confirmPsw' | translate }}"
+                i18n-placeholder
+              />
             </div>
           </div>
         </div>
         <mat-error
-            class="alert-danger validator-message my-3"
-            *ngIf="
-              medicForm.get('confirmPassword')?.hasError('required') &&
-              medicForm.get('confirmPassword')?.touched
-            "
-            i18n>
-            {{'confirmPswReqErr'|translate}}
-          </mat-error>
+          class="alert-danger validator-message my-3"
+          *ngIf="
+            medicForm.get('confirmPassword')?.hasError('required') &&
+            medicForm.get('confirmPassword')?.touched
+          "
+          i18n
+        >
+          {{ "confirmPswReqErr" | translate }}
+        </mat-error>
         <mat-error
-        class="alert-danger validator-message my-3"
-        *ngIf="
-          medicForm.get('confirmPassword')?.getError('mustMach')!=null
-        "
-        i18n>
-        {{'confirmPswMatchErr'|translate}}
-      </mat-error>
-        <div class="mb-3 row bg-white dropdown">
-          <div class="my-2 col-lg-12 dropdown">
-            <mat-form-field class="bg-white" >
-              <mat-label class="mat-select-label"  >{{'specialty'|translate}}</mat-label>
+          class="alert-danger validator-message my-3"
+          *ngIf="medicForm.get('confirmPassword')?.getError('mustMach') != null"
+          i18n
+        >
+          {{ "confirmPswMatchErr" | translate }}
+        </mat-error>
+          <div class="dropdowns">
+          <div class="mb-2 row bg-white dropdown">
+            <div class="my-2 col-lg-6 dropdown">
+              <mat-form-field class="bg-white">
+                <mat-label class="mat-select-label">{{
+                  "country" | translate
+                }}</mat-label>
+                <mat-select
+                  #country
+                  formControlName="country"
+                  class="mat-select"
+
+                  [(value)]="selectedCountry"
+                  ><mat-option></mat-option>
+                  <mat-option
+                    *ngFor="let country of countries"
+                    [value]="country.name"
+                    >{{ country.name }}</mat-option
+                  >
+                </mat-select>
+
+                <mat-error
+
+                  *ngIf="
+                    medicForm.get('country')?.hasError('required') &&
+                    medicForm.get('country')?.touched
+                  "
+                  i18n
+                >
+                  {{ "countryReqErr" | translate }}
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+        <div class="mb-2 row bg-white dropdown">
+          <div class="my-2 col-lg-6 dropdown">
+            <mat-form-field class="bg-white">
+              <mat-label class="mat-select-label">{{
+                "specialty" | translate
+              }}</mat-label>
               <mat-select
                 class="mat-select"
-                panelClass="mat-select-class"
                 formControlName="specialty"
-                type="text"
-                [(value)]="selected"
+                [(value)]="selectedSpecialty"
               >
                 <mat-option></mat-option>
-                <mat-option value="pediatrics" selected>{{'pediatrics'|translate}}</mat-option>
-                <mat-option value="elderly">{{'elderly'|translate}}</mat-option>
-                <mat-option value="oncology">{{'oncology'|translate}}</mat-option>
-                <mat-option value="cosmetic">{{'cosmetic'|translate}}</mat-option>
+                <mat-option value="pediatrics" selected>{{
+                  "pediatrics" | translate
+                }}</mat-option>
+                <mat-option value="elderly">{{
+                  "elderly" | translate
+                }}</mat-option>
+                <mat-option value="oncology">{{
+                  "oncology" | translate
+                }}</mat-option>
+                <mat-option value="cosmetic">{{
+                  "cosmetic" | translate
+                }}</mat-option>
               </mat-select>
               <mat-error
                 *ngIf="medicForm.get('specialty')?.hasError('required')"
-                i18n>{{'specialtyReqErr'|translate}}</mat-error
+                i18n
+                >{{ "specialtyReqErr" | translate }}</mat-error
               >
             </mat-form-field>
           </div>
         </div>
+      </div>
         <div class="row">
-        <ul class="col-lg-6"></ul>
-        <div class="form-check col-lg-6">
-          <mat-checkbox #termsCheck i18n>{{'termsAndCond'|translate}}</mat-checkbox>
-                  </div>
-      </div></div>
+          <ul class="col-lg-6"></ul>
+          <div class="form-check col-lg-6">
+            <mat-checkbox #termsCheck i18n>{{
+              "termsAndCond" | translate
+            }}</mat-checkbox>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container row submit-buttons" >
+    <div class="container row submit-buttons">
       <ul class="col-lg-8 me-auto mb-3 mb-lg-0"></ul>
-      <div class="col-lg-2 text-center mt-3 ">
-        <button (click)="goLogIn()" type="button" class="btn btn-cancel col-12" i18n>
-          {{'cancel'|translate}}
+      <div class="col-lg-2 text-center mt-3">
+        <button
+          (click)="goLogIn()"
+          type="button"
+          class="btn btn-cancel col-12"
+          i18n
+        >
+          {{ "cancel" | translate }}
         </button>
       </div>
       <div class="col-lg-2 text-center mt-3">
         <button
           (click)="registerMedic()"
           type="button"
-          class="btn btn-continue col-12 "
+          class="btn btn-continue col-12"
           [disabled]="!medicForm.valid || !termsCheck.checked"
-          i18n>
-          {{'register'|translate}}
+          i18n
+        >
+          {{ "register" | translate }}
         </button>
       </div>
-     </div>
+    </div>
   </form>
-
 </div>
-
