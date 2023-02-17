@@ -25,14 +25,14 @@
         <div class="patient-age">
           <h5>
             <span id="patient-age-{{ i }}" class="patient-age card-content"
-              >{{"age"|translate}}: {{ inquiry.patient.age }}</span
+              >{{"age"|translate}}: {{ calculateAge(inquiry.patient.birthDate )}}</span
             >
           </h5>
         </div>
         <div class="inquiry-date">
           <h5>
             <span id="inquiry-date-{{ i }}" class="inquiry-date card-content"
-              >{{"creationDate"|translate}}: {{ inquiry.creatioDate }}</span
+              >{{"creationDate"|translate}}: {{ inquiry.creationDate | date }}</span
             >
           </h5>
         </div>
@@ -41,7 +41,7 @@
             <span
               id="inquiry-injury-type-{{ i }}"
               class="inquiry-injury-type card-content"
-              >{{"injuryType"|translate}}: {{ inquiry.injuryType }}</span
+              >{{"injuryType"|translate}}: {{ inquiry.symptom }}</span
             >
           </h5>
         </div>

@@ -3,20 +3,23 @@ export const InquiryMock = {
     data: [
       {
         id: 100,
-        creatioDate:'1984-08-01',
-        injuryType:'taint',
+        creationDate:'1984-08-01T11:00:00.000Z',
+        symptom:'taint',
         shape: 'Ring',
-        injuryQuantity: 'recurrent',
-
+        numberOfInjuries: 'recurrent',
+        specialty:"Pediarics",
+        comment:"Comment",
+        image:"https://thumbs.dreamstime.com/b/four-cute-cats-20650677.jpg",
         distribution: 'Asymetrical',
         location: 'hands',
-        specialty:"Cosmetic",
         patient: {
           id:101,
           name:"Dario1",
-          age:30,
-          birthday:"1984-08-01",
-          country:"Colombian",
+          email:"test@test.com",
+          password:"test1!",
+          birthDate:"1984-08-01T11:00:00.000Z",
+          country:"Colombia",
+          skynType:"Normal",
           profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
@@ -24,20 +27,74 @@ export const InquiryMock = {
       },
       {
         id: 100,
-        creatioDate:'1984-08-01',
-        injuryType:'taint',
+        creationDate:'1984-08-01T11:00:00.000Z',
+        symptom:'taint',
         shape: 'Ring',
-        injuryQuantity: 'recurrent',
-
+        numberOfInjuries: 'recurrent',
+        specialty:"Pediarics",
+        comment:"Comment",
+        image:"https://thumbs.dreamstime.com/b/four-cute-cats-20650677.jpg",
         distribution: 'Asymetrical',
         location: 'hands',
-        specialty:"Pediatrics",
         patient: {
           id:101,
-          name:"Dario2",
-          age:30,
-          birthday:"1984-08-01",
-          country:"Colombian",
+          name:"Dario1",
+          email:"test@test.com",
+          password:"test1!",
+          birthDate:"1984-08-01T11:00:00.000Z",
+          country:"Colombia",
+          skynType:"Normal",
+          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
+
+        }
+
+
+      },
+      {
+        id: 100,
+        creationDate:'1984-08-01T11:00:00.000Z',
+        symptom:'taint',
+        shape: 'Ring',
+        numberOfInjuries: 'recurrent',
+        specialty:"Pediarics",
+        comment:"Comment",
+        image:"https://thumbs.dreamstime.com/b/four-cute-cats-20650677.jpg",
+        distribution: 'Asymetrical',
+        location: 'hands',
+        patient: {
+          id:101,
+          name:"Dario1",
+          email:"test@test.com",
+          password:"test1!",
+          birthDate:"1984-08-01T11:00:00.000Z",
+          country:"Colombia",
+          skynType:"Normal",
+          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
+
+        }
+
+
+      },
+
+      {
+        id: 100,
+        creationDate:'1984-08-01T11:00:00.000Z',
+        symptom:'taint',
+        shape: 'Ring',
+        numberOfInjuries: 'recurrent',
+        specialty:"Pediarics",
+        comment:"Comment",
+        image:"https://thumbs.dreamstime.com/b/four-cute-cats-20650677.jpg",
+        distribution: 'Asymetrical',
+        location: 'hands',
+        patient: {
+          id:101,
+          name:"Dario1",
+          email:"test@test.com",
+          password:"test1!",
+          birthDate:"1984-08-01T11:00:00.000Z",
+          country:"Colombia",
+          skynType:"Normal",
           profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
@@ -45,42 +102,23 @@ export const InquiryMock = {
       },
       {
         id: 100,
-        creatioDate:'1984-08-01',
-        injuryType:'taint',
+        creationDate:'1984-08-01T11:00:00.000Z',
+        symptom:'taint',
         shape: 'Ring',
-        injuryQuantity: 'recurrent',
-
+        numberOfInjuries: 'recurrent',
+        specialty:"Pediarics",
+        comment:"Comment",
+        image:"https://thumbs.dreamstime.com/b/four-cute-cats-20650677.jpg",
         distribution: 'Asymetrical',
         location: 'hands',
-        specialty:"Cosmetic",
         patient: {
           id:101,
-          name:"Dario3",
-          age:30,
-          birthday:"1984-08-01",
-          country:"Colombian",
-          profilePicture:"https://cdn.shopify.com/s/files/1/0275/3095/products/image_4931268b-7acf-4702-9c55-b2b3a03ed999_1024x1024.jpg"
-
-        }
-
-      },
-
-      {
-        id: 105,
-        creatioDate:'1984-08-01',
-        injuryType:'taint',
-        shape: 'Ring',
-        injuryQuantity: 'recurrent',
-
-        distribution: 'Asymetrical',
-        location: 'hands',
-        specialty:"Cosmetic",
-        patient: {
-          id:101,
-          name:"Dario4",
-          age:30,
-          birthday:"1984-08-01",
-          country:"Colombian",
+          name:"Dario1",
+          email:"test@test.com",
+          password:"test1!",
+          birthDate:"1984-08-01T11:00:00.000Z",
+          country:"Colombia",
+          skynType:"Normal",
           profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
@@ -88,44 +126,27 @@ export const InquiryMock = {
       },
       {
         id: 100,
-        creatioDate:'1984-08-01',
-        injuryType:'taint',
+        creationDate:'1984-08-01T11:00:00.000Z',
+        symptom:'taint',
         shape: 'Ring',
-        injuryQuantity: 'recurrent',
-
+        numberOfInjuries: 'recurrent',
+        specialty:"Pediarics",
+        comment:"Comment",
+        image:"https://thumbs.dreamstime.com/b/four-cute-cats-20650677.jpg",
         distribution: 'Asymetrical',
         location: 'hands',
-        specialty:"Pediatrics",
         patient: {
           id:101,
-          name:"Dario5",
-          age:30,
-          birthday:"1984-08-01",
-          country:"Colombian",
+          name:"Dario1",
+          email:"test@test.com",
+          password:"test1!",
+          birthDate:"1984-08-01T11:00:00.000Z",
+          country:"Colombia",
+          skynType:"Normal",
           profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
         }
 
-      },
-      {
-        id: 100,
-        creatioDate:'1984-08-01',
-        injuryType:'taint',
-        shape: 'Ring',
-        injuryQuantity: 'recurrent',
-
-        distribution: 'Asymetrical',
-        location: 'hands',
-        specialty:"Pediatrics",
-        patient: {
-          id:101,
-          name:"Dario6",
-          age:30,
-          birthday:"1984-08-01",
-          country:"Colombian",
-          profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
-
-        }
 
       }
 
