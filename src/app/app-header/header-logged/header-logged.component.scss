@@ -27,7 +27,26 @@
 #globeIcon{
 position: relative;
 top:8px;
-left:15px;
+left:35px;
+margin-top: -7px;
 
 
+
+}
+
+.profilePicture{
+
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 150px;
+  margin-left: 22px;
+
+}
+
+.nav-item{
+  align-items: center;
+  align-content: center;
+  align-self: center;
 }

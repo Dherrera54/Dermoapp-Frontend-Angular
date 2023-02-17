@@ -33,10 +33,10 @@
   "passwordReqErr":"Debe ingresar una contraseña para registrarse",
   "passwordMaxLenght":"La contraseña no debe exceder los 50 carácteres",
   "passwordMinLenght":"La contraseña debe superar los 8 carácteres",
-  "passwordNotStrongErr":"The password must contain at least one lower and upper case letter, one number and one special character [$@!%*?&]",
+  "passwordNotStrongErr":"La contraseña debe contener al menos una letra minúscula, una letra minúscula, un número y un carácter especial [$@!%*?&]",
   "confirmPsw":"Confirmar contraseña",
   "confirmPswReqErr":"Debe confirmar su contraseña",
-  "confirmPswMatchErr":"The passwords do not match",
+  "confirmPswMatchErr":"Las contraseñas no coinciden",
   "specialty":"Especialidad",
   "specialtyReqErr":"Por favor seleccione una especialidad",
   "pediatrics":"Pediatria",
@@ -59,6 +59,7 @@
   "injuryQuantity":"Cantidad de lesiones",
   "distribution":"Distribución",
   "location":"Ubicación",
-  "claim":"Reclamar"
+  "claim":"Reclamar",
 
+  "selectedImg":"Imagen seleccionada"
 }

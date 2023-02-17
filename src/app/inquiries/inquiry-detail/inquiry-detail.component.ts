@@ -8,7 +8,7 @@ import { Inquiry } from '../inquiriy';
 })
 export class InquiryDetailComponent implements OnInit {
 
-  @Input() selectedInquiry!:any;
+  @Input() selectedInquiry!:Inquiry;
   @Output() cancelOutput = new EventEmitter<Boolean>();
 
   constructor() { }
