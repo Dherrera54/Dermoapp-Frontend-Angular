@@ -76,7 +76,7 @@ getMedicById(id: String, token: String):Observable<any>{
 async imgUpload(imgname:String, imgBase64:any ){
   const headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
-  headers.set('Access-Control-Allow-Origin', '*');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
   try{
     let resp=await this.storageRef.child("medic/profilePics/"+imgname).putString(imgBase64, "data_url");

@@ -10,7 +10,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { Patient } from '../../shared/models/patient';
 
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
