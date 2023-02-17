@@ -12,20 +12,20 @@ export class InquiryService {
   private backUrl: string = environment.URL_PRODUCTION
 
 constructor(private http: HttpClient) { }
-getInquiriesBySpecialty(specialty: String, token: string): Observable<any[]>{
+getInquiriesBySpecialty(specialty: String, token: String): Observable<any[]>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   })
   return this.http.get<any[]>(`${this.backUrl}/consultations`, {headers: headers})
 }
 
-getInquiresFromMedicId(medicId: String, token: string): Observable<Inquiry[]>{
+getInquiresFromMedicId(medicId: String, token: String): Observable<Inquiry[]>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   })
   return this.http.get<Inquiry[]>(`${this.backUrl}/inquiry/${medicId}}`, {headers: headers})
 }
-addInquirieToMedic(medicId: String, token: string, inquiryId:String): Observable<Inquiry>{
+addInquirieToMedic(medicId: String, token: String, inquiryId:String): Observable<Inquiry>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   })

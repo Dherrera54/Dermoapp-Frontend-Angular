@@ -1,11 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { InquiryMock } from '../../shared/mocks/inquiry.mock';
 import { Inquiry } from '../inquiriy';
 import { InquiryService } from '../inquiry.service';
-//mock for development
-
+import { MedicService } from '../../medic/medic.service';
 
 
 @Component({
@@ -19,35 +17,40 @@ export class InquiriesListComponent implements OnInit {
     private routerPath: Router,
     private router: ActivatedRoute,
     private inquiryService:InquiryService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private medicService:MedicService
   ) { }
-  medicId!: number;
-  token!: string;
+  medicId!: String;
+  token!: String;
   showInquiries!:Array<Inquiry>;
   selected:Boolean= false;
   selectedInquiry!:Inquiry;
   inquiry!:Inquiry;
-  @Input() specialty!:String;
+  specialty!:String;
+  medic!:any;
 
   ngOnInit() {
     //testing mock
-    this.medicId = this.router.snapshot.params.medicId
+    /* this.medicId = this.router.snapshot.params.medicId
       this.token = this.router.snapshot.params.userToken
       this.specialty = this.router.snapshot.params.medicSpecialty
-      this.getInquiriesBySpecialty();
+      this.getInquiriesBySpecialty(); */
 
     //Consuming service
-    if(!parseInt(this.router.snapshot.params.medicId) || this.router.snapshot.params.userToken === " "){
+    if(!this.router.snapshot.params.medicId || this.router.snapshot.params.userToken === " "){
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
     else{
-      this.medicId = parseInt(this.router.snapshot.params.medicId)
-      this.token = this.router.snapshot.params.userToken
-      this.specialty = this.router.snapshot.params.medicSpecialty
+      this.medicId = this.router.snapshot.params.medicId;
+      this.token = this.router.snapshot.params.userToken;
+      this.specialty = this.router.snapshot.params.medicSpecialty;
       this.getInquiriesBySpecialty();
+
 
     }
   }
+
+
   getInquiriesBySpecialty():void{
 
     this.inquiryService.getInquiriesBySpecialty(this.specialty, this.token)

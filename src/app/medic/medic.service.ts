@@ -57,15 +57,23 @@ medicCreate(name: String,
   return  this.http.post<any>(`${this.backUrl}/medics`, body ,{headers} )
 
 }
-getUserByEmail(email: string, token: string):Observable<any>{
+getMedicByEmail(email: String, token: String):Observable<any>{
   const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
-  return this.http.get<any>(`${this.backUrl}/users/${email}`, {headers: headers} );
+  return this.http.get<any>(`${this.backUrl}/medics/email/${email}`, {headers: headers} );
 }
 
-async imgUpload(imgname:string, imgBase64:any ){
+getMedicById(id: String, token: String):Observable<any>{
+  const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+
+  return this.http.get<any>(`${this.backUrl}/medics/${id}`, {headers: headers} );
+}
+
+async imgUpload(imgname:String, imgBase64:any ){
   const headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', '*');

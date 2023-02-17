@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { MedicService } from '../medic.service';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class MedicLoginComponent implements OnInit {
 
   helper = new JwtHelperService();
+ 
 
   constructor(
     private medicService : MedicService,
@@ -31,7 +32,7 @@ export class MedicLoginComponent implements OnInit {
       const token=res.token;
       console.log(token);
 
-        this.medicService.getUserByEmail(email,token).subscribe(res=>{
+        this.medicService.getMedicByEmail(email,token).subscribe(res=>{
         this.routerPath.navigate([`/inquiries/${res.id}/${res.specialty}/${token}`])
       });
 
