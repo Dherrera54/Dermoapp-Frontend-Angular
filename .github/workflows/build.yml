@@ -35,6 +35,6 @@ jobs:
         run: sudo apt-get install -y moreutils
       - name: Update key on json file with current GCP private key
         run: |
-          jq --arg key "private_key" --arg value "$GCP_PRIVATE_KEY" '.[$key] = $value' src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json | sponge src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
+          jq --arg key "private_key" --arg value ${{secrets.GCP_PRIVATE_KEY}} '.[$key] = $value' src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json | sponge src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
           cat src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
 
