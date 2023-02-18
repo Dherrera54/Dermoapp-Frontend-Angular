@@ -33,8 +33,6 @@ jobs:
           GCP_PRIVATE_KEY: ${{secrets.GCP_PRIVATE_KEY}}
       - name: Update key on json file with current GCP private key
         run: |
-          ls
-          cd src/app/keys/
-          ls
-          jq --arg key "private_key" --arg value "$GCP_PRIVATE_KEY" '.[$key] = $value' proyectogrupo-14-29f2d0e76e49.json | sponge proyectogrupo-14-29f2d0e76e49.json
+          jq --arg key "private_key" --arg value "$GCP_PRIVATE_KEY" '.[$key] = $value' src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json | sponge src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
+          cat src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
 
