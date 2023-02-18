@@ -16,7 +16,7 @@ export const InquiryMock = {
           id:101,
           name:"Dario12",
           email:"test@test.com",
-          password:"test1!",
+          
           birthDate:"1999-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
@@ -40,7 +40,7 @@ export const InquiryMock = {
           id:101,
           name:"Dario123",
           email:"test@test.com",
-          password:"test1!",
+
           birthDate:"1985-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
@@ -65,7 +65,7 @@ export const InquiryMock = {
           id:101,
           name:"Dario123",
           email:"test@test.com",
-          password:"test1!",
+
           birthDate:"1200-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
@@ -91,7 +91,7 @@ export const InquiryMock = {
           id:101,
           name:"Dario1666",
           email:"test@test.com",
-          password:"test1!",
+
           birthDate:"1984-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
@@ -115,7 +115,7 @@ export const InquiryMock = {
           id:101,
           name:"Dario1",
           email:"test@test.com",
-          password:"test1!",
+
           birthDate:"1984-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
@@ -139,7 +139,7 @@ export const InquiryMock = {
           id:101,
           name:"Dario1",
           email:"test@test.com",
-          password:"test1!",
+
           birthDate:"1984-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
