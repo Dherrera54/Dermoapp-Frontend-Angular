@@ -1,55 +1,64 @@
 <app-header-logged></app-header-logged>
 <div class="main-container">
   <div class="container-fluid">
-    <div class="container-inquiries media-scroller snaps-inline">
-      <div
-        class="col"
-        *ngFor="let inquiry of showInquiries; let i = index"
-        class="card-inquiry"
-        (click)="onSelectedInquiry(inquiry)"
-      >
-        <div class="img-driver">
-          <img
-            id="patient-image-{{ i }}"
-            src="{{ inquiry.patient.profilePicture }}"
-            alt=""
-          />
-        </div>
-        <div class="patient-name">
-          <h5>
-            <span id="patient-name-{{ i }}" class="patient-name card-content"
-              >{{"name"|translate}}: {{ inquiry.patient.name }}</span
-            >
-          </h5>
-        </div>
-        <div class="patient-age">
-          <h5>
-            <span id="patient-age-{{ i }}" class="patient-age card-content"
-              >{{"age"|translate}}: {{ calculateAge(inquiry.patient.birthDate )}}</span
-            >
-          </h5>
-        </div>
-        <div class="inquiry-date">
-          <h5>
-            <span id="inquiry-date-{{ i }}" class="inquiry-date card-content"
-              >{{"creationDate"|translate}}: {{ inquiry.creationDate | date }}</span
-            >
-          </h5>
-        </div>
-        <div class="inquiry-injury-type">
-          <h5>
-            <span
-              id="inquiry-injury-type-{{ i }}"
-              class="inquiry-injury-type card-content"
-              >{{"injuryType"|translate}}: {{ inquiry.symptom }}</span
-            >
-          </h5>
+    <div class="scroll-list ">
+      <button class="btn-scroll"  (click)="scrollHorizontally(-1)" #scrollLeftButton><img src="./assets/caret-left-fill.svg"alt="Scroll left button" /></button>
+      <div class="media-scroller container-inquiries snaps-inline" #mediaScroller>
+        <div
+          class="inquiry-item"
+          *ngFor="let inquiry of showInquiries; let i = index"
+          class="card-inquiry"
+          (click)="onSelectedInquiry(inquiry)"
+          id="inquirySelector">
+          <div class="img-driver">
+            <img
+              id="patient-image-{{ i }}"
+              src="{{ inquiry.patient.profilePicture }}"
+              alt=""
+            />
+          </div>
+          <div class="patient-name">
+            <h5>
+              <span id="patient-name-{{ i }}" class="patient-name card-content"
+                >{{ "name" | translate }}: {{ inquiry.patient.name }}</span
+              >
+            </h5>
+          </div>
+          <div class="patient-age">
+            <h5>
+              <span id="patient-age-{{ i }}" class="patient-age card-content"
+                >{{ "age" | translate }}:
+                {{ calculateAge(inquiry.patient.birthDate) }}</span
+              >
+            </h5>
+          </div>
+          <div class="inquiry-date">
+            <h5>
+              <span id="inquiry-date-{{ i }}" class="inquiry-date card-content"
+                >{{ "creationDate" | translate }}:
+                {{ inquiry.creationDate | date }}</span
+              >
+            </h5>
+          </div>
+          <div class="inquiry-injury-type">
+            <h5>
+              <span
+                id="inquiry-injury-type-{{ i }}"
+                class="inquiry-injury-type card-content"
+                >{{ "injuryType" | translate }}: {{ inquiry.symptom }}</span
+              >
+            </h5>
+          </div>
         </div>
       </div>
+      <button class="btn-scroll" (click)="scrollHorizontally(1)" #scrollRightButto><img src="./assets/caret-right-fill.svg"alt="Scroll right button" /></button>
     </div>
 
     <div class="col-12 center inquiry-detail" *ngIf="selected === true">
-      <app-inquiry-detail [selectedInquiry]="inquiry" (cancelOutput)="onCancel($event)"></app-inquiry-detail>
+      <app-inquiry-detail
+        [selectedInquiry]="inquiry"
+        (cancelOutput)="onCancel($event)"
+      ></app-inquiry-detail>
     </div>
   </div>
 </div>
