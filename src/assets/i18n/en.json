@@ -58,6 +58,11 @@
   "distribution":"Distribution",
   "location":"Location",
   "claim":"Claim",
+  "return":"Return",
+  "images":"Images",
 
-  "selectedImg":"Selected image"
+  "selectedImg":"Selected image",
+  "injuryImages":"Injury Images"
+
 }
+

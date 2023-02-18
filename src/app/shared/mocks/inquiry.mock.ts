@@ -14,10 +14,10 @@ export const InquiryMock = {
         location: 'hands',
         patient: {
           id:101,
-          name:"Dario1",
+          name:"Dario12",
           email:"test@test.com",
           password:"test1!",
-          birthDate:"1984-08-01T11:00:00.000Z",
+          birthDate:"1999-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
           profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
@@ -38,10 +38,10 @@ export const InquiryMock = {
         location: 'hands',
         patient: {
           id:101,
-          name:"Dario1",
+          name:"Dario123",
           email:"test@test.com",
           password:"test1!",
-          birthDate:"1984-08-01T11:00:00.000Z",
+          birthDate:"1985-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
           profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
@@ -63,10 +63,10 @@ export const InquiryMock = {
         location: 'hands',
         patient: {
           id:101,
-          name:"Dario1",
+          name:"Dario123",
           email:"test@test.com",
           password:"test1!",
-          birthDate:"1984-08-01T11:00:00.000Z",
+          birthDate:"1200-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",
           profilePicture:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
@@ -89,7 +89,7 @@ export const InquiryMock = {
         location: 'hands',
         patient: {
           id:101,
-          name:"Dario1",
+          name:"Dario1666",
           email:"test@test.com",
           password:"test1!",
           birthDate:"1984-08-01T11:00:00.000Z",

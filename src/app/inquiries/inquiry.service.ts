@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Inquiry } from './inquiriy';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +16,16 @@ getInquiriesBySpecialty(specialty: String, token: String): Observable<any[]>{
     'Authorization': `Bearer ${token}`
   })
   return this.http.get<any[]>(`${this.backUrl}/consultations`, {headers: headers})
-}
 
-getInquiresFromMedicId(medicId: String, token: String): Observable<Inquiry[]>{
+}
+getInquiryById(id: String, token: String): Observable<any>{
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  })
+  return this.http.get<any>(`${this.backUrl}/consultations/${id}`, {headers: headers})
+
+}
+/* getInquiresFromMedicId(medicId: String, token: String): Observable<Inquiry[]>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   })
@@ -34,6 +40,6 @@ addInquirieToMedic(medicId: String, token: String, inquiryId:String): Observable
 
   let body={"inquiryId": inquiryId}
   return this.http.post<Inquiry>(`${this.backUrl}/inquiry/${medicId}}`,body, {headers: headers})
-}
+} */
 
 }

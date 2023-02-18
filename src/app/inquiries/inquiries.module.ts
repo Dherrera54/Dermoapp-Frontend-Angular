@@ -5,15 +5,17 @@ import { InquiriesListComponent } from './inquiries-list/inquiries-list.componen
 import { InquiryDetailComponent } from './inquiry-detail/inquiry-detail.component';
 import { SharedModule } from '../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { InquiryImagesListComponent } from './inquiry-images-list/inquiry-images-list.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     AppHeaderModule,
-    SharedModule, TranslateModule
+    SharedModule,
+    TranslateModule
   ],
-  declarations: [InquiriesListComponent, InquiryDetailComponent],
-  exports: [InquiriesListComponent,InquiryDetailComponent]
+  declarations: [InquiriesListComponent, InquiryDetailComponent, InquiryImagesListComponent],
+  exports: [InquiriesListComponent,InquiryDetailComponent,InquiryImagesListComponent]
 })
 export class InquiriesModule { }

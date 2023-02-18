@@ -60,6 +60,10 @@
   "distribution":"Distribución",
   "location":"Ubicación",
   "claim":"Reclamar",
+  "return":"Regresar",
+  "images":"Imágenes",
 
-  "selectedImg":"Imagen seleccionada"
+  "selectedImg":"Imagen seleccionada",
+
+  "injuryImages":"Imagenes de lesión"
 }

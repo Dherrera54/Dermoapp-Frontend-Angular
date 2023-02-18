@@ -27,6 +27,7 @@ export class HeaderLoggedComponent implements OnInit {
     this.specialty = this.router.snapshot.params.medicSpecialty;
     this.medicService.getMedicById(this.medicId,this.token).subscribe(res=>{
         this.medicImgUrl=res.profilePicture;
+        this.specialty=res.specialty;
     });
   }
   goTo(menu: string){

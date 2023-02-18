@@ -18,21 +18,21 @@
       <div class="patient-age content-row">
         <h2>
           <span id="patient-age" class="patient-age"
-            >{{"age"|translate}}: {{ selectedInquiry.patient.age }}</span
+            >{{"age"|translate}}: {{ calculateAge(selectedInquiry.patient.birthDate) }}</span
           >
         </h2>
       </div>
       <div class="patient-age content-row">
         <h2>
           <span id="patient-age" class="patient-age"
-            >{{"birthDay"|translate}}: {{ selectedInquiry.patient.birthday }}</span
+            >{{"birthDay"|translate}}: {{ selectedInquiry.patient.birthDate | date }}</span
           >
         </h2>
       </div>
       <div class="inquiry-date content-row">
         <h2>
           <span id="inquiry-date" class="inquiry-date"
-            >{{"creationDate"|translate}}: {{ selectedInquiry.creatioDate}}</span
+            >{{"creationDate"|translate}}: {{ selectedInquiry.creationDate | date }}</span
           >
         </h2>
       </div>
@@ -43,12 +43,23 @@
           >
         </h2>
       </div>
+      <div class="container row submit-buttons" >
+        <div class="col-lg-4 text-center mt-3 ">
+          <button
+          (click)="seeImages(selectedInquiry.image , selectedInquiry.id)"
+          type="button"
+          class="btn btn-images col-12" >
+            {{'images'|translate}}
+          </button>
+        </div>
+      </div>
+
     </div>
     <div class="column-3 column">
       <div class="injury-type content-top-row">
         <h2>
           <span id="injury-type" class="injury-type"
-            >{{"injuryType"|translate}}: {{ selectedInquiry.injuryType}}</span
+            >{{"injuryType"|translate}}: {{ selectedInquiry.symptom}}</span
           >
         </h2>
       </div>
@@ -62,7 +73,7 @@
       <div class="injury-quantity content-row">
         <h2>
           <span id="injury-quantity" class="injury-quantity"
-            >{{"injuryQuantity"|translate}}: {{ selectedInquiry.injuryQuantity }}</span
+            >{{"injuryQuantity"|translate}}: {{ selectedInquiry.numberOfInjuries }}</span
           >
         </h2>
       </div>

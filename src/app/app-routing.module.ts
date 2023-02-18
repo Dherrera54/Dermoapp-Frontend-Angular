@@ -4,6 +4,7 @@ import { MedicSingupComponent } from './medic/medic-singup/medic-singup.componen
 import { MedicLoginComponent } from './medic/medic-login/medic-login.component';
 import { HomeComponent } from './home/home.component';
 import { InquiriesListComponent } from './inquiries/inquiries-list/inquiries-list.component';
+import { InquiryImagesListComponent } from './inquiries/inquiry-images-list/inquiry-images-list.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'inquiries/:medicId/:medicSpecialty/:userToken',
     component: InquiriesListComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'inquiries/:medicId/:medicSpecialty/:inquiryid/images/:userToken',
+    component: InquiryImagesListComponent,
     pathMatch: 'full'
   },
 

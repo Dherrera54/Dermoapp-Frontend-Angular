@@ -2,7 +2,7 @@ export class Patient {
   id: string;
   name: string;
   age: number;
-  birthday: string;
+  birthDate: string;
   country: string;
   profilePicture: string;
 
@@ -10,14 +10,14 @@ export class Patient {
     id: string,
     name: string,
     age: number,
-    birthday: string,
+    birthDate: string,
     country: string,
     profilePicture: string
 
    ){
       this.id = id;
       this.age=age;
-      this.birthday=birthday;
+      this.birthDate=birthDate;
       this.name = name;
       this.country=country;
       this.profilePicture=profilePicture;
