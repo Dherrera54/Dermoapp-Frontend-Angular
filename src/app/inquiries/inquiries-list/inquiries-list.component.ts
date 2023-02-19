@@ -30,7 +30,7 @@ export class InquiriesListComponent implements OnInit{
   ) { }
   medicId!: String;
   token!: String;
-  showInquiries!:Array<any>;
+  showInquiries!:Array<Inquiry>;
   selected:Boolean= false;
   selectedInquiry!:Inquiry;
   inquiry!:Inquiry;
@@ -39,19 +39,8 @@ export class InquiriesListComponent implements OnInit{
   scrollAmount = 200;
 
   ngOnInit() {
-    //testing mock
-   /*  this.medicId = this.router.snapshot.params.medicId
-      this.token = this.router.snapshot.params.userToken
-      this.specialty = this.router.snapshot.params.medicSpecialty
-      this.getInquiriesBySpecialty(); */
 
-
-
-
-
-
-
-    //Consuming service
+      //Consuming service
      if(!this.router.snapshot.params.medicId || this.router.snapshot.params.userToken === " "){
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
     }
@@ -74,17 +63,17 @@ export class InquiriesListComponent implements OnInit{
 
   getInquiriesBySpecialty():void{
 
-    /* this.inquiryService.getInquiriesBySpecialty(this.specialty, this.token)
+    this.inquiryService.getInquiriesBySpecialty(this.specialty, this.token)
     .subscribe(inquiries => {
       this.showInquiries = inquiries
 
     })
- */
+
 
     //testing mock
 
-    this.showInquiries= InquiryMock.response.data;
-    console.log(this.showInquiries);
+ /*    this.showInquiries= InquiryMock.response.data;
+    console.log(this.showInquiries); */
 
   }
 

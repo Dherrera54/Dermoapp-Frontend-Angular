@@ -58,7 +58,7 @@
   "shape":"Forma",
   "injuryQuantity":"Cantidad de lesiones",
   "distribution":"Distribución",
-  "location":"Ubicación",
+  "comment":"Comentario",
   "claim":"Reclamar",
   "return":"Regresar",
   "images":"Imágenes",

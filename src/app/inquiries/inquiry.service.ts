@@ -15,7 +15,7 @@ getInquiriesBySpecialty(specialty: String, token: String): Observable<any[]>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   })
-  return this.http.get<any[]>(`${this.backUrl}/consultations`, {headers: headers})
+  return this.http.get<any[]>(`${this.backUrl}/consultations/specialty/${specialty}`, {headers: headers})
 
 }
 getInquiryById(id: String, token: String): Observable<any>{

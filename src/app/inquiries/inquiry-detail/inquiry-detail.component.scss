@@ -61,6 +61,8 @@
   padding-top: 17px;
   img {
     border-radius:150px;
+    aspect-ratio: 4/3;
+      object-fit: cover;
 
     opacity: 1;
     width: 170px;

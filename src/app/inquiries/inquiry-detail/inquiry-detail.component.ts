@@ -22,7 +22,7 @@ export class InquiryDetailComponent implements OnInit {
     this.token = this.routerPath.snapshot.params.userToken
     this.medicId= this.routerPath.snapshot.params.medicId
     this.specialty= this.routerPath.snapshot.params.medicSpecialty
-    
+
 
   };
 
