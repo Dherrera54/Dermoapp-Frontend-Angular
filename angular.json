@@ -40,15 +40,7 @@
             "scripts": []
           },
           "configurations": {
-            "en": {
-              "aot": true,
-              "outputPath": "dist/dermoAppWeb-en/",
-              "i18nFile": "src/locale/messages.en.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "en",
-              "i18nMissingTranslation": "error"
-            },
-            "production": {
+              "production": {
               "budgets": [
                 {
                   "type": "initial",
@@ -115,6 +107,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
             ],
             "scripts": []

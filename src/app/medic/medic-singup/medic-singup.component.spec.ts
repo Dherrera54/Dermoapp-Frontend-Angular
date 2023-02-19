@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
+import {  TranslateModule } from '@ngx-translate/core';
 
 
 describe('MedicSingupComponent', () => {
@@ -19,7 +21,7 @@ describe('MedicSingupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,

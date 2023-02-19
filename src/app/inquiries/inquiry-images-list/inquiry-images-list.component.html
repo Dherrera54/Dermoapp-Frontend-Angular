@@ -1,0 +1,20 @@
+<app-header-logged></app-header-logged>
+<div class="main-container">
+  <h2 class="title-header">{{"injuryImages"|translate}}</h2>
+  <div   class="images-container img-list"      >
+      <img src="{{images}}" alt="">
+       </div>
+
+    <div class="col-lg-2 text-center mt-3">
+        <button
+          (click)="return()"
+          type="button"
+          class="btn btn-return col-12"
+           >
+          {{'return'|translate}}
+        </button>
+      </div>
+
+
+
+</div>

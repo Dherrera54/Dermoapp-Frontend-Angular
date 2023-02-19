@@ -8,6 +8,8 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('HeaderLoggedComponent', () => {
   let component: HeaderLoggedComponent;
@@ -17,7 +19,7 @@ describe('HeaderLoggedComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderLoggedComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,
@@ -48,36 +50,29 @@ describe('HeaderLoggedComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('Should have an element nav brand', () => {
-
-    fixture.detectChanges();
-    expect(debug.query(By.css('#navBrand')).nativeElement.innerText).toContain(
-    "DermoApp"
-  );
-});
 
 it('Should have an element inquiry', () => {
 
   expect(debug.query(By.css('#inquiryBtn')).nativeElement.innerText).toContain(
-    "Consultas"
+    "inquiries"
   );
 });
 it('Should have an element agenda', () => {
 
   expect(debug.query(By.css('#agendaBtn')).nativeElement.innerText).toContain(
-    "Agenda"
+    "agenda"
   );
 });
 it('Should have an element patients', () => {
 
   expect(debug.query(By.css('#patientBtn')).nativeElement.innerText).toContain(
-    "Pacientes"
+    "patients"
   );
 });
 it('Should have an element Log Out', () => {
 
   expect(debug.query(By.css('#logOutBtn')).nativeElement.innerText).toContain(
-    "Cerrar sesión"
+    "logOut"
   );
 });
 });

@@ -8,6 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {Observable, of} from 'rxjs';
 
 import { HeaderComponent } from './header.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -17,7 +19,7 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, SharedModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,
@@ -55,13 +57,13 @@ describe('HeaderComponent', () => {
   it('Should have an element register', () => {
 
     expect(debug.query(By.css('#registerBtn')).nativeElement.innerText).toContain(
-      "Registrarse"
+      "signUp"
     );
   });
   it('Should have an element Log in', () => {
 
     expect(debug.query(By.css('#logInBtn')).nativeElement.innerText).toContain(
-      "Iniciar Sesión"
+      "logIn"
     );
   });
 });

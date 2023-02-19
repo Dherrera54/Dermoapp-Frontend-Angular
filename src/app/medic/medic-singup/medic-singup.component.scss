@@ -1,6 +1,7 @@
 .main-container{
   position: relative;
   top:30px;
+  align-items: flex-start;
 }
 h1{
   font-size:x-large
@@ -56,7 +57,89 @@ h1{
   padding-left: 15px;
 }
 .form-column{
-  align-items: flex-start
+  align-self: start;
+}
+.img-prev{
+
+  width: 110px;
+  height: 110px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 150px;
+  margin-left: 22px;
+
 }
 
+#img-uploader{
+  display:none;
+}
 
+.imgUpload{
+background-color: white;
+
+}
+.imgFileUploader{
+  display: flex;
+justify-content: right;
+align-items:center;
+
+
+}
+
+.labelInputFile{
+position: absolute;
+margin-top:-60px;
+
+margin-right: 30px;
+width: 3rem;
+height: 3rem;
+background-color: #6223ee;
+border-radius: 100%;
+box-shadow: 0 0 5px -1px rgb(111, 111, 111);
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+user-select: none;
+
+}
+.labelInputFile:active{
+  transform: scale(0.9);
+}
+.labelInputFile:hover{
+  background-color:  #782cf0;
+}
+
+.labelInputFile img{
+  width: 1.5rem;
+}
+.selectedInputLablel{
+  position: absolute;
+
+}
+
+.uploadedFileName{
+  margin-left: 15px;
+  color: rgb(99, 99, 99);
+}
+
+.selectedImage{
+  margin-top: 25px;
+  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 100%;
+}
+h3
+{
+  color: rgb(99, 99, 99);
+}
+.dropdowns{
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  justify-items: center;
+  justify-content: center;
+  //margin-left: 55px;
+
+}

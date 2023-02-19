@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MedicService } from '../../medic/medic.service';
 
 
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,8 +15,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private routerPath: Router,
     private router: ActivatedRoute,
-    private medicService: MedicService
-  ) { }
+    private medicService: MedicService,
+      ) { }
 
   ngOnInit() {
   }
