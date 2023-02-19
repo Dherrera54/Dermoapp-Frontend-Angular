@@ -64,7 +64,7 @@ describe('Service: Medic', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('check the success sign up medicservices', () => {
+  it('cshould create a medic', () => {
     service = TestBed.get(MedicService);
     const spyService = TestBed.get(HttpClient);
     spyOn(spyService, 'post').and.returnValue(medicMock);
@@ -122,6 +122,26 @@ describe('Service: Medic', () => {
         expect(req.request.method).toBe('GET');
         expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
         req.flush(expectedResponse);
+      });
+
+      it('should return a medic by id', () => {
+        const id = '123';
+        const token = 'abc';
+        const expectedMedic = {
+          id: '123',
+          name: 'John',
+          lastName: 'Doe',
+          email: 'johndoe@example.com'
+        };
+
+        service.getMedicById(id, token).subscribe((medic) => {
+          expect(medic).toEqual(expectedMedic);
+        });
+
+        const req = httpMock.expectOne(`${service.backUrl}/medics/${id}`);
+        expect(req.request.method).toBe('GET');
+        expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
+        req.flush(expectedMedic);
       });
 
 });
