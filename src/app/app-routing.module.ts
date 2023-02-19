@@ -29,7 +29,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'inquiries/:medicId/:medicSpecialty/:inquiryid/images/:userToken',
+    path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/images/:userToken',
     component: InquiryImagesListComponent,
     pathMatch: 'full'
   },

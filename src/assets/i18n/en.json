@@ -56,7 +56,7 @@
   "shape":"Shape",
   "injuryQuantity":"Number of injuries",
   "distribution":"Distribution",
-  "location":"Location",
+  "comment":"Comment",
   "claim":"Claim",
   "return":"Return",
   "images":"Images",
