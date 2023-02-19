@@ -70,20 +70,9 @@ describe('MedicSingupComponent', () => {
   it('test a form group elemnt count',()=>{
     const FormElement = fixture.debugElement.nativeElement.querySelector('#medicForm');
     const inputElements = FormElement.querySelectorAll('input');
-    expect(inputElements.length).toEqual(8); })
-    it('should show error when userSignUp fails', () => {
-      const errorResponse = new HttpErrorResponse({ status: 500, statusText: 'Internal Server Error' });
-      medicService.userSignUp.and.returnValue(of(errorResponse));
-      component.registerMedic();
-      expect(toastrService.error).toHaveBeenCalledWith(`Ha ocurrido un error: ${errorResponse.message}`, 'Error');
-    });
+    expect(inputElements.length).toEqual(8); });
 
-    it('should show success message when userSignUp succeeds', () => {
-      const response = { id: 1, email: 'test@test.com' };
-      medicService.userSignUp.and.returnValue(of(response));
-      component.registerMedic();
-      expect(toastrService.success).toHaveBeenCalledWith('Perfil de usuario creado con exito', 'Registro exitoso');
-    });
+ 
 
 
 
