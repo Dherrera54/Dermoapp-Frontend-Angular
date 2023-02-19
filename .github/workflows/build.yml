@@ -21,19 +21,23 @@ jobs:
       - name: Instalación de librerías y dependencias
         run: |
           npm install --save --legacy-peer-deps
-
+      - name: pruebas+coverage
+        id: pruebas
+        run: |
+          npm run test -- --code-coverage --no-watch
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Install moreutils
         run: sudo apt-get install -y moreutils
       - name: Update key on json file with current GCP private key
         env:
           GCP_PRIVATE_KEY: ${{secrets.GCP_PRIVATE_KEY}}
         run: |
-          cat src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
-
-         
           jq --arg key 'private_key' --arg value "$GCP_PRIVATE_KEY" '.[$key] = $value' src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json | sponge src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
 
-          cat src/app/shared/keys/proyectogrupo-14-29f2d0e76e49.json
 
 
 
