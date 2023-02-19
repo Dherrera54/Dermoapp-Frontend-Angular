@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import { faker } from '@faker-js/faker';
 import { Medic } from './medic';
 import { SharedModule } from '../shared/shared.module';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
 describe('Service: Medic', () => {
@@ -15,12 +16,13 @@ describe('Service: Medic', () => {
   let service: MedicService;
   let resp:any;
   const medicMock: Medic=createRandomMedic();
+  let httpMock: HttpTestingController;
 
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,RouterTestingModule,SharedModule
+        HttpClientModule,RouterTestingModule,SharedModule, HttpClientTestingModule
       ],
       providers: [MedicService,
         HttpClient,
@@ -33,9 +35,14 @@ describe('Service: Medic', () => {
     // Inject the http service and test controller for each test
     injector = getTestBed();
     service = injector.get(MedicService);
+    httpMock = TestBed.inject(HttpTestingController);
 
 
   });
+  afterEach(() => {
+    httpMock.verify();
+  });
+
 
   function createRandomMedic(): Medic{
     return{
@@ -99,6 +106,25 @@ describe('Service: Medic', () => {
           expect(resp.name).toEqual(medicMock.name);
           expect(resp.password).toEqual(medicMock.password);
 
+      });
+
+      it('should get medic by email', () => {
+        const email = 'test@example.com';
+        const token = 'my_token';
+
+        const expectedResponse = {id: 1, name: 'John Doe', email: email};
+
+        service.getMedicByEmail(email, token).subscribe(response => {
+          expect(response).toEqual(expectedResponse);
+        });
+
+        const req = httpMock.expectOne(`${service.backUrl}/medics/email/${email}`);
+        expect(req.request.method).toBe('GET');
+        expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
+        expect(req.request.headers.get('Content-Type')).toBe('application/json');
+        expect(req.request.headers.get('Access-Control-Allow-Origin')).toBe('https://dermoappfront.web.app/');
+
+        req.flush(expectedResponse);
       });
 
 });

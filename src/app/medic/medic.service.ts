@@ -15,7 +15,7 @@ export class MedicService {
 
   storageRef= firebase.storage().ref();
 
-  private backUrl: string = environment.URL_PRODUCTION
+  public backUrl: string = environment.URL_PRODUCTION
   constructor(private http: HttpClient) { }
 
   userLogIn(name: string, password: string):Observable<any>{
