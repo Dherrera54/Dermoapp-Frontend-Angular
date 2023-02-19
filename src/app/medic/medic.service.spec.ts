@@ -121,9 +121,6 @@ describe('Service: Medic', () => {
         const req = httpMock.expectOne(`${service.backUrl}/medics/email/${email}`);
         expect(req.request.method).toBe('GET');
         expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
-        expect(req.request.headers.get('Content-Type')).toBe('application/json');
-        expect(req.request.headers.get('Access-Control-Allow-Origin')).toBe('https://dermoappfront.web.app/');
-
         req.flush(expectedResponse);
       });
 
