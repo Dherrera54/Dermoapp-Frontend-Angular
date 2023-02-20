@@ -65,5 +65,6 @@
 
   "selectedImg":"Imagen seleccionada",
 
-  "injuryImages":"Imagenes de lesión"
+  "injuryImages":"Imagenes de lesión",
+  "emptyListMsg":"No hay consultas nuevas para esta especialidad."
 }
