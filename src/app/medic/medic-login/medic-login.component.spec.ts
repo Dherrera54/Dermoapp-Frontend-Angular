@@ -7,6 +7,8 @@ import { MedicLoginComponent } from './medic-login.component';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
+import {  TranslateModule } from '@ngx-translate/core';
 
 
 describe('MedicLoginComponent', () => {
@@ -17,7 +19,7 @@ describe('MedicLoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MedicLoginComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,
@@ -53,19 +55,19 @@ describe('MedicLoginComponent', () => {
   it('Should have an element log in header', () => {
 
     expect(debug.query(By.css('#logInHeader')).nativeElement.innerText).toContain(
-      "Iniciar sesión"
+      "logIn"
     );
   });
   it('Should have an element cancelbutton', () => {
 
     expect(debug.query(By.css('#cancelBtn')).nativeElement.innerText).toContain(
-      "Cancel"
+      "cancel"
     );
   });
   it('Should have an element Log in button', () => {
 
     expect(debug.query(By.css('#logInBtn')).nativeElement.innerText).toContain(
-      "Ingresar"
+      "enter"
     );
   });
 

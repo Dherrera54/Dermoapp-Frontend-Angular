@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import firebase from 'firebase/app';
+import 'firebase/storage';
 
+firebase.initializeApp(environment.firebaseConfig);
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicService {
 
-  private defaul_profile_picture="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*"
 
-  private backUrl: string = environment.URL_PRODUCTION
+  storageRef= firebase.storage().ref();
+
+  public backUrl: string = environment.URL_PRODUCTION
   constructor(private http: HttpClient) { }
 
   userLogIn(name: string, password: string):Observable<any>{
@@ -28,23 +32,18 @@ userSignUp(email: string, password: string, roles:string):Observable<any>{
   return this.http.post<any>(`${this.backUrl}/users/signup`, {"email": email, "password": password, "roles":roles },{headers} );
 }
 
-medicCreate(name: string,
-           lastName: string,
-           country: string,
-           profesionalId: string,
-           profilePicture: string,
-           email: string,
-           password: string,
-           specialty: string): Observable<any>{
+medicCreate(name: String,
+           lastName: String,
+           country: String,
+           profesionalId: String,
+           profilePicture: String,
+           email: String,
+           password: String,
+           specialty: String): Observable<any>{
 
   let headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
-
-  if(profilePicture== null ||profilePicture==""){
-    profilePicture=this.defaul_profile_picture;
-  }
-  console.log(profilePicture);
 
   let body={"name": name,
             "lastName": lastName,
@@ -58,12 +57,35 @@ medicCreate(name: string,
   return  this.http.post<any>(`${this.backUrl}/medics`, body ,{headers} )
 
 }
-getUserByEmail(email: string, token: string):Observable<any>{
+getMedicByEmail(email: String, token: String):Observable<any>{
   const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
-  return this.http.get<any>(`${this.backUrl}/users/${email}`, {headers: headers} );
+  return this.http.get<any>(`${this.backUrl}/medics/email/${email}`, {headers: headers} );
+}
+
+getMedicById(id: String, token: String):Observable<any>{
+  const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+
+  return this.http.get<any>(`${this.backUrl}/medics/${id}`, {headers: headers} );
+}
+
+async imgUpload(imgname:String, imgBase64:any ){
+  const headers = new HttpHeaders();
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+
+  try{
+    let resp=await this.storageRef.child("medic/profilePics/"+imgname).putString(imgBase64, "data_url");
+    return await resp.ref.getDownloadURL();
+
+  }catch(err){
+    console.log(err);
+    return null;
+  }
 }
 
 }

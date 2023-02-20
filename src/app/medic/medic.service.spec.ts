@@ -7,19 +7,22 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Router} from '@angular/router';
 import { faker } from '@faker-js/faker';
 import { Medic } from './medic';
+import { SharedModule } from '../shared/shared.module';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
 describe('Service: Medic', () => {
   let injector: TestBed;
   let service: MedicService;
   let resp:any;
-  const medicMock: Medic=createRandoMedic();
+  const medicMock: Medic=createRandomMedic();
+  let httpMock: HttpTestingController;
 
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,RouterTestingModule
+        HttpClientModule,RouterTestingModule,SharedModule, HttpClientTestingModule
       ],
       providers: [MedicService,
         HttpClient,
@@ -32,11 +35,16 @@ describe('Service: Medic', () => {
     // Inject the http service and test controller for each test
     injector = getTestBed();
     service = injector.get(MedicService);
+    httpMock = TestBed.inject(HttpTestingController);
 
 
   });
+  afterEach(() => {
+    httpMock.verify();
+  });
 
-  function createRandoMedic(): Medic{
+
+  function createRandomMedic(): Medic{
     return{
       id:faker.datatype.uuid() ,
       name: faker.name.firstName(),
@@ -56,7 +64,7 @@ describe('Service: Medic', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('check the success sign up medicservices', () => {
+  it('cshould create a medic', () => {
     service = TestBed.get(MedicService);
     const spyService = TestBed.get(HttpClient);
     spyOn(spyService, 'post').and.returnValue(medicMock);
@@ -98,6 +106,42 @@ describe('Service: Medic', () => {
           expect(resp.name).toEqual(medicMock.name);
           expect(resp.password).toEqual(medicMock.password);
 
+      });
+
+      it('should get medic by email', () => {
+        const email = 'test@example.com';
+        const token = 'my_token';
+
+        const expectedResponse = {id: 1, name: 'John Doe', email: email};
+
+        service.getMedicByEmail(email, token).subscribe(response => {
+          expect(response).toEqual(expectedResponse);
+        });
+
+        const req = httpMock.expectOne(`${service.backUrl}/medics/email/${email}`);
+        expect(req.request.method).toBe('GET');
+        expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
+        req.flush(expectedResponse);
+      });
+
+      it('should return a medic by id', () => {
+        const id = '123';
+        const token = 'abc';
+        const expectedMedic = {
+          id: '123',
+          name: 'John',
+          lastName: 'Doe',
+          email: 'johndoe@example.com'
+        };
+
+        service.getMedicById(id, token).subscribe((medic) => {
+          expect(medic).toEqual(expectedMedic);
+        });
+
+        const req = httpMock.expectOne(`${service.backUrl}/medics/${id}`);
+        expect(req.request.method).toBe('GET');
+        expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
+        req.flush(expectedMedic);
       });
 
 });

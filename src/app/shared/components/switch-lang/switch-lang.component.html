@@ -1,0 +1,12 @@
+<span class="form-inline">
+    <select id="dropdownLang"
+      class="form-control form-select-sm "
+      #selectedLang
+      (change)="switchLang(selectedLang.value)">
+    <option *ngFor="let language of translate.getLangs()"
+      [value]="language"
+      [selected]="language === translate.currentLang">
+      {{ language }}
+    </option>
+  </select>
+</span>

@@ -3,21 +3,22 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { InquiriesComponent } from './inquiries.component';
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { InquiryImagesListComponent } from './inquiry-images-list.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
-import {Observable, of} from 'rxjs';
-
-describe('InquiriesComponent', () => {
-  let component: InquiriesComponent;
-  let fixture: ComponentFixture<InquiriesComponent>;
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+describe('InquiryImagesListComponent', () => {
+  let component: InquiryImagesListComponent;
+  let fixture: ComponentFixture<InquiryImagesListComponent>;
   let debug: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InquiriesComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [ InquiryImagesListComponent ],
+      imports:[HttpClientTestingModule, RouterTestingModule,  HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: Router,
@@ -33,13 +34,12 @@ describe('InquiriesComponent', () => {
           },
 
       ]
-
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InquiriesComponent);
+    fixture = TestBed.createComponent(InquiryImagesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
