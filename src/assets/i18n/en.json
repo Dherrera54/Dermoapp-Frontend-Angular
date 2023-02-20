@@ -62,7 +62,8 @@
   "images":"Images",
 
   "selectedImg":"Selected image",
-  "injuryImages":"Injury Images"
+  "injuryImages":"Injury Images",
+  "emptyListMsg":"There are no new inquiries for this speciality."
 
 }
 

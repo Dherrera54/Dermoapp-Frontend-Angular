@@ -30,7 +30,7 @@ export class InquiriesListComponent implements OnInit{
   ) { }
   medicId!: String;
   token!: String;
-  showInquiries!:Array<Inquiry>;
+  showInquiries:Array<Inquiry>=[];
   selected:Boolean= false;
   selectedInquiry!:Inquiry;
   inquiry!:Inquiry;
