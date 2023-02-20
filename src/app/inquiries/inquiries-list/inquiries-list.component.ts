@@ -3,7 +3,7 @@ import { ActivatedRoute  } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Inquiry } from '../inquiriy';
 import { InquiryService } from '../inquiry.service';
-import { InquiryMock } from 'src/app/shared/mocks/inquiry.mock';
+
 
 
 
@@ -68,13 +68,6 @@ export class InquiriesListComponent implements OnInit{
       this.showInquiries = inquiries
 
     })
-
-
-    //testing mock
-
- /*    this.showInquiries= InquiryMock.response.data;
-    console.log(this.showInquiries); */
-
   }
 
   onSelectedInquiry(inquiry: Inquiry):void{

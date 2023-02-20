@@ -45,3 +45,8 @@ testem.log
 Thumbs.db
 
 # firebase
+
+# Dev mock data
+src/app/shared/mocks
+*.mock.ts
+
