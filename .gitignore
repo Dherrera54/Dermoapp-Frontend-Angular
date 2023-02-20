@@ -47,6 +47,6 @@ Thumbs.db
 # firebase
 
 # Dev mock data
-src/app/shared/mocks
+/src/app/shared/mocks
 *.mock.ts
 
