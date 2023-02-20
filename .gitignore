@@ -48,5 +48,5 @@ Thumbs.db
 
 # Dev mock data
 /src/app/shared/mocks
-*.mock.ts
+**/*.mock.ts
 

@@ -73,6 +73,17 @@ getMedicById(id: String, token: String):Observable<any>{
   return this.http.get<any>(`${this.backUrl}/medics/${id}`, {headers: headers} );
 }
 
+addInquiryToMedic(medicId: String, token: String, inquiryId:String): Observable<any>{
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  })
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+
+
+  return this.http.post<any>(`${this.backUrl}/medics/${medicId}/consultations/${inquiryId}`,{headers: headers})
+}
+
 async imgUpload(imgname:String, imgBase64:any ){
   const headers = new HttpHeaders();
   headers.set('Content-Type', 'application/json');

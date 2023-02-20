@@ -31,15 +31,6 @@ getInquiryById(id: String, token: String): Observable<any>{
   })
   return this.http.get<Inquiry[]>(`${this.backUrl}/inquiry/${medicId}}`, {headers: headers})
 }
-addInquirieToMedic(medicId: String, token: String, inquiryId:String): Observable<Inquiry>{
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`
-  })
-  headers.set('Content-Type', 'application/json');
-  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
-
-  let body={"inquiryId": inquiryId}
-  return this.http.post<Inquiry>(`${this.backUrl}/inquiry/${medicId}}`,body, {headers: headers})
-} */
+ */
 
 }

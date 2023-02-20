@@ -74,17 +74,13 @@ export class MedicSingupComponent implements OnInit {
           this.profilePicUrl=urlImg;
           this.createMedic();
 
-      })
-
+      });
         }
       else
       {
        this.profilePicUrl=this.default_profile_picture;
        this.createMedic();
       }
-
-
-
     },
     (error: HttpErrorResponse) => {
       if(error.status==400){
@@ -154,8 +150,6 @@ export class MedicSingupComponent implements OnInit {
       )
 
     .subscribe(res => {
-    console.log(res.id, res.specialty);
-
     this.routerPath.navigate([`/login`])
     this.showSuccess('Perfil de medico creado con exito')
     },
