@@ -36,6 +36,9 @@ export class HeaderLoggedComponent implements OnInit {
     if(menu === "inquiries"){
       this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/${this.token}`])
     }
+    else if(menu === "patients"){
+      this.routerPath.navigate([`/inquiries/${this.medicId}/claimed/${this.specialty}/${this.token}`])
+    }
     else if(menu === "logOut"){
       this.routerPath.navigate([`/login/`])
     }

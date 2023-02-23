@@ -36,6 +36,7 @@ export class InquiriesListComponent implements OnInit{
   inquiry!:Inquiry;
   specialty!:String;
   medic!:any;
+  inquiryId!:String;
   scrollAmount = 200;
 
   ngOnInit() {
@@ -48,7 +49,9 @@ export class InquiriesListComponent implements OnInit{
       this.medicId = this.router.snapshot.params.medicId;
       this.token = this.router.snapshot.params.userToken;
       this.specialty = this.router.snapshot.params.medicSpecialty;
+      this.inquiryId = this.router.snapshot.params.inquiryId;
       this.getInquiriesBySpecialty();
+
 
 
 
@@ -66,6 +69,15 @@ export class InquiriesListComponent implements OnInit{
     this.inquiryService.getInquiriesBySpecialty(this.specialty, this.token)
     .subscribe(inquiries => {
       this.showInquiries = inquiries
+
+      if(this.inquiryId){
+        for(let i=0;i<inquiries.length;i++){
+          if(inquiries[i].id==this.inquiryId){
+            this.onSelectedInquiry(inquiries[i]);
+          }
+        }
+
+      }
 
     })
   }

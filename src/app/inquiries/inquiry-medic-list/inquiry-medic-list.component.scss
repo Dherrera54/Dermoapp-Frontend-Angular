@@ -1,0 +1,133 @@
+::-webkit-scrollbar {
+  background: white;
+  height: 0.5em;
+}
+::-webkit-scrollbar-thumb {
+  background: #dfccf9;
+  border-radius: 100vw;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d2b6f9;
+  border-radius: 100vw;
+}
+
+.main-container {
+  background: white;
+  width: 100%;
+
+
+
+
+  .emptyListLabel{
+
+    margin-top: 50px;
+    justify-self: center;
+
+  }
+
+  .media-scroller::-webkit-scrollbar {
+    background: white;
+    height: 0.5em;
+  }
+  .media-scroller::-webkit-scrollbar-thumb {
+    background: #dfccf9;
+    border-radius: 100vw;
+  }
+  .media-scroller::-webkit-scrollbar-thumb:hover {
+    background: #d2b6f9;
+    border-radius: 100vw;
+  }
+  .media-scroller {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: repeat(auto-fit, minmax(25%, 1fr));
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    grid-auto-rows: 400px;
+    scroll-behavior: smooth;
+  }
+  .snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 50px;
+  }
+  .snaps-inline > * {
+    scroll-snap-align: start;
+  }
+  .scroll-list {
+    display: grid;
+    grid-template-columns: 2.5% 93% 2.5%;
+
+    .btn-scroll {
+      background-color: white;
+      border-width: 0px;
+      user-select: none;
+    }
+
+    .btn-scroll img {
+      position: absolute;
+      width: 3rem;
+      height: 3rem;
+      background-color: #6200ee;
+      border-radius: 100%;
+      box-shadow: 0 0 5px -1px rgb(111, 111, 111);
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn-scroll img:hover {
+      background-color: #782cf0;
+    }
+    .btn-scroll img:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .container-inquiries {
+    max-width: 100%;
+    height: auto;
+
+    .card-inquiry:hover {
+      background: rgb(255, 245, 255);
+      box-shadow: 2px 2px #d7d7d7;
+    }
+
+    .card-inquiry {
+      background: white;
+      cursor: pointer;
+
+      width: 310px;
+      height: 310px;
+      margin-left: 75px;
+      margin-top: 60px;
+      margin-bottom: 10px;
+      border-style: solid;
+      border-width: 2px 2px 2px 2px;
+      border-color: #cfb1fa;
+      border-radius: 1rem;
+
+      .img-driver {
+        text-align: center;
+        width: 100%;
+        padding-top: 17px;
+        img {
+          border-radius: 150px;
+          aspect-ratio: 4/3;
+          object-fit: cover;
+
+          opacity: 1;
+          width: 105px;
+          height: 105px;
+        }
+      }
+      .patient-name {
+        padding-top: 39px;
+      }
+
+      .card-content {
+        text-align: left;
+        padding-left: 15px;
+        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+        font-size: 16px;
+      }
+    }
+  }
+}

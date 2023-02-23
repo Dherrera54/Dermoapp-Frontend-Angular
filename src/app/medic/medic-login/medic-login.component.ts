@@ -13,7 +13,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class MedicLoginComponent implements OnInit {
 
   helper = new JwtHelperService();
- 
+
 
   constructor(
     private medicService : MedicService,
@@ -30,8 +30,6 @@ export class MedicLoginComponent implements OnInit {
     this.medicService.userLogIn(email, password)
     .subscribe(res => {
       const token=res.token;
-      console.log(token);
-
         this.medicService.getMedicByEmail(email,token).subscribe(res=>{
         this.routerPath.navigate([`/inquiries/${res.id}/${res.specialty}/${token}`])
       });
