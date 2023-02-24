@@ -1,0 +1,51 @@
+.main-container{
+  width: auto;
+  
+}
+.form-group{
+  width: auto;
+  display: grid;
+  grid-template-columns: 95%;
+  
+}
+.title-header{
+  justify-self: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.form-control{
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: #cfb1fa; /* light purple */
+  margin-left: 45px;
+  height: 200px;
+}
+
+.submit-buttons{
+
+  padding-top: 30px;
+  position: relative;
+  justify-self: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 30px; 
+}
+.btn-cancel{
+  background-color:rgb(243, 249, 254) ;
+  :hover{
+    background-color:  #d9c6f1;
+  }
+}
+.btn-cancel:hover{
+  background-color:  #d9c6f1;
+}
+
+.btn-continue{
+  background-color:  #6223ee;
+  color: white;
+
+}
+.btn-continue:hover{
+  background-color:  #782cf0;
+}

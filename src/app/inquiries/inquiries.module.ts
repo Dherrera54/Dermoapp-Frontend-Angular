@@ -8,9 +8,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { InquiryImagesListComponent } from './inquiry-images-list/inquiry-images-list.component';
 import { InquiryMedicListComponent } from './inquiry-medic-list/inquiry-medic-list.component';
 import { InquiryDiagnoseComponent } from './inquiry-diagnose/inquiry-diagnose.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  imports: [CommonModule, AppHeaderModule, SharedModule, TranslateModule],
+  imports: [
+    CommonModule,
+    AppHeaderModule,
+    SharedModule,
+    TranslateModule,
+    MatInputModule,
+   
+  ],
   declarations: [
     InquiriesListComponent,
     InquiryDetailComponent,

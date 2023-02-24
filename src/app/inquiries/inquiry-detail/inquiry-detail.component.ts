@@ -24,7 +24,7 @@ export class InquiryDetailComponent implements OnInit {
   constructor(private router: Router,
               private routerPath: ActivatedRoute,
               private medicService:MedicService,
-              private toastr: ToastrService,) { }
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.token = this.routerPath.snapshot.params.userToken;

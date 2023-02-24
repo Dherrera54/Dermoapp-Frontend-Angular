@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,  } from "@angular/forms";
 import { MedicService } from '../medic.service';
 import { Router } from '@angular/router';
-import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,7 +15,6 @@ import { ICountry } from 'country-state-city'
 export class MedicSingupComponent implements OnInit {
 
 
-  helper = new JwtHelperService();
   medicForm!: FormGroup;
   selectedSpecialty!: string;
   selectedCountry!: string;

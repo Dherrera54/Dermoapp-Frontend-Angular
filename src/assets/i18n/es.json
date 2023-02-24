@@ -68,5 +68,12 @@
 
   "injuryImages":"Imagenes de lesión",
   "emptyListMsg":"No hay consultas nuevas para esta especialidad.",
-  "emptyListMsgMedic":"No tiene consultas reclamadas."
+  "emptyListMsgMedic":"No tiene consultas reclamadas.",
+
+  "diagnosticFor":"Diagnóstico para el paciente",
+  "diagnosticReqErr":"Por favor ingrese un diagnóstico.",
+  "diagnosticMaxLenErr":"El diagnóstico no puede exceder los 500 caracteres.",
+  "diagnosticPlaceholder":"Ingresa el diagnóstico acá...",
+  "creatDiagnostic":"Crear diagnóstico",
+  "notDiagnosed":"Aún no se ha diagnosticado este paciente."
 }
