@@ -31,7 +31,7 @@ export class MedicLoginComponent implements OnInit {
     .subscribe(res => {
       const token=res.token;
         this.medicService.getMedicByEmail(email,token).subscribe(res=>{
-        this.routerPath.navigate([`/inquiries/${res.id}/${res.specialty}/${token}`])
+        this.routerPath.navigate([`/inquiries/${res.id}/${res.specialty}/inquiryId/${token}`])
       });
 
     },

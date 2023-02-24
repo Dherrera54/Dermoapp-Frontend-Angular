@@ -53,12 +53,14 @@ export class InquiryDetailComponent implements OnInit {
       this.showSuccess('Se ha añadido la consulta a tu listado de pacientes')
     },
     error => {
-      this.showError(`Error: ${error.message}`)
+      this.showError(`Error: ${error.message}`) 
 
     });
 
   };
-  diagnose(){
+  diagnose(id:String){
+
+    this.router.navigate([`/inquiries/${this.medicId}/${this.specialty}/${id}/diagnose/${this.origin}/${this.token}`])
 
   };
 
@@ -75,8 +77,7 @@ export class InquiryDetailComponent implements OnInit {
   };
 
   seeImages(imgUrl:String, id:String){
-    this.imgUrl=imgUrl;
-    this.router.navigate([`/inquiries/${this.medicId}/${this.specialty}/${id}/images/${this.token}`])
+    this.router.navigate([`/inquiries/${this.medicId}/${this.specialty}/${id}/images/${this.origin}/${this.token}`])
 
   };
 

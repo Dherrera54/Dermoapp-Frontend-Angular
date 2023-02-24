@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { InquiriesListComponent } from './inquiries/inquiries-list/inquiries-list.component';
 import { InquiryImagesListComponent } from './inquiries/inquiry-images-list/inquiry-images-list.component';
 import { InquiryMedicListComponent } from './inquiries/inquiry-medic-list/inquiry-medic-list.component';
+import { InquiryDiagnoseComponent } from './inquiries/inquiry-diagnose/inquiry-diagnose.component';
 
 
 const routes: Routes = [
@@ -24,24 +25,34 @@ const routes: Routes = [
     component: MedicSingupComponent,
     pathMatch: 'full'
   },
-  {
+/*   {
     path: 'inquiries/:medicId/:medicSpecialty/:userToken/claimed',
     component: InquiryMedicListComponent,
     pathMatch: 'full'
-  },
+  }, */
   {
+    path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/:userToken/claimed',
+    component: InquiryMedicListComponent,
+    pathMatch: 'full'
+  },
+/*   {
     path: 'inquiries/:medicId/:medicSpecialty/:userToken',
     component: InquiriesListComponent,
     pathMatch: 'full'
-  },
+  }, */
   {
     path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/:userToken',
     component: InquiriesListComponent,
     pathMatch: 'full'
   },
   {
-    path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/images/:userToken',
+    path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/images/:origin/:userToken',
     component: InquiryImagesListComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/diagnose/:origin/:userToken',
+    component: InquiryDiagnoseComponent,
     pathMatch: 'full'
   },
 

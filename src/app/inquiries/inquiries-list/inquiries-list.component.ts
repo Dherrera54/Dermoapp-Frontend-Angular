@@ -77,12 +77,12 @@ export class InquiriesListComponent implements OnInit{
         for(let i=0;i<inquiries.length;i++){
           if(inquiries[i].id==this.inquiryId){
             this.onSelectedInquiry(inquiries[i]);
-          }
-        }
+          };
+        };
 
-      }
+      };
 
-    })
+    });
   }
 
   onSelectedInquiry(inquiry: Inquiry):void{

@@ -14,6 +14,8 @@ export class InquiryImagesListComponent implements OnInit {
   token!:String;
   specialty!:String;
   medicId!:String;
+  origin!:String;
+
 
   constructor(
     private inquiryService: InquiryService,
@@ -22,10 +24,11 @@ export class InquiryImagesListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.inquiryId = this.router.snapshot.params.inquiryId
-    this.medicId = this.router.snapshot.params.medicId
-    this.token = this.router.snapshot.params.userToken
-    this.specialty= this.router.snapshot.params.medicSpecialty
+    this.inquiryId = this.router.snapshot.params.inquiryId;
+    this.medicId = this.router.snapshot.params.medicId;
+    this.token = this.router.snapshot.params.userToken;
+    this.specialty= this.router.snapshot.params.medicSpecialty;
+    this.origin= this.router.snapshot.params.origin;
     this.getInquiriesById()
 
   }
@@ -40,7 +43,13 @@ export class InquiryImagesListComponent implements OnInit {
 
    }
     return(){
-       this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/${this.inquiryId}/${this.token}`])
+      if(this.origin==='inquiry-list'){
+        this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/${this.inquiryId}/${this.token}`]);
+      }
+      else{
+        this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/${this.inquiryId}/${this.token}/claimed`]);
+      }
+       
 
     }
 }

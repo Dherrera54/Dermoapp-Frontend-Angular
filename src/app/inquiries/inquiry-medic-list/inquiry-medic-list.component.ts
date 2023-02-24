@@ -22,6 +22,8 @@ export class InquiryMedicListComponent implements OnInit {
   selected:Boolean= false;
   selectedInquiry!:Inquiry;
   specialty!:String;
+  inquiryId!:String;
+  origin:String="inquiry-medic-list";
   scrollAmount = 200;
 
   constructor(
@@ -39,6 +41,7 @@ export class InquiryMedicListComponent implements OnInit {
     this.medicId = this.router.snapshot.params.medicId;
     this.token = this.router.snapshot.params.userToken;
     this.specialty = this.router.snapshot.params.medicSpecialty;
+    this.inquiryId = this.router.snapshot.params.inquiryId;
     this.getInquiriesFromMedic();
   }
   scrollHorizontally( val: number) {
@@ -49,8 +52,26 @@ export class InquiryMedicListComponent implements OnInit {
   getInquiriesFromMedic():void{
     /* this.medicService.getMedicById(this.medicId, this.token)
     .subscribe(medic => {
-      this.showInquiries = medic.inquiries }); */
+      this.showInquiries = medic.inquiries 
+            
+      if(this.inquiryId){
+        for(let i=0;i<this.showInquiries.length;i++){
+          if(this.showInquiries[i].id==this.inquiryId){
+            this.onSelectedInquiry(this.showInquiries[i]);
+          };
+        };
+      };
+    }); */
+
       this.showInquiries=MedicMock.response.data.inquiries;
+
+      if(this.inquiryId){
+        for(let i=0;i<this.showInquiries.length;i++){
+          if(this.showInquiries[i].id==this.inquiryId){
+            this.onSelectedInquiry(this.showInquiries[i]);
+          };
+        };
+      };
   };
 
   showError(error: string){
