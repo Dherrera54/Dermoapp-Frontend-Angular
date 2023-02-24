@@ -100,13 +100,28 @@
         </button>
       </div>
       <div class="col-lg-4 text-center mt-3">
-        <button
+        <div *ngIf="origin=='inquiry-list' && !owned   ; else medicInquiryList">
+          
+          <button
           (click)="claim()"
           type="button"
           class="btn btn-continue col-12"
            >
           {{'claim'|translate}}
+          </button>
+       
+     
+      </div>
+      <ng-template #medicInquiryList>
+        <button
+          (click)="diagnose()"
+          type="button"
+          class="btn btn-continue col-12"
+           >
+          {{'diagnose'|translate}}
         </button>
+
+      </ng-template>
       </div>
     </div>
     </div>

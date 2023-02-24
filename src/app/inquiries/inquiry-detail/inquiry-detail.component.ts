@@ -12,11 +12,14 @@ import { ToastrService } from 'ngx-toastr';
 export class InquiryDetailComponent implements OnInit {
 
   @Input() selectedInquiry!:Inquiry;
+  @Input() origin!:String;
   @Output() cancelOutput = new EventEmitter<Boolean>();
   imgUrl!:String;
   token!: String;
   medicId!:String;
+  medicInquiriesIds:String[]=[];
   specialty!:String;
+  owned:Boolean=false;
 
   constructor(private router: Router,
               private routerPath: ActivatedRoute,
@@ -24,9 +27,10 @@ export class InquiryDetailComponent implements OnInit {
               private toastr: ToastrService,) { }
 
   ngOnInit() {
-    this.token = this.routerPath.snapshot.params.userToken
-    this.medicId= this.routerPath.snapshot.params.medicId
-    this.specialty= this.routerPath.snapshot.params.medicSpecialty
+    this.token = this.routerPath.snapshot.params.userToken;
+    this.medicId= this.routerPath.snapshot.params.medicId;
+    this.specialty= this.routerPath.snapshot.params.medicSpecialty;
+    this.checkMedicInquiries();
 
 
 
@@ -53,6 +57,21 @@ export class InquiryDetailComponent implements OnInit {
 
     });
 
+  };
+  diagnose(){
+
+  };
+
+  checkMedicInquiries(){
+
+    this.medicService.getMedicById(this.medicId, this.token).subscribe(res=>{
+      for(let i=0; i< res.inquiries.length; i++){
+        if(res.inquiries[i].id===this.selectedInquiry.id)
+        { this.owned=true;
+          break
+        };     
+      };
+    });
   };
 
   seeImages(imgUrl:String, id:String){

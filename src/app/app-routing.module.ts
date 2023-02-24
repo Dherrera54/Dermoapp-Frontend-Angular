@@ -25,6 +25,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'inquiries/:medicId/:medicSpecialty/:userToken/claimed',
+    component: InquiryMedicListComponent,
+    pathMatch: 'full'
+  },
+  {
     path: 'inquiries/:medicId/:medicSpecialty/:userToken',
     component: InquiriesListComponent,
     pathMatch: 'full'
@@ -39,11 +44,7 @@ const routes: Routes = [
     component: InquiryImagesListComponent,
     pathMatch: 'full'
   },
-  {
-    path: 'inquiries/:medicId/claimed/:medicSpecialty/:userToken',
-    component: InquiryMedicListComponent,
-    pathMatch: 'full'
-  },
+
 
 
 

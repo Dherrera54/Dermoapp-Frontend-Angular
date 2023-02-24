@@ -76,12 +76,12 @@
   </div>
 </div>
 <ng-template class="emptyList align-items-center" #emptyList>
-  <h2 class="emptyListLabel text-center">{{ "emptyListMsg" | translate }}</h2>
+  <h2 class="emptyListLabel text-center">{{ "emptyListMsgMedic" | translate }}</h2>
 </ng-template>
 
 <div class="col-12 center inquiry-detail" *ngIf="selected === true">
-<!--   <app-inquiry-detail
+<app-inquiry-detail
     [selectedInquiry]="inquiry"
     (cancelOutput)="onCancel($event)"
-  ></app-inquiry-detail> -->
+  ></app-inquiry-detail>
 </div>

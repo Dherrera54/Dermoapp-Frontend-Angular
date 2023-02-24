@@ -1,7 +1,6 @@
 export class Patient {
   id: string;
   name: string;
-  age: number;
   birthDate: string;
   country: string;
   profilePicture: string;
@@ -9,14 +8,12 @@ export class Patient {
   constructor(
     id: string,
     name: string,
-    age: number,
     birthDate: string,
     country: string,
     profilePicture: string
 
    ){
       this.id = id;
-      this.age=age;
       this.birthDate=birthDate;
       this.name = name;
       this.country=country;

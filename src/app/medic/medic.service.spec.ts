@@ -54,7 +54,8 @@ describe('Service: Medic', () => {
       profilePicture: faker.image.cats(),
       email: faker.internet.email(),
       password: faker.internet.password(8,true, undefined,'!'),
-      specialty: "Pediatria"
+      specialty: "Pediatria",
+      inquiries:[]
    }
 
   }
@@ -127,12 +128,18 @@ describe('Service: Medic', () => {
       it('should return a medic by id', () => {
         const id = '123';
         const token = 'abc';
-        const expectedMedic = {
-          id: '123',
-          name: 'John',
-          lastName: 'Doe',
-          email: 'johndoe@example.com'
-        };
+        const expectedMedic = new Medic(
+          '123',
+          'johndoe@example.com',
+          "test",
+          'John',
+          'Doe',          
+          "colombia",
+          "test",
+          "test",
+          "testimg",
+          []
+        );
 
         service.getMedicById(id, token).subscribe((medic) => {
           expect(medic).toEqual(expectedMedic);

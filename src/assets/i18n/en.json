@@ -60,10 +60,12 @@
   "claim":"Claim",
   "return":"Return",
   "images":"Images",
+  "diagnose":"Diagnose",
 
   "selectedImg":"Selected image",
   "injuryImages":"Injury Images",
-  "emptyListMsg":"There are no new inquiries for this speciality."
+  "emptyListMsg":"There are no new inquiries for this speciality.",
+  "emptyListMsgMedic":"You don't have claimed inquiries."
 
 }
 

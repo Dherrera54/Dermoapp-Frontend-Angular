@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MedicService } from '../../medic/medic.service';
 import { Inquiry } from '../inquiriy';
+import { MedicMock } from '../../shared/mocks/medic.mock';
+
 
 @Component({
   selector: 'app-inquiry-medic-list',
@@ -16,6 +18,7 @@ export class InquiryMedicListComponent implements OnInit {
   medicId!: String;
   token!: String;
   showInquiries:Array<Inquiry>=[];
+  inquiry!:Inquiry;
   selected:Boolean= false;
   selectedInquiry!:Inquiry;
   specialty!:String;
@@ -27,7 +30,7 @@ export class InquiryMedicListComponent implements OnInit {
     private toastr: ToastrService,
 
   ) {
-      //Consuming service
+
 
 
   }
@@ -44,10 +47,10 @@ export class InquiryMedicListComponent implements OnInit {
   }
 
   getInquiriesFromMedic():void{
-
-    this.medicService.getMedicById(this.medicId, this.token)
+    /* this.medicService.getMedicById(this.medicId, this.token)
     .subscribe(medic => {
-      this.showInquiries = medic.inquiries });
+      this.showInquiries = medic.inquiries }); */
+      this.showInquiries=MedicMock.response.data.inquiries;
   };
 
   showError(error: string){
@@ -62,5 +65,10 @@ export class InquiryMedicListComponent implements OnInit {
   onSelectedInquiry(inquiry: Inquiry):void{
     this.selected=true;
     this.selectedInquiry=inquiry;
+    this.inquiry=this.selectedInquiry;
+  };
+
+  onCancel(cancel:Boolean){
+    this.selected=cancel;
   };
 }

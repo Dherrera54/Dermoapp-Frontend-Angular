@@ -37,10 +37,13 @@ export class InquiriesListComponent implements OnInit{
   specialty!:String;
   medic!:any;
   inquiryId!:String;
+  origin:String="inquiry-list";
+
   scrollAmount = 200;
 
-  ngOnInit() {
 
+  ngOnInit() {
+    
       //Consuming service
      if(!this.router.snapshot.params.medicId || this.router.snapshot.params.userToken === " "){
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
