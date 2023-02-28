@@ -1,17 +1,29 @@
 .main-container{
   width: auto;
-  
+
 }
 .form-group{
   width: auto;
   display: grid;
   grid-template-columns: 95%;
-  
+
 }
 .title-header{
   justify-self: center;
   margin-top: 40px;
   margin-bottom: 40px;
+}
+.diagnosis-text{
+  justify-self:center;
+  justify-content:center;
+  width: 600px;
+
+}
+.diagnosis-text-box{
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+
 }
 
 .not-diagnosed-msg{
@@ -26,7 +38,7 @@
   justify-content: center;
   justify-items: center;
   align-items: center;
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
 }
 .btn-cancel{
   background-color:rgb(243, 249, 254) ;
@@ -59,7 +71,7 @@
   .diagnose-btns{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    
+
 
   }
 

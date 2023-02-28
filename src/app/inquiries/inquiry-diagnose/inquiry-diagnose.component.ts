@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { InquiryService } from '../inquiry.service';
 import { Inquiry } from '../inquiriy';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MedicMock } from '../../shared/mocks/medic.mock';
 
 @Component({
   selector: 'app-inquiry-diagnose',
@@ -20,9 +21,9 @@ export class InquiryDiagnoseComponent implements OnInit {
   origin!:String;
   inquiry!:Inquiry;
   newDiagnosis:Boolean=false;
-  
-  
-  
+
+
+
 
   constructor(private router: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -30,7 +31,7 @@ export class InquiryDiagnoseComponent implements OnInit {
               private toastr: ToastrService,
               private inquiryService: InquiryService) { }
 
-  
+
 
   ngOnInit() {
 
@@ -45,17 +46,20 @@ export class InquiryDiagnoseComponent implements OnInit {
       diagnosticDescription:["", [Validators.required, Validators.maxLength(500)]],
     });
 
-    
+
 
 
 
   }
   getInquiryById():void{
 
-    this.inquiryService.getInquiryById(this.inquiryId , this.token)
+     this.inquiryService.getInquiryById(this.inquiryId , this.token)
      .subscribe(res=> {
        this.inquiry=res;
      });
+  /*    this.inquiry=MedicMock.response.data.inquiries[0];
+     console.log(this.inquiry.diagnosis);
+ */
 
   }
 
@@ -69,8 +73,8 @@ export class InquiryDiagnoseComponent implements OnInit {
     }
   }
   createDiagnosis(){
-    
-    
+
+
     let diagnosis=this.diagnosticForm.get('diagnosticDescription')?.value;
     this.inquiryService.updateDiagnosisOnInquiry(this.inquiryId, diagnosis, this.token).subscribe( res=>{
       this.getInquiryById();
@@ -79,10 +83,9 @@ export class InquiryDiagnoseComponent implements OnInit {
     },
     error => {
       this.showError(`Ha ocurrido un error: ${error.message}`);
-      
+
     });
-    
-    
+
   };
   showError(error: string){
     this.toastr.error(error, "Error")
