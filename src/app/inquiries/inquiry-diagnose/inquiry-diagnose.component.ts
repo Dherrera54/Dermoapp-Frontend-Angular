@@ -12,14 +12,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class InquiryDiagnoseComponent implements OnInit {
 
+  diagnosticForm!:FormGroup;
   inquiryId!:String;
   medicId!: String;
   token!: String;
   specialty!:String;
   origin!:String;
   inquiry!:Inquiry;
-  diagnosticForm!: FormGroup;
-  createDiagnosis:Boolean=false;
+  newDiagnosis:Boolean=false;
   
   
   
@@ -34,16 +34,20 @@ export class InquiryDiagnoseComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.inquiryId = this.router.snapshot.params.inquiryId;
     this.medicId = this.router.snapshot.params.medicId;
     this.token = this.router.snapshot.params.userToken;
     this.specialty= this.router.snapshot.params.medicSpecialty;
     this.origin= this.router.snapshot.params.origin;
     this.getInquiryById()
-
     this.diagnosticForm=this.formBuilder.group({
-      diagnosticDescription:["", [Validators.required, Validators.maxLength(500)]]
-    })
+      diagnosticDescription:["", [Validators.required, Validators.maxLength(500)]],
+    });
+
+    
+
+
 
   }
   getInquiryById():void{
@@ -54,13 +58,38 @@ export class InquiryDiagnoseComponent implements OnInit {
      });
 
   }
+
   return(){
+
     if(this.origin==='inquiry-list'){
       this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/${this.inquiryId}/${this.token}`]);
     }
     else{
       this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/${this.inquiryId}/${this.token}/claimed`]);
     }
+  }
+  createDiagnosis(){
+    
+    
+    let diagnosis=this.diagnosticForm.get('diagnosticDescription')?.value;
+    this.inquiryService.updateDiagnosisOnInquiry(this.inquiryId, diagnosis, this.token).subscribe( res=>{
+      this.getInquiryById();
+      this.showSuccess('Diagnóstico enviado con exito');
+      this.diagnosticForm.reset();
+    },
+    error => {
+      this.showError(`Ha ocurrido un error: ${error.message}`);
+      
+    });
+    
+    
+  };
+  showError(error: string){
+    this.toastr.error(error, "Error")
+  }
+
+  showSuccess(message:string) {
+    this.toastr.success(message, "Registro exitoso");
   }
 
 }

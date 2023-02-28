@@ -9,6 +9,7 @@ import { InquiryImagesListComponent } from './inquiry-images-list/inquiry-images
 import { InquiryMedicListComponent } from './inquiry-medic-list/inquiry-medic-list.component';
 import { InquiryDiagnoseComponent } from './inquiry-diagnose/inquiry-diagnose.component';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
     SharedModule,
     TranslateModule,
     MatInputModule,
+    ReactiveFormsModule
    
   ],
   declarations: [

@@ -75,5 +75,6 @@
   "diagnosticMaxLenErr":"El diagnóstico no puede exceder los 500 caracteres.",
   "diagnosticPlaceholder":"Ingresa el diagnóstico acá...",
   "creatDiagnostic":"Crear diagnóstico",
+  "sendDiagnostic":"Enviar diagnóstico",
   "notDiagnosed":"Aún no se ha diagnosticado este paciente."
 }

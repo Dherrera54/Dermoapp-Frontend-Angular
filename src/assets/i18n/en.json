@@ -67,11 +67,12 @@
   "emptyListMsg":"There are no new inquiries for this speciality.",
   "emptyListMsgMedic":"You don't have claimed inquiries.",
 
-  "diagnosticFor":"Diagnostic for patient",
-  "diagnosticReqErr":"Please enter a diagnostic.",
-  "diagnosticMaxLenErr":"Diagnostic should not exceed 500 characters",
+  "diagnosticFor":"Diagnosis for patient",
+  "diagnosticReqErr":"Please enter a diagnostis.",
+  "diagnosticMaxLenErr":"Diagnosis should not exceed 500 characters",
   "diagnosticPlaceholder":"Enter your diagnosis here...",
-  "creatDiagnostic":"Create diagnostic",
+  "creatDiagnostic":"Create diagnosis",
+  "sendDiagnostic":"Send diagnosis",
   "notDiagnosed":"The patient has not been diagnosed yet."
 
 }

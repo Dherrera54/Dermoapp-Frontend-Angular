@@ -13,12 +13,9 @@
   margin-top: 40px;
   margin-bottom: 40px;
 }
-.form-control{
-  outline-width: 1px;
-  outline-style: solid;
-  outline-color: #cfb1fa; /* light purple */
-  margin-left: 45px;
-  height: 200px;
+
+.not-diagnosed-msg{
+  margin-bottom: 30px;
 }
 
 .submit-buttons{
@@ -48,4 +45,23 @@
 }
 .btn-continue:hover{
   background-color:  #782cf0;
+}
+.diagnose-form-container{
+  padding-left: 50px;
+
+  .form-control{
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #cfb1fa; /* light purple */
+    height: 200px;
+  }
+
+  .diagnose-btns{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    
+
+  }
+
+
 }

@@ -25,6 +25,15 @@ getInquiryById(id: String, token: String): Observable<any>{
   return this.http.get<any>(`${this.backUrl}/consultations/${id}`, {headers: headers})
 
 }
+
+updateDiagnosisOnInquiry(id:String, diagnosis:String,token:String):Observable<any>{
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  })
+  let body={"diagnosis": diagnosis}
+
+  return  this.http.put<any>(`${this.backUrl}/consultations/${id}`, body ,{headers} )
+}
 /* getInquiresFromMedicId(medicId: String, token: String): Observable<Inquiry[]>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
