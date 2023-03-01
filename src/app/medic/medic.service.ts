@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import { Medic } from './medic';
+import { Inquiry } from '../inquiries/inquiriy';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -83,6 +84,14 @@ addInquiryToMedic(medicId: String, token: String, inquiryId:String): Observable<
 
 
   return this.http.post<any>(`${this.backUrl}/medics/${medicId}/consultations/${inquiryId}`,{headers: headers})
+}
+
+getMedicInquiriesById(id: String, token: String):Observable<Inquiry[]>{
+  const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+
+  return this.http.get<Inquiry[]>(`${this.backUrl}/medics/${id}/consultations`, {headers: headers} );
 }
 
 async imgUpload(imgname:String, imgBase64:any ){

@@ -17,7 +17,6 @@ export class InquiryDetailComponent implements OnInit {
   imgUrl!:String;
   token!: String;
   medicId!:String;
-  medicInquiriesIds:String[]=[];
   specialty!:String;
   owned:Boolean=false;
 
@@ -53,7 +52,7 @@ export class InquiryDetailComponent implements OnInit {
       this.showSuccess('Se ha añadido la consulta a tu listado de pacientes')
     },
     error => {
-      this.showError(`Error: ${error.message}`) 
+      this.showError(`Error: ${error.message}`)
 
     });
 
@@ -66,12 +65,12 @@ export class InquiryDetailComponent implements OnInit {
 
   checkMedicInquiries(){
 
-    this.medicService.getMedicById(this.medicId, this.token).subscribe(res=>{
-      for(let i=0; i< res.inquiries.length; i++){
-        if(res.inquiries[i].id===this.selectedInquiry.id)
+    this.medicService.getMedicInquiriesById(this.medicId, this.token).subscribe(res=>{
+      for(let i=0; i< res.length; i++){
+        if(res[i].id===this.selectedInquiry.id)
         { this.owned=true;
           break
-        };     
+        };
       };
     });
   };

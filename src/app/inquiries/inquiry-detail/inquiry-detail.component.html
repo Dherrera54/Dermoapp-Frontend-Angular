@@ -1,12 +1,23 @@
 <div class="main-container">
   <div class="detail-inquiry">
-    <div class="img-driver col-1">
+    <div class="img-driver col-1 "*ngIf="!owned; else claimedInquiry">
       <img
         id="patient-image-"
         src="{{ selectedInquiry.patient.profilePicture }}"
         alt=""
       />
     </div>
+    <ng-template #claimedInquiry>
+      <div class="img-driver-claimed">
+        <img
+          id="patient-image-{{ selectedInquiry.patient.name  }}"
+          src="{{ selectedInquiry.patient.profilePicture}}"
+          alt="patient-image-{{selectedInquiry.patient.name }}"
+        />
+        <img class="img-check" src="./assets/check-all.svg" alt="Check calimed inquiry icon">
+      </div>
+
+    </ng-template>
     <div class="column-2 column">
       <div class="patient-name content-top-row">
         <h2>
@@ -101,7 +112,7 @@
       </div>
       <div class="col-lg-4 text-center mt-3">
         <div *ngIf="origin=='inquiry-list' && !owned   ; else medicInquiryList">
-          
+
           <button
           (click)="claim()"
           type="button"
@@ -109,8 +120,8 @@
            >
           {{'claim'|translate}}
           </button>
-       
-     
+
+
       </div>
       <ng-template #medicInquiryList>
         <button
