@@ -9,7 +9,7 @@
         (click)="scrollHorizontally(-1)"
         #scrollLeftButton
       >
-        <img src="./assets/caret-left-fill.svg" alt="Scroll left button" />
+      <img src="./assets/caret-left-fill.svg" alt="Scroll left button" />
       </button>
       <div
         class="media-scroller container-inquiries snaps-inline"
@@ -22,7 +22,7 @@
           (click)="onSelectedInquiry(inquiry)"
           id="inquirySelector"
         >
-          <div class="img-driver" *ngIf="!inquiry.claimed; else claimedInquiry">
+          <div class="img-driver" *ngIf="!inquiry.assigned; else claimedInquiry">
             <img
               id="patient-image-{{ i }}"
               src="{{ inquiry.patient.profilePicture }}"

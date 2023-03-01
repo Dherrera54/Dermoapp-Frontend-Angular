@@ -11,7 +11,7 @@ export class Inquiry {
   comment: string;
   patient: Patient;
   diagnosis?: String;
-  claimed?:Boolean;
+  assigned?:Boolean;
 
   constructor(
     id: string,

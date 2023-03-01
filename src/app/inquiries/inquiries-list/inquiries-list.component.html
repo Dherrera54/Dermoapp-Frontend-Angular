@@ -21,13 +21,24 @@
           (click)="onSelectedInquiry(inquiry)"
           id="inquirySelector"
         >
-          <div class="img-driver">
+          <div class="img-driver" *ngIf="!inquiry.assigned; else claimedInquiry">
             <img
               id="patient-image-{{ i }}"
               src="{{ inquiry.patient.profilePicture }}"
               alt=""
             />
           </div>
+          <ng-template #claimedInquiry>
+            <div class="img-driver-claimed">
+              <img
+                id="patient-image-{{ i }}"
+                src="{{ inquiry.patient.profilePicture }}"
+                alt="patient-image-{{inquiry.patient.name }}"
+              />
+              <img class="img-check" src="./assets/check-all.svg" alt="Check calimed inquiry icon">
+            </div>
+
+          </ng-template>
           <div class="patient-name">
             <h5>
               <span id="patient-name-{{ i }}" class="patient-name card-content"

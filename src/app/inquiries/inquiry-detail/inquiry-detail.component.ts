@@ -3,6 +3,7 @@ import { Inquiry } from '../inquiriy';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicService } from '../../medic/medic.service';
 import { ToastrService } from 'ngx-toastr';
+import { InquiryService } from '../inquiry.service';
 
 @Component({
   selector: 'app-inquiry-detail',
@@ -23,6 +24,7 @@ export class InquiryDetailComponent implements OnInit {
   constructor(private router: Router,
               private routerPath: ActivatedRoute,
               private medicService:MedicService,
+              private inquiryService: InquiryService,
               private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -49,11 +51,15 @@ export class InquiryDetailComponent implements OnInit {
   claim(){
     this.medicService.addInquiryToMedic(this.medicId, this.token, this.selectedInquiry.id).subscribe(res =>{
 
-      this.showSuccess('Se ha añadido la consulta a tu listado de pacientes')
+      this.inquiryService.updateStatusOnInquiry(this.selectedInquiry, this.token, this.specialty).subscribe(res =>{
+        this.showSuccess('Se ha añadido la consulta a tu listado de pacientes');
+      },error => {
+        this.showError(`Error: ${error.message}`)
+
+      });
     },
     error => {
       this.showError(`Error: ${error.message}`)
-
     });
 
   };

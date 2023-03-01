@@ -57,10 +57,6 @@ export class InquiryDiagnoseComponent implements OnInit {
      .subscribe(res=> {
        this.inquiry=res;
      });
-  /*    this.inquiry=MedicMock.response.data.inquiries[0];
-     console.log(this.inquiry.diagnosis);
- */
-
   }
 
   return(){
@@ -76,9 +72,9 @@ export class InquiryDiagnoseComponent implements OnInit {
 
 
     let diagnosis=this.diagnosticForm.get('diagnosticDescription')?.value;
-    this.inquiryService.updateDiagnosisOnInquiry(this.inquiryId, diagnosis, this.token).subscribe( res=>{
-      this.getInquiryById();
+    this.inquiryService.updateDiagnosisOnInquiry(this.inquiry, diagnosis, this.token, this.specialty).subscribe( res=>{
       this.showSuccess('Diagnóstico enviado con exito');
+      this.getInquiryById();
       this.diagnosticForm.reset();
     },
     error => {

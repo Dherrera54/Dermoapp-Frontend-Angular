@@ -3,8 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MedicService } from '../../medic/medic.service';
 import { Inquiry } from '../inquiriy';
-import { MedicMock } from '../../shared/mocks/medic.mock';
-
 
 @Component({
   selector: 'app-inquiry-medic-list',
@@ -50,20 +48,9 @@ export class InquiryMedicListComponent implements OnInit {
   }
 
   getInquiriesFromMedic():void{
-    /* this.medicService.getMedicById(this.medicId, this.token)
-    .subscribe(medic => {
-      this.showInquiries = medic.inquiries 
-            
-      if(this.inquiryId){
-        for(let i=0;i<this.showInquiries.length;i++){
-          if(this.showInquiries[i].id==this.inquiryId){
-            this.onSelectedInquiry(this.showInquiries[i]);
-          };
-        };
-      };
-    }); */
-
-      this.showInquiries=MedicMock.response.data.inquiries;
+    this.medicService.getMedicInquiriesById(this.medicId, this.token)
+    .subscribe(res => {
+      this.showInquiries = res
 
       if(this.inquiryId){
         for(let i=0;i<this.showInquiries.length;i++){
@@ -72,6 +59,17 @@ export class InquiryMedicListComponent implements OnInit {
           };
         };
       };
+    });
+
+/*       this.showInquiries=MedicMock.response.data.inquiries;
+
+      if(this.inquiryId){
+        for(let i=0;i<this.showInquiries.length;i++){
+          if(this.showInquiries[i].id==this.inquiryId){
+            this.onSelectedInquiry(this.showInquiries[i]);
+          };
+        };
+      }; */
   };
 
   showError(error: string){
