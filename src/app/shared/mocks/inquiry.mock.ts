@@ -16,7 +16,7 @@ export const InquiryMock = {
           id:101,
           name:"Dario12",
           email:"test@test.com",
-          
+
           birthDate:"1999-08-01T11:00:00.000Z",
           country:"Colombia",
           skynType:"Normal",

@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { InquiryService } from '../inquiry.service';
 import { Inquiry } from '../inquiriy';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MedicMock } from '../../shared/mocks/medic.mock';
 
 @Component({
   selector: 'app-inquiry-diagnose',
