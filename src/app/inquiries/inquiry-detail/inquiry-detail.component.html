@@ -112,7 +112,7 @@
       </div>
       <div class="col-lg-4 text-center mt-3">
         <div *ngIf="origin=='inquiry-list' && !owned   ; else medicInquiryList">
-
+        <div *ngIf="!selectedInquiry.assigned  ; else alreadyOwned">
           <button
           (click)="claim()"
           type="button"
@@ -120,7 +120,18 @@
            >
           {{'claim'|translate}}
           </button>
+        </div>
+        <ng-template #alreadyOwned>
+          <button
+          (click)="claim()"
+          type="button"
+          class="btn btn-continue col-12"
+           disabled>
+          {{'claim'|translate}}
+          </button>
 
+
+        </ng-template>
 
       </div>
       <ng-template #medicInquiryList>
