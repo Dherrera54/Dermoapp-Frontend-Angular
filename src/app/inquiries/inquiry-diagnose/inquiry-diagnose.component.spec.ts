@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormBuilder } from '@angular/forms';
 
 
 describe('InquiryDiagnoseComponent', () => {
@@ -24,6 +25,7 @@ describe('InquiryDiagnoseComponent', () => {
       declarations: [ InquiryDiagnoseComponent ],
       imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
+        FormBuilder,
         {
           provide: Router,
           useValue: {
