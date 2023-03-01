@@ -7,7 +7,6 @@ import { InquiriesListComponent } from './inquiries-list.component';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
-import {Observable, of} from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';

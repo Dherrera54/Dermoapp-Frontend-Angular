@@ -65,7 +65,7 @@
   "selectedImg":"Selected image",
   "injuryImages":"Injury Images",
   "emptyListMsg":"There are no new inquiries for this speciality.",
-  "emptyListMsgMedic":"You don't have claimed inquiries.",
+  "emptyListMsgMedic":"You don't have assigned inquiries.",
 
   "diagnosticFor":"Diagnosis for patient",
   "diagnosticReqErr":"Please enter a diagnostis.",

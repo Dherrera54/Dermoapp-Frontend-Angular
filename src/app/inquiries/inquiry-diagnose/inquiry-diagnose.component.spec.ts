@@ -4,14 +4,40 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { InquiryDiagnoseComponent } from './inquiry-diagnose.component';
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import {RouterTestingModule} from '@angular/router/testing';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 describe('InquiryDiagnoseComponent', () => {
   let component: InquiryDiagnoseComponent;
   let fixture: ComponentFixture<InquiryDiagnoseComponent>;
+  let debug: DebugElement;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InquiryDiagnoseComponent ]
+      declarations: [ InquiryDiagnoseComponent ],
+      imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
+      providers: [
+        {
+          provide: Router,
+          useValue: {
+            navigate: jasmine.createSpy('navigate'),
+          }},
+
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              snapshot: {params: {id: 100}}
+            }
+          },
+
+      ]
     })
     .compileComponents();
   }));
