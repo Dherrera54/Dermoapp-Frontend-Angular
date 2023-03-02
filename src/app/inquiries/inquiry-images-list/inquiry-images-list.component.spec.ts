@@ -30,8 +30,8 @@ describe('InquiryImagesListComponent', () => {
 
           {
             provide: ActivatedRoute,
-            useValue: {
-              snapshot: {params: {id: 100}}
+            useClass: class {
+              snapshot= {params: {id: 100}}
             }
           },
 
