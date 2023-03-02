@@ -32,7 +32,7 @@ describe('InquiryDetailComponent', () => {
     const patient: Patient={
       id: '22',
       name: 'test',
-      birthDate: 'test',
+      birthDate: '2000-02-23T08:00:00.000Z',
       country: 'test',
       profilePicture: 'test'
     }
