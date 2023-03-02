@@ -50,14 +50,8 @@ export class InquiryDetailComponent implements OnInit {
   };
   claim(){
     this.medicService.addInquiryToMedic(this.medicId, this.token, this.selectedInquiry.id).subscribe(res =>{
-
-      this.inquiryService.updateStatusOnInquiry(this.selectedInquiry, this.token, this.specialty).subscribe(res =>{
-        this.showSuccess('Se ha añadido la consulta a tu listado de pacientes');
-      },error => {
-        this.showError(`Error: ${error.message}`)
-
-      });
-    },
+      this.showSuccess('Se ha añadido la consulta a tu listado de pacientes');
+     },
     error => {
       this.showError(`Error: ${error.message}`)
     });

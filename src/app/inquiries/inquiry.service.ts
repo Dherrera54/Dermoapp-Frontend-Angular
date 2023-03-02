@@ -26,7 +26,7 @@ getInquiryById(id: String, token: String): Observable<any>{
   return this.http.get<any>(`${this.backUrl}/consultations/${id}`, {headers: headers})
 
 }
-updateStatusOnInquiry(inquiry:Inquiry,token:String, specialty:String):Observable<any>{
+/* updateStatusOnInquiry(inquiry:Inquiry,token:String, specialty:String):Observable<any>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   })
@@ -42,7 +42,7 @@ updateStatusOnInquiry(inquiry:Inquiry,token:String, specialty:String):Observable
             "diagnosis": inquiry.diagnosis}
 
   return  this.http.put<any>(`${this.backUrl}/consultations/${inquiry.id}`, body ,{headers} )
-}
+} */
 
 updateDiagnosisOnInquiry(inquiry:Inquiry, diagnosis:String,token:String, specialty:String):Observable<any>{
   const headers = new HttpHeaders({
@@ -60,6 +60,6 @@ updateDiagnosisOnInquiry(inquiry:Inquiry, diagnosis:String,token:String, special
             "diagnosis": diagnosis}
 
   return  this.http.put<any>(`${this.backUrl}/consultations/${inquiry.id}`, body ,{headers} )
-}
+};
 
 }

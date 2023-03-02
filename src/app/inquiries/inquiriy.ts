@@ -10,6 +10,7 @@ export class Inquiry {
   distribution: string;
   comment: string;
   patient: Patient;
+  specialty?:String
   diagnosis?: String;
   assigned?:Boolean;
 
