@@ -58,6 +58,7 @@ describe('InquiryDetailComponent', () => {
     };
 
     component.selectedInquiry=selectedInquiry;
+    fixture.detectChanges();
   });
   it('should create', () => {
     expect(component).toBeTruthy();
