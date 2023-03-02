@@ -16,7 +16,6 @@ import { Patient } from 'src/app/shared/models/patient';
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
   let fixture: ComponentFixture<InquiryDetailComponent>;
-  let medicService: MedicService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,6 +32,32 @@ describe('InquiryDetailComponent', () => {
     fixture = TestBed.createComponent(InquiryDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: 'test',
+      country: 'test',
+      profilePicture: 'test'
+    }
+
+    const selectedInquiry:Inquiry = {
+      id: '444',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      assigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+
+    component.selectedInquiry=selectedInquiry
   });
   it('should create', () => {
     expect(component).toBeTruthy();
