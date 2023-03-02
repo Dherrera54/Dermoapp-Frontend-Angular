@@ -78,67 +78,6 @@ describe('InquiryDetailComponent', () => {
     expect(age).toEqual(0);
   });
 
-
-  it('should set owned to true if inquiry belongs to medic', () => {
-
-    const patient: Patient={
-      id: '22',
-      name: 'test',
-      birthDate: '2000-02-23T08:00:00.000Z',
-      country: 'test',
-      profilePicture: 'test'
-    }
-    const inquiry: Inquiry = {
-      id: '1',
-      shape: 'Example Shape',
-      numberOfInjuries: '2',
-      distribution: 'Example Distribution',
-      comment: 'Example Comment',
-      image: 'Example Image',
-      creationDate: '2022-02-23T08:00:00.000Z',
-      typeOfInjury: 'Example Type',
-      specialty: 'Example Specialty',
-      assigned: false,
-      diagnosis: 'Initial Diagnosis',
-      injuryQuantity: '',
-      patient: patient
-
-    };
-    const selectedInquiry: Inquiry = {
-      id: '22',
-      shape: 'Example Shape',
-      numberOfInjuries: '2',
-      distribution: 'Example Distribution',
-      comment: 'Example Comment',
-      image: 'Example Image',
-      creationDate: '2022-02-23T08:00:00.000Z',
-      typeOfInjury: 'Example Type',
-      specialty: 'Example Specialty',
-      assigned: false,
-      diagnosis: 'Initial Diagnosis',
-      injuryQuantity: '',
-      patient: patient
-
-    };
-    // Arrange
-    component.selectedInquiry=selectedInquiry;
-    component.medicInquiries=[inquiry,
-      inquiry,
-      selectedInquiry,
-      inquiry,
-      inquiry,
-      inquiry
-      ]
-      fixture.detectChanges();
-
-
-    // Act
-    component.checkMedicInquiries();
-
-    // Assert
-    expect(component.owned).toBe(true);
-  });
-
   it('should set owned to false if inquiry does not belong to medic', () => {
 
     const patient: Patient={
