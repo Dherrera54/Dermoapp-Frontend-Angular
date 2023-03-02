@@ -19,11 +19,12 @@ describe('InquiryDetailComponent', () => {
   let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
 
   beforeEach(async(() => {
+    toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
     TestBed.configureTestingModule({
       declarations: [ InquiryDetailComponent ],
       imports:[ HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
-               {provide: ToastrService},
+               {provide: ToastrService, useValue: toastrServiceSpy},
 ]
     })
     .compileComponents();
@@ -56,7 +57,6 @@ describe('InquiryDetailComponent', () => {
     };
 
     fixture = TestBed.createComponent(InquiryDetailComponent);
-    toastrServiceSpy = jasmine.createSpyObj('ToastrService', ['error', 'success']);
     component = fixture.componentInstance;
     component.selectedInquiry=selectedInquiry;
     component.selectedInquiry.patient=patient;
@@ -119,7 +119,7 @@ describe('InquiryDetailComponent', () => {
     expect(component.owned).toBe(false);
   });
 
-/*   it('should call error method of toastr service with correct parameters', () => {
+ it('should call error method of toastr service with correct parameters', () => {
     const errorMsg = 'An error occurred';
     component.showError(errorMsg);
     expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error!');
@@ -129,7 +129,7 @@ describe('InquiryDetailComponent', () => {
     const successMsg = 'Operation successful';
     component.showSuccess(successMsg);
     expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Success!');
-  }); */
+  });
 
 
 });
