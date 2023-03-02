@@ -9,6 +9,11 @@ import { InquiryService } from '../inquiry.service';
 import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { Patient } from 'src/app/shared/models/patient';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
@@ -36,6 +41,7 @@ describe('InquiryDetailComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [InquiryDetailComponent],
+      imports:[HttpClientTestingModule, RouterTestingModule,  HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         { provide: Router, useValue: routerSpy },
         { provide: ActivatedRoute, useValue: activatedRouteSpy },
