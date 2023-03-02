@@ -104,6 +104,8 @@ describe('InquiryDetailComponent', () => {
     });
   });
 
+});
+
 
 
 
