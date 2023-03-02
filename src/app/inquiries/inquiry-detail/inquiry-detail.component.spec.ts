@@ -4,7 +4,7 @@ import { DebugElement } from '@angular/core';
 
 import { InquiryDetailComponent } from './inquiry-detail.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -27,7 +27,7 @@ describe('InquiryDetailComponent', () => {
     const spy = jasmine.createSpyObj('MedicService', ['addInquiryToMedic']);
     TestBed.configureTestingModule({
       declarations: [ InquiryDetailComponent ],
-      imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
+      imports:[Router, HttpClient,  HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [ { provide: MedicService, useValue: spy },
         {provide: Router,
         useValue: {
@@ -46,8 +46,9 @@ describe('InquiryDetailComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
   it('should calculate age correctly for a given birth date', () => {
     const birthDate = '1990-01-01';
