@@ -133,7 +133,7 @@ describe('Service: Medic', () => {
           'johndoe@example.com',
           "test",
           'John',
-          'Doe',          
+          'Doe',
           "colombia",
           "test",
           "test",
@@ -149,6 +149,19 @@ describe('Service: Medic', () => {
         expect(req.request.method).toBe('GET');
         expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
         req.flush(expectedMedic);
+      });
+
+      it('should return an Observable<any>', () => {
+        const mockResponse = { medicId: 'medic1', inquiryId: 'inquiry1' };
+
+        service.addInquiryToMedic('medic1', 'token', 'inquiry1').subscribe(response => {
+          expect(response).toEqual(mockResponse);
+        });
+
+        const req = httpMock.expectOne(`${service.backUrl}/medics/medic1/consultations/inquiry1`);
+        expect(req.request.method).toBe('POST');
+        expect(req.request.headers.get('Authorization')).toBe('Bearer token');
+        req.flush(mockResponse);
       });
 
 });
