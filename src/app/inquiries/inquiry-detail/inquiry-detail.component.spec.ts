@@ -111,6 +111,7 @@ describe('InquiryDetailComponent', () => {
       inquiry ,
       inquiry,
       component.selectedInquiry]
+      fixture.detectChanges();
 
 
     // Act
@@ -153,6 +154,7 @@ describe('InquiryDetailComponent', () => {
       inquiry,
       inquiry,
       inquiry]
+      fixture.detectChanges();
 
     // Act
     component.checkMedicInquiries();
