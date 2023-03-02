@@ -19,6 +19,7 @@ export class InquiryDetailComponent implements OnInit {
   token!: String;
   medicId!:String;
   specialty!:String;
+  medicInquiries!:Inquiry[];
   owned:Boolean=false;
 
   constructor(private router: Router,
@@ -66,8 +67,9 @@ export class InquiryDetailComponent implements OnInit {
   checkMedicInquiries(){
 
     this.medicService.getMedicInquiriesById(this.medicId, this.token).subscribe(res=>{
-      for(let i=0; i< res.length; i++){
-        if(res[i].id===this.selectedInquiry.id)
+      this.medicInquiries=res
+      for(let i=0; i< this.medicInquiries.length; i++){
+        if(this.medicInquiries[i].id===this.selectedInquiry.id)
         { this.owned=true;
           break
         };

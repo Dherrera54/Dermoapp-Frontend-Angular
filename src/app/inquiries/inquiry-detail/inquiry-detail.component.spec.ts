@@ -19,19 +19,14 @@ describe('InquiryDetailComponent', () => {
   let medicService: MedicService;
 
   beforeEach(async(() => {
-
-
-    const spy = jasmine.createSpyObj('MedicService', ['addInquiryToMedic']);
     TestBed.configureTestingModule({
       declarations: [ InquiryDetailComponent ],
       imports:[ HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
-      providers: [ { provide: MedicService, useValue: spy },
+      providers: [
                {provide: ToastrService},
 ]
     })
     .compileComponents();
-
-
   }));
 
   beforeEach(() => {
@@ -81,14 +76,13 @@ describe('InquiryDetailComponent', () => {
 
     };
     // Arrange
-    spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([
-     inquiry,
-     inquiry,
-     inquiry,
-     inquiry ,
-     inquiry,
-     component.selectedInquiry, // selected inquiry is part of medic's inquiries
-    ]));
+    component.medicInquiries=[inquiry,
+      inquiry,
+      inquiry,
+      inquiry ,
+      inquiry,
+      component.selectedInquiry]
+
 
     // Act
     component.checkMedicInquiries();
@@ -124,14 +118,12 @@ describe('InquiryDetailComponent', () => {
     };
 
     // Arrange
-    spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([
-     inquiry,
-     inquiry,
-     inquiry,
-     inquiry ,
-     inquiry,
-     inquiry,
-    ]));
+    component.medicInquiries=[inquiry,
+      inquiry,
+      inquiry,
+      inquiry,
+      inquiry,
+      inquiry]
 
     // Act
     component.checkMedicInquiries();
