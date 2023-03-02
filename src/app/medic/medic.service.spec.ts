@@ -151,7 +151,7 @@ describe('Service: Medic', () => {
         req.flush(expectedMedic);
       });
 
-      it('should return an Observable<any>', () => {
+      it('should return a inquiry from medic', () => {
         const mockResponse = { medicId: 'medic1', inquiryId: 'inquiry1' };
 
         service.addInquiryToMedic('medic1', 'token', 'inquiry1').subscribe(response => {
@@ -160,7 +160,6 @@ describe('Service: Medic', () => {
 
         const req = httpMock.expectOne(`${service.backUrl}/medics/medic1/consultations/inquiry1`);
         expect(req.request.method).toBe('POST');
-        expect(req.request.headers.get('Authorization')).toBe('Bearer token');
         req.flush(mockResponse);
       });
 

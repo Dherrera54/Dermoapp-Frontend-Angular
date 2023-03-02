@@ -14,6 +14,7 @@ describe('InquiryImagesListComponent', () => {
   let component: InquiryImagesListComponent;
   let fixture: ComponentFixture<InquiryImagesListComponent>;
   let debug: DebugElement;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,5 +47,29 @@ describe('InquiryImagesListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should navigate to inquiry details if origin is inquiry-list', () => {
+    component.origin = 'inquiry-list';
+    component.medicId = 'medic123';
+    component.specialty = 'dermatology';
+    component.inquiryId = 'inquiry123';
+    component.token = 'token123';
+
+    component.return();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/inquiries', component.medicId, component.specialty, component.inquiryId, component.token]);
+  });
+
+  it('should navigate to claimed inquiries if origin is not inquiry-list', () => {
+    component.origin = 'some-other-origin';
+    component.medicId = 'medic123';
+    component.specialty = 'dermatology';
+    component.inquiryId = 'inquiry123';
+    component.token = 'token123';
+
+    component.return();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/inquiries', component.medicId, component.specialty, component.inquiryId, component.token, 'claimed']);
   });
 });
