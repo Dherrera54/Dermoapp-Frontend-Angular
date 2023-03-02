@@ -16,6 +16,7 @@ import { Patient } from 'src/app/shared/models/patient';
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
   let fixture: ComponentFixture<InquiryDetailComponent>;
+  let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -55,6 +56,7 @@ describe('InquiryDetailComponent', () => {
     };
 
     fixture = TestBed.createComponent(InquiryDetailComponent);
+    toastrServiceSpy = jasmine.createSpyObj('ToastrService', ['error', 'success']);
     component = fixture.componentInstance;
     component.selectedInquiry=selectedInquiry;
     component.selectedInquiry.patient=patient;
@@ -118,6 +120,18 @@ describe('InquiryDetailComponent', () => {
 
     // Assert
     expect(component.owned).toBe(false);
+  });
+
+  it('should call error method of toastr service with correct parameters', () => {
+    const errorMsg = 'An error occurred';
+    component.showError(errorMsg);
+    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error!');
+  });
+
+  it('should call success method of toastr service with correct parameters', () => {
+    const successMsg = 'Operation successful';
+    component.showSuccess(successMsg);
+    expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Success!');
   });
 
 
