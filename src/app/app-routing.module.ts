@@ -25,21 +25,12 @@ const routes: Routes = [
     component: MedicSingupComponent,
     pathMatch: 'full'
   },
-/*   {
-    path: 'inquiries/:medicId/:medicSpecialty/:userToken/claimed',
-    component: InquiryMedicListComponent,
-    pathMatch: 'full'
-  }, */
   {
     path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/:userToken/claimed',
     component: InquiryMedicListComponent,
     pathMatch: 'full'
   },
-/*   {
-    path: 'inquiries/:medicId/:medicSpecialty/:userToken',
-    component: InquiriesListComponent,
-    pathMatch: 'full'
-  }, */
+
   {
     path: 'inquiries/:medicId/:medicSpecialty/:inquiryId/:userToken',
     component: InquiriesListComponent,

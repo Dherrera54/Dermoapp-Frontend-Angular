@@ -15,6 +15,7 @@ describe('InquiryImagesListComponent', () => {
   let fixture: ComponentFixture<InquiryImagesListComponent>;
   let debug: DebugElement;
   let router: Router;
+  let routerPath: ActivatedRoute;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -58,7 +59,11 @@ describe('InquiryImagesListComponent', () => {
 
     component.return();
 
-    expect(router.navigate).toHaveBeenCalledWith([`/inquiries/${component.medicId}/${component.specialty}/${component.inquiryId}/${component.token}`]);
+    expect(routerPath.snapshot.params.origin).toEqual(component.origin);
+    expect(routerPath.snapshot.params.inquiryId).toEqual(component.inquiryId);
+    expect(routerPath.snapshot.params.medicId).toEqual(component.medicId);
+    expect(routerPath.snapshot.params.medicSpecialty).toEqual(component.specialty);
+    expect(routerPath.snapshot.params.token).toEqual(component.token);
   });
 
   it('should navigate to claimed inquiries if origin is not inquiry-list', () => {
@@ -70,6 +75,10 @@ describe('InquiryImagesListComponent', () => {
 
     component.return();
 
-    expect(router.navigate).toHaveBeenCalledWith([`/inquiries/${component.medicId}/${component.specialty}/${component.inquiryId}/${component.token}/claimed`]);
+    expect(routerPath.snapshot.params.origin).toEqual(component.origin);
+    expect(routerPath.snapshot.params.inquiryId).toEqual(component.inquiryId);
+    expect(routerPath.snapshot.params.medicId).toEqual(component.medicId);
+    expect(routerPath.snapshot.params.medicSpecialty).toEqual(component.specialty);
+    expect(routerPath.snapshot.params.token).toEqual(component.token);
   });
 });
