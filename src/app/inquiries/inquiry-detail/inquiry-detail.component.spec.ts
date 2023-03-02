@@ -13,21 +13,30 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MedicService } from 'src/app/medic/medic.service';
 import { Inquiry } from '../inquiriy';
 import { of, throwError } from 'rxjs';
+import { Patient } from 'src/app/shared/models/patient';
+import { Router } from '@angular/router';
 
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
   let fixture: ComponentFixture<InquiryDetailComponent>;
   let medicServiceSpy: jasmine.SpyObj<MedicService>;
+  let medicService: MedicService;
 
   beforeEach(async(() => {
     fixture = TestBed.createComponent(InquiryDetailComponent);
     component = fixture.componentInstance;
+    medicService = TestBed.inject(MedicService);
     fixture.detectChanges();
     const spy = jasmine.createSpyObj('MedicService', ['addInquiryToMedic']);
     TestBed.configureTestingModule({
       declarations: [ InquiryDetailComponent ],
       imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
-      providers: [ { provide: MedicService, useValue: spy } ]
+      providers: [ { provide: MedicService, useValue: spy },
+        {provide: Router,
+        useValue: {
+          navigate: jasmine.createSpy('navigate'),
+        }},
+]
     })
     .compileComponents();
 
@@ -62,6 +71,91 @@ describe('InquiryDetailComponent', () => {
     expect(medicServiceSpy.addInquiryToMedic).toHaveBeenCalledWith(medicId, token, inquiryId);
     expect(successSpy).toHaveBeenCalled();
     expect(errorSpy).not.toHaveBeenCalled();
+  });
+
+  it('should set owned to true if inquiry belongs to medic', () => {
+
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: 'test',
+      country: 'test',
+      profilePicture: 'test'
+    }
+    const inquiry: Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      assigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+    // Arrange
+    spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([
+     inquiry,
+     inquiry,
+     inquiry,
+     inquiry ,
+     inquiry,
+     component.selectedInquiry, // selected inquiry is part of medic's inquiries
+    ]));
+
+    // Act
+    component.checkMedicInquiries();
+
+    // Assert
+    expect(component.owned).toBe(true);
+  });
+
+  it('should set owned to false if inquiry does not belong to medic', () => {
+
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: 'test',
+      country: 'test',
+      profilePicture: 'test'
+    }
+    const inquiry: Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      assigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+
+    // Arrange
+    spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([
+     inquiry,
+     inquiry,
+     inquiry,
+     inquiry ,
+     inquiry,
+     inquiry,
+    ]));
+
+    // Act
+    component.checkMedicInquiries();
+
+    // Assert
+    expect(component.owned).toBe(false);
   });
 
 
