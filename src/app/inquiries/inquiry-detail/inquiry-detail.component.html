@@ -3,7 +3,7 @@
     <div class="img-driver col-1 "*ngIf="!owned; else claimedInquiry">
       <img
         id="patient-image-"
-        src="{{ selectedInquiry.patient.profilePicture }}"
+        src="{{ selectedInquiry?.patient?.profilePicture }}"
         alt=""
       />
     </div>
@@ -11,7 +11,7 @@
       <div class="img-driver-claimed">
         <img
           id="patient-image-{{ selectedInquiry.patient.name  }}"
-          src="{{ selectedInquiry.patient.profilePicture}}"
+          src="{{ selectedInquiry?.patient?.profilePicture}}"
           alt="patient-image-{{selectedInquiry.patient.name }}"
         />
         <img class="img-check" src="./assets/check-all.svg" alt="Check calimed inquiry icon">
@@ -36,21 +36,21 @@
       <div class="patient-age content-row">
         <h2>
           <span id="patient-age" class="patient-age"
-            >{{"birthDay"|translate}}: {{ selectedInquiry.patient.birthDate | date }}</span
+            >{{"birthDay"|translate}}: {{ selectedInquiry?.patient?.birthDate | date }}</span
           >
         </h2>
       </div>
       <div class="inquiry-date content-row">
         <h2>
           <span id="inquiry-date" class="inquiry-date"
-            >{{"creationDate"|translate}}: {{ selectedInquiry.creationDate | date }}</span
+            >{{"creationDate"|translate}}: {{ selectedInquiry?.creationDate | date }}</span
           >
         </h2>
       </div>
       <div class="patient-age content-row">
         <h2>
           <span id="patient-age" class="patient-age"
-            >{{"country"|translate}}: {{ selectedInquiry.patient.country }}</span
+            >{{"country"|translate}}: {{ selectedInquiry?.patient?.country }}</span
           >
         </h2>
       </div>
@@ -70,35 +70,35 @@
       <div class="injury-type content-top-row">
         <h2>
           <span id="injury-type" class="injury-type"
-            >{{"injuryType"|translate}}: {{ selectedInquiry.typeOfInjury}}</span
+            >{{"injuryType"|translate}}: {{ selectedInquiry?.typeOfInjury}}</span
           >
         </h2>
       </div>
       <div class="injury-shape content-row">
         <h2>
           <span id="injury-shape" class="injury-shape"
-            >{{"shape"|translate}}: {{ selectedInquiry.shape}}</span
+            >{{"shape"|translate}}: {{ selectedInquiry?.shape}}</span
           >
         </h2>
       </div>
       <div class="injury-quantity content-row">
         <h2>
           <span id="injury-quantity" class="injury-quantity"
-            >{{"injuryQuantity"|translate}}: {{ selectedInquiry.numberOfInjuries }}</span
+            >{{"injuryQuantity"|translate}}: {{ selectedInquiry?.numberOfInjuries }}</span
           >
         </h2>
       </div>
       <div class="injury-distribution content-row">
         <h2>
           <span id="injury-distribution" class="injury-distribution"
-            >{{"distribution"|translate}}: {{ selectedInquiry.distribution }}</span
+            >{{"distribution"|translate}}: {{ selectedInquiry?.distribution }}</span
           >
         </h2>
       </div>
       <div class="injury-location content-row">
         <h2>
           <span id="injury-location" class="injury-location"
-            >{{"comment"|translate}}: {{ selectedInquiry.comment }}</span
+            >{{"comment"|translate}}: {{ selectedInquiry?.comment }}</span
           >
         </h2>
       </div>

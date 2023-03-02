@@ -57,7 +57,7 @@ describe('InquiryDetailComponent', () => {
 
     };
 
-    component.selectedInquiry=selectedInquiry
+    component.selectedInquiry=selectedInquiry;
   });
   it('should create', () => {
     expect(component).toBeTruthy();
