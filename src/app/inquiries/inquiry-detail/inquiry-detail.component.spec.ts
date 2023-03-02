@@ -29,9 +29,6 @@ describe('InquiryDetailComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InquiryDetailComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
     const patient: Patient={
       id: '22',
       name: 'test',
@@ -57,8 +54,14 @@ describe('InquiryDetailComponent', () => {
 
     };
 
+    fixture = TestBed.createComponent(InquiryDetailComponent);
+    component = fixture.componentInstance;
     component.selectedInquiry=selectedInquiry;
+    component.selectedInquiry.patient=patient;
     fixture.detectChanges();
+
+
+
   });
   it('should create', () => {
     expect(component).toBeTruthy();
