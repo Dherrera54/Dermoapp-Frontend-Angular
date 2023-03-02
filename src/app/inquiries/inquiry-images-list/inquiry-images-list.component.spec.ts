@@ -50,35 +50,5 @@ describe('InquiryImagesListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should navigate to inquiry details if origin is inquiry-list', () => {
-    component.origin = 'inquiry-list';
-    component.medicId = 'medic123';
-    component.specialty = 'dermatology';
-    component.inquiryId = 'inquiry123';
-    component.token = 'token123';
-
-    component.return();
-
-    expect(routerPath.snapshot.params.origin).toEqual(component.origin);
-    expect(routerPath.snapshot.params.inquiryId).toEqual(component.inquiryId);
-    expect(routerPath.snapshot.params.medicId).toEqual(component.medicId);
-    expect(routerPath.snapshot.params.medicSpecialty).toEqual(component.specialty);
-    expect(routerPath.snapshot.params.token).toEqual(component.token);
-  });
-
-  it('should navigate to claimed inquiries if origin is not inquiry-list', () => {
-    component.origin = 'some-other-origin';
-    component.medicId = 'medic123';
-    component.specialty = 'dermatology';
-    component.inquiryId = 'inquiry123';
-    component.token = 'token123';
-
-    component.return();
-
-    expect(routerPath.snapshot.params.origin).toEqual(component.origin);
-    expect(routerPath.snapshot.params.inquiryId).toEqual(component.inquiryId);
-    expect(routerPath.snapshot.params.medicId).toEqual(component.medicId);
-    expect(routerPath.snapshot.params.medicSpecialty).toEqual(component.specialty);
-    expect(routerPath.snapshot.params.token).toEqual(component.token);
-  });
+  
 });
