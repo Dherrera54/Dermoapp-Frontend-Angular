@@ -70,7 +70,7 @@ describe('InquiryDetailComponent', () => {
   it('should calculate age correctly for a given birth date', () => {
     const birthDate = '1990-01-01';
     const age = component.calculateAge(birthDate);
-    expect(age).toEqual(32); // change this to the expected age based on current year
+    expect(age).toEqual(33); // change this to the expected age based on current year
   });
 
   it('should return 0 when birth date is not provided', () => {
