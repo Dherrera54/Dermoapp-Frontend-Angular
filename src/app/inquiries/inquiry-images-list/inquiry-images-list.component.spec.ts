@@ -58,7 +58,7 @@ describe('InquiryImagesListComponent', () => {
 
     component.return();
 
-    expect(router.navigate).toHaveBeenCalledWith(['/inquiries', component.medicId, component.specialty, component.inquiryId, component.token]);
+    expect(router.navigate).toHaveBeenCalledWith([`/inquiries/${component.medicId}/${component.specialty}/${component.inquiryId}/${component.token}`]);
   });
 
   it('should navigate to claimed inquiries if origin is not inquiry-list', () => {
@@ -70,6 +70,6 @@ describe('InquiryImagesListComponent', () => {
 
     component.return();
 
-    expect(router.navigate).toHaveBeenCalledWith(['/inquiries', component.medicId, component.specialty, component.inquiryId, component.token, 'claimed']);
+    expect(router.navigate).toHaveBeenCalledWith([`/inquiries/${component.medicId}/${component.specialty}/${component.inquiryId}/${component.token}/claimed`]);
   });
 });
