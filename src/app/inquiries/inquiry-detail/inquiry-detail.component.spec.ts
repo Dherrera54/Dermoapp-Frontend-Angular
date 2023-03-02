@@ -27,7 +27,7 @@ describe('InquiryDetailComponent', () => {
     const spy = jasmine.createSpyObj('MedicService', ['addInquiryToMedic']);
     TestBed.configureTestingModule({
       declarations: [ InquiryDetailComponent ],
-      imports:[Router, HttpClient,  HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
+      imports:[ HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [ { provide: MedicService, useValue: spy },
         {provide: Router,
         useValue: {
