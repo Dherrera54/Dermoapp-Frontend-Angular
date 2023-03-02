@@ -10,24 +10,28 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MedicService } from 'src/app/medic/medic.service';
 import { Inquiry } from '../inquiriy';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { Patient } from 'src/app/shared/models/patient';
 
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
   let fixture: ComponentFixture<InquiryDetailComponent>;
   let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
+  let medicServiceSpy: jasmine.SpyObj<MedicService>;
 
   beforeEach(async(() => {
     toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
+    const spy = jasmine.createSpyObj('MedicService', ['addInquiryToMedic']);
     TestBed.configureTestingModule({
       declarations: [ InquiryDetailComponent ],
       imports:[ HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
                {provide: ToastrService, useValue: toastrServiceSpy},
+               {provide: MedicService, useValue: spy}
 ]
     })
     .compileComponents();
+    medicServiceSpy = TestBed.inject(MedicService) as jasmine.SpyObj<MedicService>;
   }));
 
   beforeEach(() => {
@@ -129,6 +133,85 @@ describe('InquiryDetailComponent', () => {
     const successMsg = 'Operation successful';
     component.showSuccess(successMsg);
     expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Success!');
+  });
+
+  it('should show success message when inquiry is successfully claimed', () => {
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: '2000-02-23T08:00:00.000Z',
+      country: 'test',
+      profilePicture: 'test'
+    }
+
+    const selectedInquiry:Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      assigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+    medicServiceSpy.addInquiryToMedic.and.returnValue(of(null));
+
+    component.selectedInquiry = selectedInquiry;
+    component.medicId = '123';
+    component.token = 'abc';
+    spyOn(component, 'showSuccess');
+
+    component.claim();
+
+    expect(medicServiceSpy.addInquiryToMedic).toHaveBeenCalledWith('123', 'abc', '1');
+    expect(component.showSuccess).toHaveBeenCalledWith('Se ha añadido la consulta a tu listado de pacientes');
+  });
+
+  it('should show error message when inquiry claim fails', () => {
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: '2000-02-23T08:00:00.000Z',
+      country: 'test',
+      profilePicture: 'test'
+    }
+
+    const selectedInquiry:Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      assigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+
+
+    const error = { message: 'Server error' };
+    medicServiceSpy.addInquiryToMedic.and.returnValue(throwError(error));
+
+    component.selectedInquiry = selectedInquiry;
+    component.medicId = '123';
+    component.token = 'abc';
+    spyOn(component, 'showError');
+
+    component.claim();
+
+    expect(medicServiceSpy.addInquiryToMedic).toHaveBeenCalledWith('123','abc', '1');
+    expect(component.showError).toHaveBeenCalledWith(`Error: ${error.message}`);
   });
 
 
