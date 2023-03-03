@@ -105,6 +105,7 @@ describe('Service: Inquiry', () => {
       typeOfInjury: 'Example Type',
       specialty: 'Example Specialty',
       asigned: false,
+      acceptDiagnosis: false,
       diagnosis: 'Initial Diagnosis',
       injuryQuantity: '',
       patient: patient
@@ -125,6 +126,7 @@ describe('Service: Inquiry', () => {
       typeOfInjury: 'Example Type',
       specialty: 'exampleSpecialty',
       asigned: false,
+      acceptDiagnosis: false,
       diagnosis: 'Updated Diagnosis',
       injuryQuantity: '',
       patient: patient
@@ -148,7 +150,8 @@ describe('Service: Inquiry', () => {
       "creationDate": inquiry.creationDate,
       "typeOfInjury": inquiry.typeOfInjury,
       "specialty": specialty,
-      "assigned": inquiry.asigned,
+      "asigned": inquiry.asigned,
+      "acceptDiagnosis": inquiry.acceptDiagnosis,
       "diagnosis": diagnosis
     });
 

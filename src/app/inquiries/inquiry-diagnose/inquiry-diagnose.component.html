@@ -3,7 +3,7 @@
   <h1 class="title-header text-center">{{"diagnosticFor"|translate}} {{inquiry?.patient?.name}}:</h1>
   <div class="row submit-buttons">
     <div class="diagnosis-text-box row" *ngIf="inquiry?.diagnosis; else notDiagnosed">
-      <h4 class="text-center diagnosis-text">{{this.inquiry.diagnosis}}</h4>
+      <p class="text-center diagnosis-text">{{this.inquiry.diagnosis}}</p>
 
     </div>
     <ng-template #notDiagnosed>
