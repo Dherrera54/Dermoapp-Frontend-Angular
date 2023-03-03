@@ -42,7 +42,7 @@ export class InquiryDiagnoseComponent implements OnInit {
     this.origin= this.router.snapshot.params.origin;
     this.getInquiryById()
     this.diagnosticForm=this.formBuilder.group({
-      diagnosticDescription:["", [Validators.required, Validators.maxLength(500)]],
+      diagnosticDescription:["", [Validators.required, Validators.maxLength(1000)]],
     });
 
 

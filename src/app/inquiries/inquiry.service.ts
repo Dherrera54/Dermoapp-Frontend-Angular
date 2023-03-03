@@ -56,8 +56,9 @@ updateDiagnosisOnInquiry(inquiry:Inquiry, diagnosis:String,token:String, special
             "creationDate": inquiry.creationDate,
             "typeOfInjury": inquiry.typeOfInjury,
             "specialty": specialty,
-            "assigned":inquiry.assigned,
-            "diagnosis": diagnosis}
+            "asigned":inquiry.asigned,
+            "diagnosis": diagnosis,
+           "acceptDiagnosis":inquiry.acceptDiagnosis}
 
   return  this.http.put<any>(`${this.backUrl}/consultations/${inquiry.id}`, body ,{headers} )
 };

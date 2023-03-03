@@ -84,7 +84,7 @@ describe('InquiryDiagnoseComponent', () => {
       creationDate: '2022-02-23T08:00:00.000Z',
       typeOfInjury: 'Example Type',
       specialty: 'Example Specialty',
-      assigned: false,
+      asigned: false,
       diagnosis: 'Initial Diagnosis',
       injuryQuantity: '',
       patient: patient

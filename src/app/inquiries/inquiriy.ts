@@ -12,7 +12,8 @@ export class Inquiry {
   patient: Patient;
   specialty?:String
   diagnosis?: String;
-  assigned?:Boolean;
+  asigned?:Boolean;
+  acceptDiagnosis?:Boolean;
 
   constructor(
     id: string,

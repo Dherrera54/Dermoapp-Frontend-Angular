@@ -3,10 +3,7 @@ import { ActivatedRoute  } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Inquiry } from '../inquiriy';
 import { InquiryService } from '../inquiry.service';
-
-
-
-
+import { InquiryDetailComponent } from '../inquiry-detail/inquiry-detail.component';
 
 @Component({
   selector: 'app-inquiries-list',
@@ -18,6 +15,7 @@ import { InquiryService } from '../inquiry.service';
 export class InquiriesListComponent implements OnInit{
 
   @ViewChild('mediaScroller') mediaScrollerRef!: ElementRef;
+  @ViewChild(InquiryDetailComponent) inquiryDetailComponent!: InquiryDetailComponent;
 
 
   constructor(
@@ -38,12 +36,11 @@ export class InquiriesListComponent implements OnInit{
   medic!:any;
   inquiryId!:String;
   origin:String="inquiry-list";
-
   scrollAmount = 200;
 
 
   ngOnInit() {
-    
+
       //Consuming service
      if(!this.router.snapshot.params.medicId || this.router.snapshot.params.userToken === " "){
       this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
@@ -86,6 +83,10 @@ export class InquiriesListComponent implements OnInit{
   }
 
   onSelectedInquiry(inquiry: Inquiry):void{
+    if(this.selected)
+    {
+      this.inquiryDetailComponent.reinitialize();
+    }
     this.selected=true;
     this.selectedInquiry=inquiry;
     this.inquiry=this.selectedInquiry;
@@ -93,6 +94,10 @@ export class InquiriesListComponent implements OnInit{
   }
   onCancel(cancel:Boolean){
     this.selected=cancel;
+  }
+  onClaimedInquiry(claimed:Boolean){
+    this.getInquiriesBySpecialty();
+
   }
 
 

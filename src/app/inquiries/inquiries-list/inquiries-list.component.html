@@ -21,7 +21,7 @@
           (click)="onSelectedInquiry(inquiry)"
           id="inquirySelector"
         >
-          <div class="img-driver" *ngIf="!inquiry.assigned; else claimedInquiry">
+          <div class="img-driver" *ngIf="!inquiry.asigned; else claimedInquiry">
             <img
               id="patient-image-{{ i }}"
               src="{{ inquiry.patient.profilePicture }}"
@@ -93,6 +93,7 @@
   <app-inquiry-detail
     [selectedInquiry]="inquiry"
     [origin]="origin"
-    (cancelOutput)="onCancel($event)"
+      (cancelOutput)="onCancel($event)"
+      (claimedOutput)="onClaimedInquiry($event)"
   ></app-inquiry-detail>
 </div>

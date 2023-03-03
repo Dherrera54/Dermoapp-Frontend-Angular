@@ -69,7 +69,7 @@
 
   "diagnosticFor":"Diagnosis for patient",
   "diagnosticReqErr":"Please enter a diagnostis.",
-  "diagnosticMaxLenErr":"Diagnosis should not exceed 500 characters",
+  "diagnosticMaxLenErr":"Diagnosis should not exceed 1000 characters",
   "diagnosticPlaceholder":"Enter your diagnosis here...",
   "creatDiagnostic":"Create diagnosis",
   "sendDiagnostic":"Send diagnosis",

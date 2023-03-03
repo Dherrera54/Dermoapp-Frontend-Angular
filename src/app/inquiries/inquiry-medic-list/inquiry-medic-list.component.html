@@ -22,7 +22,7 @@
           (click)="onSelectedInquiry(inquiry)"
           id="inquirySelector"
         >
-          <div class="img-driver" *ngIf="!inquiry.assigned; else claimedInquiry">
+          <div class="img-driver" *ngIf="!inquiry.asigned; else claimedInquiry">
             <img
               id="patient-image-{{ i }}"
               src="{{ inquiry.patient.profilePicture }}"

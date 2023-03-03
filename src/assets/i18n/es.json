@@ -72,7 +72,7 @@
 
   "diagnosticFor":"Diagnóstico para el paciente",
   "diagnosticReqErr":"Por favor ingrese un diagnóstico.",
-  "diagnosticMaxLenErr":"El diagnóstico no puede exceder los 500 caracteres.",
+  "diagnosticMaxLenErr":"El diagnóstico no puede exceder los 1000 caracteres.",
   "diagnosticPlaceholder":"Ingresa el diagnóstico acá...",
   "creatDiagnostic":"Crear diagnóstico",
   "sendDiagnostic":"Enviar diagnóstico",

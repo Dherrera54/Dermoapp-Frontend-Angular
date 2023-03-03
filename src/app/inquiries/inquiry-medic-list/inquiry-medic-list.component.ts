@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MedicService } from '../../medic/medic.service';
 import { Inquiry } from '../inquiriy';
+import { InquiryDetailComponent } from '../inquiry-detail/inquiry-detail.component';
 
 @Component({
   selector: 'app-inquiry-medic-list',
@@ -12,6 +13,7 @@ import { Inquiry } from '../inquiriy';
 export class InquiryMedicListComponent implements OnInit {
 
   @ViewChild('mediaScroller') mediaScrollerRef!: ElementRef;
+  @ViewChild(InquiryDetailComponent) inquiryDetailComponent!: InquiryDetailComponent;
 
   medicId!: String;
   token!: String;
@@ -61,15 +63,7 @@ export class InquiryMedicListComponent implements OnInit {
       };
     });
 
-/*       this.showInquiries=MedicMock.response.data.inquiries;
 
-      if(this.inquiryId){
-        for(let i=0;i<this.showInquiries.length;i++){
-          if(this.showInquiries[i].id==this.inquiryId){
-            this.onSelectedInquiry(this.showInquiries[i]);
-          };
-        };
-      }; */
   };
 
   showError(error: string){
@@ -82,6 +76,10 @@ export class InquiryMedicListComponent implements OnInit {
 
   };
   onSelectedInquiry(inquiry: Inquiry):void{
+    if(this.selected)
+    {
+      this.inquiryDetailComponent.reinitialize();
+    }
     this.selected=true;
     this.selectedInquiry=inquiry;
     this.inquiry=this.selectedInquiry;
@@ -90,4 +88,8 @@ export class InquiryMedicListComponent implements OnInit {
   onCancel(cancel:Boolean){
     this.selected=cancel;
   };
+  onClaimedInquiry(claimed:Boolean){
+    this.getInquiriesFromMedic();
+
+  }
 }

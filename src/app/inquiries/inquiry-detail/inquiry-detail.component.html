@@ -112,7 +112,7 @@
       </div>
       <div class="col-lg-4 text-center mt-3">
         <div *ngIf="origin=='inquiry-list' && !owned   ; else medicInquiryList">
-        <div *ngIf="!selectedInquiry.assigned  ; else alreadyOwned">
+        <div *ngIf="!selectedInquiry.asigned  ; else alreadyOwned">
           <button
           (click)="claim()"
           type="button"

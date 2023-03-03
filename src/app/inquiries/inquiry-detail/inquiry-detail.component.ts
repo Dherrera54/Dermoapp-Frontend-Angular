@@ -15,12 +15,14 @@ export class InquiryDetailComponent implements OnInit {
   @Input() selectedInquiry!:Inquiry;
   @Input() origin!:String;
   @Output() cancelOutput = new EventEmitter<Boolean>();
+  @Output() claimedOutput = new EventEmitter<Boolean>();
+
   imgUrl!:String;
   token!: String;
   medicId!:String;
   specialty!:String;
   medicInquiries!:Inquiry[];
-  owned:Boolean=false;
+  owned!:Boolean;
 
   constructor(private router: Router,
               private routerPath: ActivatedRoute,
@@ -29,6 +31,7 @@ export class InquiryDetailComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.owned=false;
     this.token = this.routerPath.snapshot.params.userToken;
     this.medicId= this.routerPath.snapshot.params.medicId;
     this.specialty= this.routerPath.snapshot.params.medicSpecialty;
@@ -55,6 +58,8 @@ export class InquiryDetailComponent implements OnInit {
   claim(){
     this.medicService.addInquiryToMedic(this.medicId, this.token, this.selectedInquiry.id).subscribe(res =>{
       this.showSuccess('Se ha añadido la consulta a tu listado de pacientes');
+      this.claimedOutput.emit(true);
+      this.reinitialize();
      },
     error => {
       this.showError(`Error: ${error.message}`)
@@ -79,6 +84,11 @@ export class InquiryDetailComponent implements OnInit {
       };
     });
   };
+  reinitialize(){
+    this.owned=false;
+    this.checkMedicInquiries();
+
+  }
 
   seeImages(imgUrl:String, id:String){
     this.router.navigate([`/inquiries/${this.medicId}/${this.specialty}/${id}/images/${this.origin}/${this.token}`])
