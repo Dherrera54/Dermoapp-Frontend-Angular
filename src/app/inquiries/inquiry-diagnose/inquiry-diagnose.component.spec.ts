@@ -21,12 +21,12 @@ import { of } from 'rxjs';
 describe('InquiryDiagnoseComponent', () => {
   let component: InquiryDiagnoseComponent;
   let fixture: ComponentFixture<InquiryDiagnoseComponent>;
-  let inquiryServiceSpy: jasmine.SpyObj<InquiryService>;
-  let debug: DebugElement;
+  /* let inquiryServiceSpy: jasmine.SpyObj<InquiryService>;
+  let debug: DebugElement; */
 
 
   beforeEach(async(() => {
-    const spy = jasmine.createSpyObj('InquiryService', ['getInquiryById']);
+    /* const spy = jasmine.createSpyObj('InquiryService', ['getInquiryById']); */
 
     TestBed.configureTestingModule({
 
@@ -34,7 +34,7 @@ describe('InquiryDiagnoseComponent', () => {
       imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         FormBuilder,
-        { provide: InquiryService, useValue: spy },
+       /*  { provide: InquiryService, useValue: spy }, */
         {
           provide: Router,
           useValue: {
@@ -52,7 +52,7 @@ describe('InquiryDiagnoseComponent', () => {
     })
     .compileComponents();
 
-    inquiryServiceSpy = TestBed.inject(InquiryService) as jasmine.SpyObj<InquiryService>;
+   /*  inquiryServiceSpy = TestBed.inject(InquiryService) as jasmine.SpyObj<InquiryService>; */
   }));
 
   beforeEach(() => {
