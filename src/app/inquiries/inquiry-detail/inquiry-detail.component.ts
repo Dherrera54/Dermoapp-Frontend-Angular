@@ -3,7 +3,6 @@ import { Inquiry } from '../inquiriy';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicService } from '../../medic/medic.service';
 import { ToastrService } from 'ngx-toastr';
-import { InquiryService } from '../inquiry.service';
 
 @Component({
   selector: 'app-inquiry-detail',
@@ -27,7 +26,6 @@ export class InquiryDetailComponent implements OnInit {
   constructor(private router: Router,
               private routerPath: ActivatedRoute,
               private medicService:MedicService,
-              private inquiryService: InquiryService,
               private toastr: ToastrService) { }
 
   ngOnInit() {

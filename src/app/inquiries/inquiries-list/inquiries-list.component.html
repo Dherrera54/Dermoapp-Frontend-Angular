@@ -29,7 +29,7 @@
             />
           </div>
           <ng-template #claimedInquiry>
-            <div class="img-driver-claimed">
+            <div class="img-driver-claimed" *ngIf="inquiry.owned; else notOwned">
               <img
                 id="patient-image-{{ i }}"
                 src="{{ inquiry.patient.profilePicture }}"
@@ -37,6 +37,17 @@
               />
               <img class="img-check" src="./assets/check-all.svg" alt="Check calimed inquiry icon">
             </div>
+            <ng-template #notOwned>
+              <div class="img-driver-not-owned">
+                <img
+                  id="patient-image-{{ i }}"
+                  src="{{ inquiry.patient.profilePicture }}"
+                  alt="patient-image-{{inquiry.patient.name }}"
+                />
+                <img class="img-check" src="./assets/check-all.svg" alt="Check calimed inquiry icon">
+              </div>
+
+            </ng-template>
 
           </ng-template>
           <div class="patient-name">

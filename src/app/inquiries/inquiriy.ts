@@ -14,6 +14,7 @@ export class Inquiry {
   diagnosis?: String;
   asigned?:Boolean;
   acceptDiagnosis?:Boolean;
+  owned?:Boolean=false;
 
   constructor(
     id: string,

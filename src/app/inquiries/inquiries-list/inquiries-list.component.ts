@@ -1,9 +1,10 @@
 import { Component,  OnInit, ViewChild, ElementRef  } from '@angular/core';
-import { ActivatedRoute  } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Inquiry } from '../inquiriy';
 import { InquiryService } from '../inquiry.service';
 import { InquiryDetailComponent } from '../inquiry-detail/inquiry-detail.component';
+import { MedicService } from '../../medic/medic.service';
 
 @Component({
   selector: 'app-inquiries-list',
@@ -21,14 +22,13 @@ export class InquiriesListComponent implements OnInit{
   constructor(
     private router: ActivatedRoute,
     private inquiryService:InquiryService,
+    private medicService: MedicService,
     private toastr: ToastrService,
-
-
-
   ) { }
   medicId!: String;
   token!: String;
   showInquiries:Array<Inquiry>=[];
+  medicInquiries:Array<Inquiry>=[];
   selected:Boolean= false;
   selectedInquiry!:Inquiry;
   inquiry!:Inquiry;
@@ -69,6 +69,23 @@ export class InquiriesListComponent implements OnInit{
     this.inquiryService.getInquiriesBySpecialty(this.specialty, this.token)
     .subscribe(inquiries => {
       this.showInquiries = inquiries
+      this.medicService.getMedicInquiriesById(this.medicId, this.token).subscribe(res=>{
+        this.medicInquiries=res;
+
+        for(let i=0;i<this.showInquiries.length;i++){
+          for(let j=0;j<this.medicInquiries.length; j++){
+          if(this.showInquiries[i].id==this.medicInquiries[j].id){
+            this.showInquiries[i].owned=true;
+            break
+          }
+          else{
+            this.showInquiries[i].owned=false;
+          };
+        }
+        };
+
+
+      })
 
       if(this.inquiryId){
         for(let i=0;i<inquiries.length;i++){
@@ -76,6 +93,7 @@ export class InquiriesListComponent implements OnInit{
             this.onSelectedInquiry(inquiries[i]);
           };
         };
+
 
       };
 
