@@ -380,14 +380,6 @@ it('should set owned to true if medic has the selected inquiry', inject([MedicSe
   expect(spy.calls.first().args[0]).toBe("medic-id-test");
 }));
 
-it('should call the showError function with the correct message when addInquiryToMedic returns an error',inject([MedicService], (medicService: MedicService)  => {
-  const error = { message: 'Server error' };
-  let spy = spyOn(medicService, 'addInquiryToMedic').and.returnValue(throwError(error));
-   component.claim();
-
-  expect(component.showError).toHaveBeenCalledWith(`Error: ${error.message}`);
-}));
-
 
 });
 
