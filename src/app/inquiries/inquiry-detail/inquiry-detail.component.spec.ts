@@ -163,7 +163,7 @@ describe('InquiryDetailComponent', () => {
 
     component.medicId="medic-id-test";
     component.specialty="specialty-test";
-    component.specialty="origin-test";
+    component.origin="origin-test";
     component.token="token-test";
     component.selectedInquiry=inquiry;
     fixture.detectChanges();
@@ -172,9 +172,58 @@ describe('InquiryDetailComponent', () => {
 
   component.seeImages(inquiry.image, inquiry.id);
 
-  expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/${inquiry.id}/${inquiry.image}/origin-test/token-test`);
+  expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/${inquiry.id}/images/origin-test/token-test`);
+
+ }));
+
+ it('Navigate to /diagnose', inject([Router], (mockRouter: Router) => {
+
+
+  const patient: Patient={
+    id: '22',
+    name: 'test',
+    birthDate: '2000-02-23T08:00:00.000Z',
+    country: 'test',
+    profilePicture: 'test'
+  }
+  const inquiry: Inquiry = {
+    id: '1',
+    shape: 'Example Shape',
+    numberOfInjuries: '2',
+    distribution: 'Example Distribution',
+    comment: 'Example Comment',
+    image: 'Example Image',
+    creationDate: '2022-02-23T08:00:00.000Z',
+    typeOfInjury: 'Example Type',
+    specialty: 'Example Specialty',
+    asigned: false,
+    diagnosis: 'Initial Diagnosis',
+    injuryQuantity: '',
+    patient: patient
+
+  };
+
+  component.medicId="medic-id-test";
+  component.specialty="specialty-test";
+  component.origin="origin-test";
+  component.token="token-test";
+  component.selectedInquiry=inquiry;
+  fixture.detectChanges();
+
+const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+component.diagnose(inquiry.id);
+
+expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/${inquiry.id}/diagnose/token-test`);
 
 }));
+
+ it('should reinitialize owned and call checkMedicInquiries', () => {
+  spyOn(component, 'checkMedicInquiries');
+  component.reinitialize();
+  expect(component.owned).toBe(false);
+  expect(component.checkMedicInquiries).toHaveBeenCalled();
+});
 
 
 
