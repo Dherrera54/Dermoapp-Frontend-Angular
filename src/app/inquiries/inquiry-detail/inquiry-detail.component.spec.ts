@@ -131,6 +131,15 @@ describe('InquiryDetailComponent', () => {
     component.showSuccess(successMsg);
     expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Success!');
   });
+  it('Navigate to /images.', inject([Router], (mockRouter: Router) => {
+
+  const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+  component.seeImages();
+
+  expect(spy.calls.first().args[0]).toContain('/inquiries');
+
+}));
 
 
 
