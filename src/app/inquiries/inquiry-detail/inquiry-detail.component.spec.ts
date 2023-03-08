@@ -214,7 +214,7 @@ const spy = spyOn(mockRouter, 'navigate').and.stub();
 
 component.diagnose(inquiry.id);
 
-expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/${inquiry.id}/diagnose/token-test`);
+expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/${inquiry.id}/diagnose/origin-test/token-test`);
 
 }));
 
@@ -224,7 +224,16 @@ expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-
   expect(component.owned).toBe(false);
   expect(component.checkMedicInquiries).toHaveBeenCalled();
 });
+it('should emit a false value when cancel is called', () => {
+  
+  const emitSpy = spyOn(component.cancelOutput, 'emit');
 
+
+  component.cancel();
+
+
+  expect(emitSpy).toHaveBeenCalledWith(false);
+});
 
 
 });
