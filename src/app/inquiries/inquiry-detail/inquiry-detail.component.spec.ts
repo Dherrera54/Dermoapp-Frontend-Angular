@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 
 import { InquiryDetailComponent } from './inquiry-detail.component';
@@ -10,6 +10,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Inquiry } from '../inquiriy';
 import { Patient } from 'src/app/shared/models/patient';
+import { Router } from '@angular/router';
+import { SelectionModel } from '@angular/cdk/collections';
 
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
@@ -131,11 +133,37 @@ describe('InquiryDetailComponent', () => {
     component.showSuccess(successMsg);
     expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Success!');
   });
-  it('Navigate to /images.', inject([Router], (mockRouter: Router) => {
+
+  it('Navigate to /images', inject([Router], (mockRouter: Router) => {
+
+
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: '2000-02-23T08:00:00.000Z',
+      country: 'test',
+      profilePicture: 'test'
+    }
+    const inquiry: Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      asigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
 
   const spy = spyOn(mockRouter, 'navigate').and.stub();
 
-  component.seeImages();
+  component.seeImages(inquiry.image, inquiry.id);
 
   expect(spy.calls.first().args[0]).toContain('/inquiries');
 
