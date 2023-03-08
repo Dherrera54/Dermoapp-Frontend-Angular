@@ -161,11 +161,18 @@ describe('InquiryDetailComponent', () => {
 
     };
 
+    component.medicId="medic-id-test";
+    component.specialty="specialty-test";
+    component.specialty="origin-test";
+    component.token="token-test";
+    component.selectedInquiry=inquiry;
+    fixture.detectChanges();
+
   const spy = spyOn(mockRouter, 'navigate').and.stub();
 
   component.seeImages(inquiry.image, inquiry.id);
 
-  expect(spy.calls.first().args[0]).toContain('/inquiries');
+  expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/${inquiry.id}/${inquiry.image}/origin-test/token-test`);
 
 }));
 
