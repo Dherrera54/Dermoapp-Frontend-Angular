@@ -263,12 +263,28 @@ it('should owned be false if medic has not the selected inquiry', inject([MedicS
 
   };
 
+  const inquiry2: Inquiry = {
+    id: '555',
+    shape: 'Example Shape',
+    numberOfInjuries: '2',
+    distribution: 'Example Distribution',
+    comment: 'Example Comment',
+    image: 'Example Image',
+    creationDate: '2022-02-23T08:00:00.000Z',
+    typeOfInjury: 'Example Type',
+    specialty: 'Example Specialty',
+    asigned: false,
+    diagnosis: 'Initial Diagnosis',
+    injuryQuantity: '',
+    patient: patient
+
+  };
+
   component.medicId="medic-id-test";
   component.specialty="specialty-test";
   component.origin="origin-test";
   component.token="token-test";
-  component.selectedInquiry=inquiry;
-  component.selectedInquiry.id='555';
+  component.selectedInquiry=inquiry2;
   component.medicInquiries=[inquiry,inquiry]
   fixture.detectChanges();
 
@@ -321,6 +337,46 @@ it('should set owned to true if medic has the selected inquiry', inject([MedicSe
   component.checkMedicInquiries();
 
   expect(component.owned).toBeTrue();
+}));
+it('should set owned to true if medic has the selected inquiry', inject([MedicService], (medicService: MedicService) => {
+  const patient: Patient={
+    id: '22',
+    name: 'test',
+    birthDate: '2000-02-23T08:00:00.000Z',
+    country: 'test',
+    profilePicture: 'test'
+  }
+  const inquiry: Inquiry = {
+    id: '1',
+    shape: 'Example Shape',
+    numberOfInjuries: '2',
+    distribution: 'Example Distribution',
+    comment: 'Example Comment',
+    image: 'Example Image',
+    creationDate: '2022-02-23T08:00:00.000Z',
+    typeOfInjury: 'Example Type',
+    specialty: 'Example Specialty',
+    asigned: false,
+    diagnosis: 'Initial Diagnosis',
+    injuryQuantity: '',
+    patient: patient
+
+  };
+
+  component.medicId="medic-id-test";
+  component.specialty="specialty-test";
+  component.origin="origin-test";
+  component.token="token-test";
+  component.selectedInquiry=inquiry;
+  fixture.detectChanges();
+
+
+  let spy = spyOn(medicService, 'addInquiryToMedic').and.returnValue(of([inquiry,inquiry]));
+
+
+  component.claim();
+
+  expect(spy.calls.first().args[0]).toBeTrue();
 }));
 
 
