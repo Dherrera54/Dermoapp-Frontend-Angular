@@ -12,6 +12,8 @@ import { Inquiry } from '../inquiriy';
 import { Patient } from 'src/app/shared/models/patient';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
+import { of } from 'rxjs';
+import { MedicService } from '../../medic/medic.service';
 
 describe('InquiryDetailComponent', () => {
   let component: InquiryDetailComponent;
@@ -225,7 +227,7 @@ expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-
   expect(component.checkMedicInquiries).toHaveBeenCalled();
 });
 it('should emit a false value when cancel is called', () => {
-  
+
   const emitSpy = spyOn(component.cancelOutput, 'emit');
 
 
@@ -234,7 +236,47 @@ it('should emit a false value when cancel is called', () => {
 
   expect(emitSpy).toHaveBeenCalledWith(false);
 });
+it('should set owned to true if medic has the selected inquiry', inject([MedicService], (medicService: MedicService) => {
+  const patient: Patient={
+    id: '22',
+    name: 'test',
+    birthDate: '2000-02-23T08:00:00.000Z',
+    country: 'test',
+    profilePicture: 'test'
+  }
+  const inquiry: Inquiry = {
+    id: '1',
+    shape: 'Example Shape',
+    numberOfInjuries: '2',
+    distribution: 'Example Distribution',
+    comment: 'Example Comment',
+    image: 'Example Image',
+    creationDate: '2022-02-23T08:00:00.000Z',
+    typeOfInjury: 'Example Type',
+    specialty: 'Example Specialty',
+    asigned: false,
+    diagnosis: 'Initial Diagnosis',
+    injuryQuantity: '',
+    patient: patient
 
+  };
+
+  component.medicId="medic-id-test";
+  component.specialty="specialty-test";
+  component.origin="origin-test";
+  component.token="token-test";
+  component.selectedInquiry=inquiry;
+  component.medicInquiries=[inquiry,inquiry]
+  fixture.detectChanges();
+
+
+  spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([inquiry,inquiry]));
+
+
+  component.checkMedicInquiries();
+
+  expect(component.owned).toBeTrue();
+}));
 
 });
 
