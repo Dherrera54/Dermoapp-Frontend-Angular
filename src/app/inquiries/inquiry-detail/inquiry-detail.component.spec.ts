@@ -376,7 +376,8 @@ it('should set owned to true if medic has the selected inquiry', inject([MedicSe
 
   component.claim();
 
-  expect(spy.calls.first().args[0]).toBeTrue();
+
+  expect(spy.calls.first().args[0]).toBe("medic-id-test");
 }));
 
 
