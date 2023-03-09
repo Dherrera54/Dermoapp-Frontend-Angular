@@ -46,21 +46,17 @@
                 >{{ "name" | translate }}: {{ inquiry?.patient?.name }}</span
               >
             </h5>
-
-          <!--   patient age display -->
           </div>
           <div class="patient-age">
-
             <h5>
               <span id="patient-age-{{ i }}" class="patient-age card-content"
                 >{{ "age" | translate }}:
                 {{ calculateAge(inquiry.patient.birthDate) }}</span
               >
             </h5>
-
           </div>
-          <!-- inquiry creation date display -->
           <div class="inquiry-date">
+            
             <h5>
               <span id="inquiry-date-{{ i }}" class="inquiry-date card-content"
                 >{{ "creationDate" | translate }}:
@@ -68,11 +64,8 @@
               >
             </h5>
           </div>
-           <!-- injury type isplay -->
           <div class="inquiry-injury-type">
-
             <h5>
-
               <span
                 id="inquiry-injury-type-{{ i }}"
                 class="inquiry-injury-type card-content"
@@ -80,27 +73,18 @@
                 {{ inquiry.typeOfInjury }}</span
               >
             </h5>
-
           </div>
-
         </div>
-
       </div>
-       <!-- button display -->
       <button
-
         *ngIf="showInquiries.length > 0"
         class="btn-scroll"
         (click)="scrollHorizontally(1)"
         #scrollRightButto
-
       >
         <img src="./assets/caret-right-fill.svg" alt="Scroll right button" />
-
       </button>
-
     </div>
-    
   </div>
 </div>
 <ng-template class="emptyList align-items-center" #emptyList>
