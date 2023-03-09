@@ -67,9 +67,12 @@ export class InquiryMedicListComponent implements OnInit {
   };
 
   showError(error: string){
-    this.toastr.error(error, "Error");
-  };
+    this.toastr.error(error, "Error!")
+  }
   calculateAge(birthDate:string){
+    if(!birthDate){
+      return 0;
+    }
     let timeDiff = Math.abs(Date.now() - new Date(birthDate).getTime());
     let age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     return age;

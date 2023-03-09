@@ -20,6 +20,7 @@ describe('InquiryMedicListComponent', () => {
   let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
 
   beforeEach(async(() => {
+    toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
     TestBed.configureTestingModule({
       declarations: [ InquiryMedicListComponent ],
       imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],

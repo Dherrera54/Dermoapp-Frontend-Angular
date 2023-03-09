@@ -123,6 +123,9 @@ export class InquiriesListComponent implements OnInit{
     this.toastr.error(error, "Error");
   }
   calculateAge(birthDate:string){
+    if(!birthDate){
+      return 0;
+    }
     let timeDiff = Math.abs(Date.now() - new Date(birthDate).getTime());
     let age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     return age;
