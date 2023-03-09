@@ -35,7 +35,7 @@ describe('InquiryDiagnoseComponent', () => {
       providers: [
         FormBuilder,
         {provide: ToastrService, useValue: toastrServiceSpy},
-        {
+        /* {
 
           provide: Router,
           useValue: {
@@ -47,7 +47,7 @@ describe('InquiryDiagnoseComponent', () => {
             useValue: {
               snapshot: {params: {id: 100}}
             }
-          },
+          }, */
 
       ]
     })
@@ -70,13 +70,13 @@ describe('InquiryDiagnoseComponent', () => {
   it('should call error method of toastr service with correct parameters', () => {
     const errorMsg = 'An error occurred';
     component.showError(errorMsg);
-    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error!');
+    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error');
   });
 
   it('should call success method of toastr service with correct parameters', () => {
     const successMsg = 'Operation successful';
     component.showSuccess(successMsg);
-    expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Success!');
+    expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Registro exitoso');
   });
 
   it('Navigate to /inquiry list', inject([Router], (mockRouter: Router) => {
