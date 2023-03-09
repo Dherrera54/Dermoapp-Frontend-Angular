@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -49,6 +49,40 @@ describe('InquiryImagesListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('Navigate to /inquiry list', inject([Router], (mockRouter: Router) => {
 
-  
+
+    component.medicId="medic-id-test";
+   component.specialty="specialty-test";
+   component.origin="inquiry-list";
+   component.token="token-test";
+   component.inquiryId="inquiry-id-test"
+   fixture.detectChanges();
+
+ const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+ component.return();
+
+ expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/inquiry-id-test/token-test`);
+
+}));
+it('Navigate to /inquiry medic list', inject([Router], (mockRouter: Router) => {
+
+
+ component.medicId="medic-id-test";
+component.specialty="specialty-test";
+component.origin="inquiry-medic-list";
+component.token="token-test";
+component.inquiryId="inquiry-id-test"
+fixture.detectChanges();
+
+const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+component.return();
+
+expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/inquiry-id-test/token-test/claimed`);
+
+}));
+
+
 });
