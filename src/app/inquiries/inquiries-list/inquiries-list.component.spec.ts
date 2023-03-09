@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { Inquiry } from '../inquiriy';
+import { Patient } from 'src/app/shared/models/patient';
 
 describe('InquiriesComponent', () => {
   let component: InquiriesListComponent;
@@ -93,5 +95,53 @@ describe('InquiriesComponent', () => {
     const errorMsg = 'An error occurred';
     component.showError(errorMsg);
     expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error');
+  });
+  it('should set selected to true on cancel', () => {
+    const cancel = true;
+
+    component.onCancel(cancel);
+
+    expect(component.selected).toBeTrue();
+  });
+
+  it('should call getInquiriesFromMedic on claimed inquiry', () => {
+    spyOn(component, 'getInquiriesBySpecialty');
+
+    component.onClaimedInquiry(true);
+
+    expect(component.getInquiriesBySpecialty).toHaveBeenCalled();
+  });
+
+  it('should set selected to true and update selected inquiry', () => {
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: '2000-02-23T08:00:00.000Z',
+      country: 'test',
+      profilePicture: 'test'
+    }
+    const inquiry: Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      asigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+    component.selected = false;
+
+    component.onSelectedInquiry(inquiry);
+
+    expect(component.selected).toBeTrue();
+    expect(component.selectedInquiry).toBe(inquiry);
+    expect(component.inquiry).toBe(inquiry);
   });
 });
