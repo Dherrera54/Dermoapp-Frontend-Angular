@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -9,6 +9,8 @@ import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {  TranslateModule } from '@ngx-translate/core';
+import { MedicService } from '../medic.service';
+import { of } from 'rxjs';
 
 
 describe('MedicLoginComponent', () => {
@@ -70,6 +72,41 @@ describe('MedicLoginComponent', () => {
       "enter"
     );
   });
+
+  it('Navigate to /signup', inject([Router], (mockRouter: Router) => {
+
+  const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+  component.goRegister();
+
+  expect(spy.calls.first().args[0]).toContain(`/singup/`);
+
+  }));
+
+  it('Navigate to /home', inject([Router], (mockRouter: Router) => {
+
+    const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+    component.goHome();
+
+    expect(spy.calls.first().args[0]).toContain(`/`);
+
+    }));
+
+    it('should set owned to true if medic has the selected inquiry', inject([MedicService], (medicService: MedicService) => {
+
+      const email:string="test@email.com"
+      const password:string="testPassword1!"
+
+      let spy = spyOn(medicService, 'userLogIn').and.returnValue(of({token:"test-token"}));
+
+
+      component.onLogInMedic(email, password);
+
+      expect(component.error).toBeFalsy();
+      expect(spy.calls.first().args[0]).toBe("test-token");
+    }));
+
 
 
 });
