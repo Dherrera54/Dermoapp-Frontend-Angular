@@ -222,6 +222,7 @@ describe('InquiryMedicListComponent', () => {
     component.token="token-test";
     component.inquiryId=inquiry.id
     component.selectedInquiry=inquiry;
+    component.selected=false;
     component.showInquiries=[inquiry,inquiry]
     fixture.detectChanges();
 
