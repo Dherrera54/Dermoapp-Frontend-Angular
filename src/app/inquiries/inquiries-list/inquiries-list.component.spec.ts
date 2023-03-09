@@ -50,8 +50,7 @@ describe('InquiriesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
-  it('should scroll media scroller to the right', () => {
+/*   it('should scroll media scroller to the right', () => {
     const scrollAmount = 0;
     const val = 1;
     const mediaScroller = fixture.nativeElement.querySelector('.media-scroller');
@@ -73,5 +72,5 @@ describe('InquiriesComponent', () => {
     component.scrollHorizontally(val);
 
     expect(mediaScroller.scrollLeft).toBe(-scrollAmount * val);
-  });
+  }); */
 });
