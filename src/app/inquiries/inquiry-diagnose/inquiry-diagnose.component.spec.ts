@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture,  TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -9,7 +9,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormBuilder } from '@angular/forms';
 import { InquiryService } from '../inquiry.service';
@@ -21,12 +21,12 @@ import { of } from 'rxjs';
 describe('InquiryDiagnoseComponent', () => {
   let component: InquiryDiagnoseComponent;
   let fixture: ComponentFixture<InquiryDiagnoseComponent>;
-  /* let inquiryServiceSpy: jasmine.SpyObj<InquiryService>;
-  let debug: DebugElement; */
+  let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
+  let debug: DebugElement;
 
 
   beforeEach(async(() => {
-    /* const spy = jasmine.createSpyObj('InquiryService', ['getInquiryById']); */
+    toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
 
     TestBed.configureTestingModule({
 
@@ -34,8 +34,9 @@ describe('InquiryDiagnoseComponent', () => {
       imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         FormBuilder,
-       /*  { provide: InquiryService, useValue: spy }, */
+        {provide: ToastrService, useValue: toastrServiceSpy},
         {
+
           provide: Router,
           useValue: {
             navigate: jasmine.createSpy('navigate'),
@@ -52,7 +53,7 @@ describe('InquiryDiagnoseComponent', () => {
     })
     .compileComponents();
 
-   /*  inquiryServiceSpy = TestBed.inject(InquiryService) as jasmine.SpyObj<InquiryService>; */
+
   }));
 
   beforeEach(() => {
@@ -66,40 +67,51 @@ describe('InquiryDiagnoseComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-/*   it('should call inquiryService.getInquiryById with correct arguments', fakeAsync(() => {
-    const patient: Patient={
-      id: '22',
-      name: 'test',
-      birthDate: '2000-02-23T08:00:00.000Z',
-      country: 'test',
-      profilePicture: 'test'
-    }
-    const inquiry: Inquiry = {
-      id: 'test-inquiry-id',
-      shape: 'Example Shape',
-      numberOfInjuries: '2',
-      distribution: 'Example Distribution',
-      comment: 'Example Comment',
-      image: 'Example Image',
-      creationDate: '2022-02-23T08:00:00.000Z',
-      typeOfInjury: 'Example Type',
-      specialty: 'Example Specialty',
-      asigned: false,
-      diagnosis: 'Initial Diagnosis',
-      injuryQuantity: '',
-      patient: patient
+  it('should call error method of toastr service with correct parameters', () => {
+    const errorMsg = 'An error occurred';
+    component.showError(errorMsg);
+    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error!');
+  });
 
-    };
+  it('should call success method of toastr service with correct parameters', () => {
+    const successMsg = 'Operation successful';
+    component.showSuccess(successMsg);
+    expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Success!');
+  });
+
+  it('Navigate to /inquiry list', inject([Router], (mockRouter: Router) => {
 
 
-    inquiryServiceSpy.getInquiryById.and.returnValue(of(inquiry));
+     component.medicId="medic-id-test";
+    component.specialty="specialty-test";
+    component.origin="inquiry-list";
+    component.token="token-test";
+    component.inquiryId="inquiry-id-test"
+    fixture.detectChanges();
 
-    component.getInquiryById();
+  const spy = spyOn(mockRouter, 'navigate').and.stub();
 
-    expect(inquiryServiceSpy.getInquiryById).toHaveBeenCalledWith('test-inquiry-id', 'test-token');
+  component.return();
 
-    // Need to use tick() to simulate asynchronous behavior of subscribe() call
-    tick();
-    expect(component.inquiry).toEqual(inquiry);
-  })); */
+  expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/inquiry-id-test/token-test`);
+
+ }));
+ it('Navigate to /inquiry medic list', inject([Router], (mockRouter: Router) => {
+
+
+  component.medicId="medic-id-test";
+ component.specialty="specialty-test";
+ component.origin="inquiry-medic-list";
+ component.token="token-test";
+ component.inquiryId="inquiry-id-test"
+ fixture.detectChanges();
+
+const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+component.return();
+
+expect(spy.calls.first().args[0]).toContain(`/inquiries/medic-id-test/specialty-test/inquiry-id-test/token-test/claimed`);
+
+}));
+
 });
