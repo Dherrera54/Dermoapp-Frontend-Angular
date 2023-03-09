@@ -54,6 +54,7 @@ describe('InquiryMedicListComponent', () => {
     fixture = TestBed.createComponent(InquiryMedicListComponent);
     component = fixture.componentInstance;
     inquiryDetailComponent = fixture.componentInstance.inquiryDetailComponent;
+    component.inquiryDetailComponent=inquiryDetailComponent;
     fixture.detectChanges();
   });
 
@@ -222,7 +223,6 @@ describe('InquiryMedicListComponent', () => {
     component.inquiryId=inquiry.id
     component.selectedInquiry=inquiry;
     component.showInquiries=[inquiry,inquiry]
-    component.inquiryDetailComponent=inquiryDetailComponent;
     fixture.detectChanges();
 
 
