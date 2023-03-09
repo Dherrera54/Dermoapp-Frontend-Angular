@@ -145,7 +145,7 @@ describe('InquiryMedicListComponent', () => {
     expect(component.selectedInquiry).toBe(inquiry);
     expect(component.inquiry).toBe(inquiry);
   });
-  it('should set selected inquiry if if user coms fromother biews', inject([MedicService], (medicService: MedicService) => {
+  it('should set selected inquiry if if user coms fromother views', inject([MedicService], (medicService: MedicService) => {
     const patient: Patient={
       id: '22',
       name: 'test',
@@ -187,7 +187,7 @@ describe('InquiryMedicListComponent', () => {
     expect(component.selectedInquiry).toBe(inquiry);
   }));
 
-  it('should set selected inquiry if if user coms fromother biews', inject([MedicService], (medicService: MedicService) => {
+/*   it('should set selected inquiry if if user coms fromother views', inject([MedicService], (medicService: MedicService) => {
     const patient: Patient={
       id: '22',
       name: 'test',
@@ -228,7 +228,8 @@ describe('InquiryMedicListComponent', () => {
     component.getInquiriesFromMedic();
 
     expect(component.selectedInquiry).toBe(inquiry);
-  }));
+  })); */
+
   it('should set selected to true and update selected inquiry', () => {
     const patient: Patient={
       id: '22',
