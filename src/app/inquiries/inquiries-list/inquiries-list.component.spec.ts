@@ -181,7 +181,7 @@ describe('InquiriesComponent', () => {
     fixture.detectChanges();
 
 
-    spyOn(medicService, 'getInquiriesBySpecialty').and.returnValue(of([inquiry,inquiry]));
+    spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([inquiry,inquiry]));
 
 
     component.getInquiriesBySpecialty();
