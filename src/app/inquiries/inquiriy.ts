@@ -10,6 +10,11 @@ export class Inquiry {
   distribution: string;
   comment: string;
   patient: Patient;
+  specialty?:String
+  diagnosis?: String;
+  asigned?:Boolean;
+  acceptDiagnosis?:Boolean;
+  owned?:Boolean=false;
 
   constructor(
     id: string,
@@ -21,7 +26,8 @@ export class Inquiry {
     comment: string,
     patient: Patient,
     numberOfInjuries:string,
-    image:String
+    image:String,
+    diagnosis:String
 
 
   ){
@@ -35,6 +41,7 @@ export class Inquiry {
       this.comment=comment;
       this.numberOfInjuries=numberOfInjuries;
       this.image=image;
+      this.diagnosis=diagnosis;
 
 
 

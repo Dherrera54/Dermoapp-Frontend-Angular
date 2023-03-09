@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Inquiry } from './inquiriy';
 
 @Injectable({
   providedIn: 'root'
@@ -25,21 +26,41 @@ getInquiryById(id: String, token: String): Observable<any>{
   return this.http.get<any>(`${this.backUrl}/consultations/${id}`, {headers: headers})
 
 }
-/* getInquiresFromMedicId(medicId: String, token: String): Observable<Inquiry[]>{
+/* updateStatusOnInquiry(inquiry:Inquiry,token:String, specialty:String):Observable<any>{
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
   })
-  return this.http.get<Inquiry[]>(`${this.backUrl}/inquiry/${medicId}}`, {headers: headers})
-}
-addInquirieToMedic(medicId: String, token: String, inquiryId:String): Observable<Inquiry>{
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`
-  })
-  headers.set('Content-Type', 'application/json');
-  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+  let body={"shape": inquiry.shape,
+            "numberOfInjuries": inquiry.numberOfInjuries,
+            "distribution": inquiry.distribution,
+            "comment": inquiry.comment,
+            "image": inquiry.image,
+            "creationDate": inquiry.creationDate,
+            "typeOfInjury": inquiry.typeOfInjury,
+            "specialty": specialty,
+            "assigned":true,
+            "diagnosis": inquiry.diagnosis}
 
-  let body={"inquiryId": inquiryId}
-  return this.http.post<Inquiry>(`${this.backUrl}/inquiry/${medicId}}`,body, {headers: headers})
+  return  this.http.put<any>(`${this.backUrl}/consultations/${inquiry.id}`, body ,{headers} )
 } */
+
+updateDiagnosisOnInquiry(inquiry:Inquiry, diagnosis:String,token:String, specialty:String):Observable<any>{
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  })
+  let body={"shape": inquiry.shape,
+            "numberOfInjuries": inquiry.numberOfInjuries,
+            "distribution": inquiry.distribution,
+            "comment": inquiry.comment,
+            "image": inquiry.image,
+            "creationDate": inquiry.creationDate,
+            "typeOfInjury": inquiry.typeOfInjury,
+            "specialty": specialty,
+            "asigned":inquiry.asigned,
+            "diagnosis": diagnosis,
+           "acceptDiagnosis":inquiry.acceptDiagnosis}
+
+  return  this.http.put<any>(`${this.backUrl}/consultations/${inquiry.id}`, body ,{headers} )
+};
 
 }

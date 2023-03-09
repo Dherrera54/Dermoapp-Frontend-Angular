@@ -6,16 +6,34 @@ import { InquiryDetailComponent } from './inquiry-detail/inquiry-detail.componen
 import { SharedModule } from '../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { InquiryImagesListComponent } from './inquiry-images-list/inquiry-images-list.component';
-
+import { InquiryMedicListComponent } from './inquiry-medic-list/inquiry-medic-list.component';
+import { InquiryDiagnoseComponent } from './inquiry-diagnose/inquiry-diagnose.component';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     AppHeaderModule,
     SharedModule,
-    TranslateModule
+    TranslateModule,
+    MatInputModule,
+    ReactiveFormsModule
+   
   ],
-  declarations: [InquiriesListComponent, InquiryDetailComponent, InquiryImagesListComponent],
-  exports: [InquiriesListComponent,InquiryDetailComponent,InquiryImagesListComponent]
+  declarations: [
+    InquiriesListComponent,
+    InquiryDetailComponent,
+    InquiryImagesListComponent,
+    InquiryMedicListComponent,
+    InquiryDiagnoseComponent,
+  ],
+  exports: [
+    InquiriesListComponent,
+    InquiryDetailComponent,
+    InquiryImagesListComponent,
+    InquiryMedicListComponent,
+    InquiryDiagnoseComponent,
+  ],
 })
-export class InquiriesModule { }
+export class InquiriesModule {}

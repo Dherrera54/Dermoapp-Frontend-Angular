@@ -1,3 +1,4 @@
+import { Inquiry } from '../inquiries/inquiriy';
 export class Medic {
   id: string;
   email: string;
@@ -9,6 +10,7 @@ export class Medic {
   specialty: string;
   profesionalId: string;
   profilePicture: string;
+  inquiries: Inquiry[];
 
   constructor(
     id: string,
@@ -20,6 +22,7 @@ export class Medic {
     specialty: string,
     profesionalId: string,
     profilePicture: string,
+    inquiries: Inquiry[]
 
   ){
       this.id = id;
@@ -31,6 +34,7 @@ export class Medic {
       this.specialty =specialty;
       this.profesionalId=profesionalId;
       this.profilePicture= profilePicture;
+      this.inquiries=inquiries;
 
 
   }

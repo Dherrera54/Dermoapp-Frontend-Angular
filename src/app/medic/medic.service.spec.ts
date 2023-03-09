@@ -54,7 +54,8 @@ describe('Service: Medic', () => {
       profilePicture: faker.image.cats(),
       email: faker.internet.email(),
       password: faker.internet.password(8,true, undefined,'!'),
-      specialty: "Pediatria"
+      specialty: "Pediatria",
+      inquiries:[]
    }
 
   }
@@ -127,12 +128,18 @@ describe('Service: Medic', () => {
       it('should return a medic by id', () => {
         const id = '123';
         const token = 'abc';
-        const expectedMedic = {
-          id: '123',
-          name: 'John',
-          lastName: 'Doe',
-          email: 'johndoe@example.com'
-        };
+        const expectedMedic = new Medic(
+          '123',
+          'johndoe@example.com',
+          "test",
+          'John',
+          'Doe',
+          "colombia",
+          "test",
+          "test",
+          "testimg",
+          []
+        );
 
         service.getMedicById(id, token).subscribe((medic) => {
           expect(medic).toEqual(expectedMedic);
@@ -142,6 +149,18 @@ describe('Service: Medic', () => {
         expect(req.request.method).toBe('GET');
         expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
         req.flush(expectedMedic);
+      });
+
+      it('should return a inquiry from medic', () => {
+        const mockResponse = { medicId: 'medic1', inquiryId: 'inquiry1' };
+
+        service.addInquiryToMedic('medic1', 'token', 'inquiry1').subscribe(response => {
+          expect(response).toEqual(mockResponse);
+        });
+
+        const req = httpMock.expectOne(`${service.backUrl}/medics/medic1/consultations/inquiry1`);
+        expect(req.request.method).toBe('POST');
+        req.flush(mockResponse);
       });
 
 });
