@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -13,6 +13,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Patient } from 'src/app/shared/models/patient';
 import { Inquiry } from '../inquiriy';
+import { MedicService } from 'src/app/medic/medic.service';
+import { of } from 'rxjs';
 
 
 describe('InquiryMedicListComponent', () => {
@@ -111,38 +113,6 @@ describe('InquiryMedicListComponent', () => {
     expect(component.getInquiriesFromMedic).toHaveBeenCalled();
   });
 
-  it('should reinitialize inquiry detail component if selected is true', () => {
-    const patient: Patient={
-      id: '22',
-      name: 'test',
-      birthDate: '2000-02-23T08:00:00.000Z',
-      country: 'test',
-      profilePicture: 'test'
-    }
-    const inquiry: Inquiry = {
-      id: '1',
-      shape: 'Example Shape',
-      numberOfInjuries: '2',
-      distribution: 'Example Distribution',
-      comment: 'Example Comment',
-      image: 'Example Image',
-      creationDate: '2022-02-23T08:00:00.000Z',
-      typeOfInjury: 'Example Type',
-      specialty: 'Example Specialty',
-      asigned: false,
-      diagnosis: 'Initial Diagnosis',
-      injuryQuantity: '',
-      patient: patient
-
-    };
-    component.selected = true;
-    spyOn(component.inquiryDetailComponent, 'reinitialize');
-
-    component.onSelectedInquiry(inquiry);
-
-    expect(component.inquiryDetailComponent.reinitialize).toHaveBeenCalled();
-  });
-
   it('should set selected to true and update selected inquiry', () => {
     const patient: Patient={
       id: '22',
@@ -175,4 +145,45 @@ describe('InquiryMedicListComponent', () => {
     expect(component.selectedInquiry).toBe(inquiry);
     expect(component.inquiry).toBe(inquiry);
   });
+  it('should set selected inquiry if if user coms fromother biews', inject([MedicService], (medicService: MedicService) => {
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: '2000-02-23T08:00:00.000Z',
+      country: 'test',
+      profilePicture: 'test'
+    }
+    const inquiry: Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      asigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+
+    component.medicId="medic-id-test";
+    component.specialty="specialty-test";
+    component.origin="origin-test";
+    component.token="token-test";
+    component.selectedInquiry=inquiry;
+    component.showInquiries=[inquiry,inquiry]
+    fixture.detectChanges();
+
+
+    spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([inquiry,inquiry]));
+
+
+    component.getInquiriesFromMedic();
+
+    expect(component.selectedInquiry).toBe(inquiry);
+  }));
 });
