@@ -169,7 +169,7 @@ it('should display error when diagnostic not updayed of the selected inquiry', i
 
   spyOn(component, 'showError');
 
-  let spy = spyOn(inquiryService, 'updateDiagnosisOnInquiry').and.returnValue(throwError({ message: errorMessage });
+  let spy = spyOn(inquiryService, 'updateDiagnosisOnInquiry').and.returnValue(throwError({ message: errorMessage }));
 
 
   component.createDiagnosis();
