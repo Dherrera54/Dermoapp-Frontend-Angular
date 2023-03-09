@@ -15,6 +15,7 @@ import { Patient } from 'src/app/shared/models/patient';
 import { Inquiry } from '../inquiriy';
 import { MedicService } from 'src/app/medic/medic.service';
 import { of } from 'rxjs';
+import { InquiryDetailComponent } from '../inquiry-detail/inquiry-detail.component';
 
 
 describe('InquiryMedicListComponent', () => {
@@ -22,11 +23,12 @@ describe('InquiryMedicListComponent', () => {
   let fixture: ComponentFixture<InquiryMedicListComponent>;
   let debug: DebugElement;
   let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
+  let inquiryDetailComponent: InquiryDetailComponent;
 
   beforeEach(async(() => {
     toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
     TestBed.configureTestingModule({
-      declarations: [ InquiryMedicListComponent ],
+      declarations: [ InquiryMedicListComponent, InquiryDetailComponent ],
       imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {provide: ToastrService, useValue: toastrServiceSpy},
@@ -51,6 +53,7 @@ describe('InquiryMedicListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(InquiryMedicListComponent);
     component = fixture.componentInstance;
+    inquiryDetailComponent = fixture.componentInstance.inquiryDetailComponent;
     fixture.detectChanges();
   });
 
@@ -219,6 +222,7 @@ describe('InquiryMedicListComponent', () => {
     component.inquiryId=inquiry.id
     component.selectedInquiry=inquiry;
     component.showInquiries=[inquiry,inquiry]
+    component.inquiryDetailComponent=inquiryDetailComponent;
     fixture.detectChanges();
 
 
