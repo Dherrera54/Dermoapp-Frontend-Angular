@@ -15,7 +15,7 @@ import { FormBuilder } from '@angular/forms';
 import { InquiryService } from '../inquiry.service';
 import { Inquiry } from '../inquiriy';
 import { Patient } from 'src/app/shared/models/patient';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 
 describe('InquiryDiagnoseComponent', () => {
@@ -154,6 +154,28 @@ it('should set owned to true if medic has the selected inquiry', inject([Inquiry
 
 
   expect(spy.calls.first().args[0].diagnosis).toBe("Initial Diagnosis");
+}));
+
+it('should display error when diagnostic not updayed of the selected inquiry', inject([InquiryService], (inquiryService: InquiryService) => {
+
+  const errorMessage = 'fake error message';
+
+  component.medicId="medic-id-test";
+  component.specialty="specialty-test";
+  component.origin="origin-test";
+  component.token="token-test";
+
+  fixture.detectChanges();
+
+  spyOn(component, 'showError');
+
+  let spy = spyOn(inquiryService, 'updateDiagnosisOnInquiry').and.returnValue(throwError({ message: errorMessage });
+
+
+  component.createDiagnosis();
+
+
+  expect(component.showError).toHaveBeenCalledWith(`Ha ocurrido un error: ${errorMessage}`);
 }));
 
 
