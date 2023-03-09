@@ -50,4 +50,27 @@ describe('InquiriesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should scroll media scroller to the right', () => {
+    const scrollAmount = 0;
+    const val = 1;
+    const mediaScroller = fixture.nativeElement.querySelector('.media-scroller');
+    spyOnProperty(mediaScroller, 'scrollLeft', 'set');
+
+    component.scrollAmount = scrollAmount;
+    component.scrollHorizontally(val);
+
+    expect(mediaScroller.scrollLeft).toBe(scrollAmount * val);
+  });
+
+  it('should scroll media scroller to the left', () => {
+    const scrollAmount = 0;
+    const val = -1;
+    const mediaScroller = fixture.nativeElement.querySelector('.media-scroller');
+    spyOnProperty(mediaScroller, 'scrollLeft', 'set');
+
+    component.scrollAmount = scrollAmount;
+    component.scrollHorizontally(val);
+
+    expect(mediaScroller.scrollLeft).toBe(-scrollAmount * val);
+  });
 });

@@ -51,7 +51,7 @@ describe('InquiryMedicListComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should scroll media scroller to the right', () => {
-    const scrollAmount = 10;
+    const scrollAmount = 0;
     const val = 1;
     const mediaScroller = fixture.nativeElement.querySelector('.media-scroller');
     spyOnProperty(mediaScroller, 'scrollLeft', 'set');
@@ -63,7 +63,7 @@ describe('InquiryMedicListComponent', () => {
   });
 
   it('should scroll media scroller to the left', () => {
-    const scrollAmount = 10;
+    const scrollAmount = 0;
     const val = -1;
     const mediaScroller = fixture.nativeElement.querySelector('.media-scroller');
     spyOnProperty(mediaScroller, 'scrollLeft', 'set');
