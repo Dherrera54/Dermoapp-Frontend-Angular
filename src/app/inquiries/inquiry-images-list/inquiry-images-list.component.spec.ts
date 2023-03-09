@@ -22,7 +22,7 @@ describe('InquiryImagesListComponent', () => {
       declarations: [ InquiryImagesListComponent ],
       imports:[HttpClientTestingModule, RouterTestingModule,  HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
-        {
+   /*      {
           provide: Router,
           useValue: {
             navigate: jasmine.createSpy('navigate'),
@@ -34,7 +34,7 @@ describe('InquiryImagesListComponent', () => {
               snapshot= {params: {id: 100}}
             }
           },
-
+ */
       ]
     })
     .compileComponents();
