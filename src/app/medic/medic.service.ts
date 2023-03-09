@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import firebase from 'firebase/app';
 import 'firebase/storage';
+import { Medic } from './medic';
+import { Inquiry } from '../inquiries/inquiriy';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -65,12 +67,33 @@ getMedicByEmail(email: String, token: String):Observable<any>{
   return this.http.get<any>(`${this.backUrl}/medics/email/${email}`, {headers: headers} );
 }
 
-getMedicById(id: String, token: String):Observable<any>{
+getMedicById(id: String, token: String):Observable<Medic>{
   const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
   headers.set('Content-Type', 'application/json');
   headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
 
-  return this.http.get<any>(`${this.backUrl}/medics/${id}`, {headers: headers} );
+  return this.http.get<Medic>(`${this.backUrl}/medics/${id}`, {headers: headers} );
+}
+
+addInquiryToMedic(medicId: String, token: String, inquiryId:String): Observable<any>{
+  console.log(medicId);
+  console.log(token);
+  console.log(inquiryId);
+
+  const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+  let body ={}
+
+  return this.http.post<any>(`${this.backUrl}/medics/${medicId}/consultations/${inquiryId}`, body, {headers: headers})
+}
+
+getMedicInquiriesById(id: String, token: String):Observable<Inquiry[]>{
+  const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+  headers.set('Content-Type', 'application/json');
+  headers.set('Access-Control-Allow-Origin', 'https://dermoappfront.web.app/');
+
+  return this.http.get<Inquiry[]>(`${this.backUrl}/medics/${id}/consultations`, {headers: headers} );
 }
 
 async imgUpload(imgname:String, imgBase64:any ){

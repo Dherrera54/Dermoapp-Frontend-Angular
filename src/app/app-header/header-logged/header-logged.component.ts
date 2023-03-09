@@ -34,7 +34,10 @@ export class HeaderLoggedComponent implements OnInit {
     const userId = parseInt(this.router.snapshot.params.userId)
     const token = this.router.snapshot.params.userToken
     if(menu === "inquiries"){
-      this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/${this.token}`])
+      this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/inquiryId/${this.token}`])
+    }
+    else if(menu === "patients"){
+      this.routerPath.navigate([`/inquiries/${this.medicId}/${this.specialty}/inquiryId/${this.token}/claimed`])
     }
     else if(menu === "logOut"){
       this.routerPath.navigate([`/login/`])

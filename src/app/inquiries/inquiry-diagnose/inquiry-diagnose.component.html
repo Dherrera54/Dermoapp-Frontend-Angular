@@ -1,0 +1,107 @@
+<app-header-logged></app-header-logged>
+<div class='main-container'>
+  <h1 class="title-header text-center">{{"diagnosticFor"|translate}} {{inquiry?.patient?.name}}:</h1>
+  <div class="row submit-buttons">
+    <div class="diagnosis-text-box row" *ngIf="inquiry?.diagnosis; else notDiagnosed">
+      <p class="text-center diagnosis-text">{{this.inquiry.diagnosis}}</p>
+
+    </div>
+    <ng-template #notDiagnosed>
+      <h3 class="text-center not-diagnosed-msg">{{"notDiagnosed"|translate}}</h3>
+
+    </ng-template>
+
+    <div class="col-lg-2 text-center mt-3">
+      <button
+        (click)='return()'
+        type="button"
+        class="btn btn-cancel col-12"
+        i18n
+      >
+        {{ "return" | translate }}
+      </button>
+    </div>
+    <div class="col-lg-2 text-center mt-3">
+      <button
+        (click)='newDiagnosis=true'
+        type="button"
+        class="btn btn-continue col-12"
+
+        i18n
+      >
+        {{ "creatDiagnostic" | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="newDiagnosis">
+    <form
+    [formGroup]="diagnosticForm"
+    (ngSubmit)="!diagnosticForm.invalid "
+    id="diagnosticForm"
+  >
+  <div class="diagnose-form-container">
+  <div class="form-group input-box">
+     <div class="col-lg-12">
+        <textarea
+          #diagnosticDescription
+          formControlName="diagnosticDescription"
+          type="text"
+          class="form-control"
+          placeholder="{{ 'diagnosticPlaceholder' | translate }}"
+
+        ></textarea>
+      </div>
+    </div>
+    <mat-error
+      class="alert-danger validator-message my-3"
+      *ngIf="
+      diagnosticForm.get('diagnosticDescription')?.hasError('required') &&
+      diagnosticForm.get('diagnosticDescription')?.touched
+      "
+
+    >
+      {{ "diagnosticReqErr" | translate }}
+    </mat-error>
+    <mat-error
+      class="alert-danger validator-message my-3"
+      *ngIf="
+      diagnosticForm.get('diagnosticDescription')?.hasError('maxlength') &&
+      diagnosticForm.get('diagnosticDescription')?.touched
+      "
+      i18n
+    >
+      {{ "diagnosticMaxLenErr" | translate }}
+    </mat-error>
+    <div class="diagnose-btns">
+    <div class="col-lg-10 text-center mt-3">
+      <button
+        (click)='newDiagnosis=false'
+        type="button"
+        class="btn btn-cancel col-12"
+        i18n
+      >
+        {{ "cancel" | translate }}
+      </button>
+    </div>
+    <div class="empty-col"></div>
+    <div class="empty-col"></div>
+    <div class="col-lg-10 text-center mt-3">
+      <button
+        (click)='createDiagnosis()'
+        type="button"
+        class="btn btn-continue col-12"
+        [disabled]="!diagnosticForm.valid"
+
+
+      >
+        {{ "sendDiagnostic" | translate }}
+      </button>
+    </div>
+  </div>
+ </div>
+</form>
+  </div>
+
+
+</div>

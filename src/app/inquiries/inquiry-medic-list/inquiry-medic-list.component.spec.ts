@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { InquiriesListComponent } from './inquiries-list.component';
+import { InquiryMedicListComponent } from './inquiry-medic-list.component';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,21 +11,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { Inquiry } from '../inquiriy';
 import { Patient } from 'src/app/shared/models/patient';
-import { of } from 'rxjs';
+import { Inquiry } from '../inquiriy';
 import { MedicService } from 'src/app/medic/medic.service';
+import { of } from 'rxjs';
+import { InquiryDetailComponent } from '../inquiry-detail/inquiry-detail.component';
 
-describe('InquiriesComponent', () => {
-  let component: InquiriesListComponent;
-  let fixture: ComponentFixture<InquiriesListComponent>;
+
+describe('InquiryMedicListComponent', () => {
+  let component: InquiryMedicListComponent;
+  let fixture: ComponentFixture<InquiryMedicListComponent>;
   let debug: DebugElement;
   let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
+  let inquiryDetailComponent: InquiryDetailComponent;
 
   beforeEach(async(() => {
     toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
     TestBed.configureTestingModule({
-      declarations: [ InquiriesListComponent ],
+      declarations: [ InquiryMedicListComponent, InquiryDetailComponent ],
       imports:[HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         {provide: ToastrService, useValue: toastrServiceSpy},
@@ -43,21 +46,22 @@ describe('InquiriesComponent', () => {
           },
 
       ]
-
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InquiriesListComponent);
+    fixture = TestBed.createComponent(InquiryMedicListComponent);
     component = fixture.componentInstance;
+    inquiryDetailComponent = fixture.componentInstance.inquiryDetailComponent;
+    component.inquiryDetailComponent=inquiryDetailComponent;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-/*   it('should scroll media scroller to the right', () => {
+  it('should scroll media scroller to the right', () => {
     const scrollAmount = 0;
     const val = 1;
     const mediaScroller = fixture.nativeElement.querySelector('.media-scroller');
@@ -79,8 +83,7 @@ describe('InquiriesComponent', () => {
     component.scrollHorizontally(val);
 
     expect(mediaScroller.scrollLeft).toBe(-scrollAmount * val);
-  }); */
-
+  });
   it('should calculate age correctly for a given birth date', () => {
     const birthDate = '1990-01-01';
     const age = component.calculateAge(birthDate);
@@ -96,7 +99,7 @@ describe('InquiriesComponent', () => {
   it('should call error method of toastr service with correct parameters', () => {
     const errorMsg = 'An error occurred';
     component.showError(errorMsg);
-    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error');
+    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error!');
   });
   it('should set selected to true on cancel', () => {
     const cancel = true;
@@ -107,11 +110,11 @@ describe('InquiriesComponent', () => {
   });
 
   it('should call getInquiriesFromMedic on claimed inquiry', () => {
-    spyOn(component, 'getInquiriesBySpecialty');
+    spyOn(component, 'getInquiriesFromMedic');
 
     component.onClaimedInquiry(true);
 
-    expect(component.getInquiriesBySpecialty).toHaveBeenCalled();
+    expect(component.getInquiriesFromMedic).toHaveBeenCalled();
   });
 
   it('should set selected to true and update selected inquiry', () => {
@@ -146,7 +149,6 @@ describe('InquiriesComponent', () => {
     expect(component.selectedInquiry).toBe(inquiry);
     expect(component.inquiry).toBe(inquiry);
   });
-
   it('should set selected inquiry if if user coms fromother views', inject([MedicService], (medicService: MedicService) => {
     const patient: Patient={
       id: '22',
@@ -184,8 +186,9 @@ describe('InquiriesComponent', () => {
     spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([inquiry,inquiry]));
 
 
-    component.getInquiriesBySpecialty();
+    component.getInquiriesFromMedic();
 
     expect(component.selectedInquiry).toBe(inquiry);
   }));
+
 });

@@ -16,8 +16,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { MedicService } from './medic/medic.service';
 import { SharedModule } from './shared/shared.module';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +43,7 @@ import { SharedModule } from './shared/shared.module';
       },
       }),
       SharedModule,
-      
+
 
  ],
   providers: [MedicService, HttpClient],

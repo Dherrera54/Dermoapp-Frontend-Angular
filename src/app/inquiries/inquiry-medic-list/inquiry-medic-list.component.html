@@ -1,7 +1,7 @@
 <app-header-logged></app-header-logged>
 <div class="main-container">
   <div class="container-fluid">
-    <div *ngIf="showInquiries.length > 0; else emptyList">
+    <div *ngIf="showInquiries.length > 0; else emptyList"></div>
     <div class="scroll-list">
       <button
         *ngIf="showInquiries.length > 0"
@@ -9,13 +9,14 @@
         (click)="scrollHorizontally(-1)"
         #scrollLeftButton
       >
-        <img src="./assets/caret-left-fill.svg" alt="Scroll left button" />
+      <img src="./assets/caret-left-fill.svg" alt="Scroll left button" />
       </button>
       <div
-        class="media-scroller swiper-wrapper container-inquiries snaps-inline"
+        class="media-scroller container-inquiries snaps-inline"
         #mediaScroller
       >
         <div
+          class="inquiry-item"
           *ngFor="let inquiry of showInquiries; let i = index"
           class="card-inquiry"
           (click)="onSelectedInquiry(inquiry)"
@@ -25,11 +26,11 @@
             <img
               id="patient-image-{{ i }}"
               src="{{ inquiry.patient.profilePicture }}"
-              alt=""
+              alt="patient-image-{{inquiry.patient.name }}"
             />
           </div>
           <ng-template #claimedInquiry>
-            <div class="img-driver-claimed" *ngIf="inquiry.owned; else notOwned">
+            <div class="img-driver-claimed">
               <img
                 id="patient-image-{{ i }}"
                 src="{{ inquiry.patient.profilePicture }}"
@@ -37,23 +38,12 @@
               />
               <img class="img-check" src="./assets/check-all.svg" alt="Check calimed inquiry icon">
             </div>
-            <ng-template #notOwned>
-              <div class="img-driver-not-owned">
-                <img
-                  id="patient-image-{{ i }}"
-                  src="{{ inquiry.patient.profilePicture }}"
-                  alt="patient-image-{{inquiry.patient.name }}"
-                />
-                <img class="img-check" src="./assets/check-all.svg" alt="Check calimed inquiry icon">
-              </div>
-
-            </ng-template>
 
           </ng-template>
           <div class="patient-name">
             <h5>
               <span id="patient-name-{{ i }}" class="patient-name card-content"
-                >{{ "name" | translate }}: {{ inquiry.patient.name }}</span
+                >{{ "name" | translate }}: {{ inquiry?.patient?.name }}</span
               >
             </h5>
           </div>
@@ -66,6 +56,7 @@
             </h5>
           </div>
           <div class="inquiry-date">
+            
             <h5>
               <span id="inquiry-date-{{ i }}" class="inquiry-date card-content"
                 >{{ "creationDate" | translate }}:
@@ -97,14 +88,13 @@
   </div>
 </div>
 <ng-template class="emptyList align-items-center" #emptyList>
-  <h2 class="emptyListLabel text-center">{{ "emptyListMsg" | translate }}</h2>
+  <h2 class="emptyListLabel text-center">{{ "emptyListMsgMedic" | translate }}</h2>
 </ng-template>
 
 <div class="col-12 center inquiry-detail" *ngIf="selected === true">
-  <app-inquiry-detail
+<app-inquiry-detail
     [selectedInquiry]="inquiry"
     [origin]="origin"
-      (cancelOutput)="onCancel($event)"
-      (claimedOutput)="onClaimedInquiry($event)"
+    (cancelOutput)="onCancel($event)"
   ></app-inquiry-detail>
 </div>
