@@ -15,13 +15,14 @@ describe('HeaderLoggedComponent', () => {
   let component: HeaderLoggedComponent;
   let fixture: ComponentFixture<HeaderLoggedComponent>;
   let debug: DebugElement;
+  let router:Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderLoggedComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule,SharedModule, TranslateModule.forRoot()],
       providers: [
-        {
+        /* {
           provide: Router,
           useValue: {
             navigate: jasmine.createSpy('navigate'),
@@ -32,7 +33,7 @@ describe('HeaderLoggedComponent', () => {
             useValue: {
               snapshot: {params: {id: 100}}
             }
-          },
+          }, */
 
       ]
 
@@ -44,6 +45,7 @@ describe('HeaderLoggedComponent', () => {
     fixture = TestBed.createComponent(HeaderLoggedComponent);
     component = fixture.componentInstance;
     debug = fixture.debugElement;
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 
@@ -74,5 +76,24 @@ it('Should have an element Log Out', () => {
   expect(debug.query(By.css('#logOutBtn')).nativeElement.innerText).toContain(
     "logOut"
   );
+});
+
+it('should navigate to inquiries', () => {
+  component.goTo('inquiries');
+  expect(router.navigate).toHaveBeenCalledWith([
+    `/inquiries/${component.medicId}/${component.specialty}/inquiryId/${component.token}`,
+  ]);
+});
+
+it('should navigate to patients', () => {
+  component.goTo('patients');
+  expect(router.navigate).toHaveBeenCalledWith([
+    `/inquiries/${component.medicId}/${component.specialty}/inquiryId/${component.token}/claimed`,
+  ]);
+});
+
+it('should navigate to login', () => {
+  component.goTo('logOut');
+  expect(router.navigate).toHaveBeenCalledWith([`/login/`]);
 });
 });
