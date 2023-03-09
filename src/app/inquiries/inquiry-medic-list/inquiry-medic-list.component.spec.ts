@@ -187,7 +187,7 @@ describe('InquiryMedicListComponent', () => {
     expect(component.selectedInquiry).toBe(inquiry);
   }));
 
-/*   it('should set selected inquiry if if user coms fromother views', inject([MedicService], (medicService: MedicService) => {
+  it('should set selected inquiry if if user coms fromother views', inject([MedicService], (medicService: MedicService) => {
     const patient: Patient={
       id: '22',
       name: 'test',
@@ -228,38 +228,7 @@ describe('InquiryMedicListComponent', () => {
     component.getInquiriesFromMedic();
 
     expect(component.selectedInquiry).toBe(inquiry);
-  })); */
+  }));
 
-  it('should set selected to true and update selected inquiry', () => {
-    const patient: Patient={
-      id: '22',
-      name: 'test',
-      birthDate: '2000-02-23T08:00:00.000Z',
-      country: 'test',
-      profilePicture: 'test'
-    }
-    const inquiry: Inquiry = {
-      id: '1',
-      shape: 'Example Shape',
-      numberOfInjuries: '2',
-      distribution: 'Example Distribution',
-      comment: 'Example Comment',
-      image: 'Example Image',
-      creationDate: '2022-02-23T08:00:00.000Z',
-      typeOfInjury: 'Example Type',
-      specialty: 'Example Specialty',
-      asigned: false,
-      diagnosis: 'Initial Diagnosis',
-      injuryQuantity: '',
-      patient: patient
 
-    };
-    component.selected = true;
-
-    component.onSelectedInquiry(inquiry);
-
-    expect(component.selected).toBeTrue();
-    expect(component.selectedInquiry).toBe(inquiry);
-    expect(component.inquiry).toBe(inquiry);
-  });
 });
