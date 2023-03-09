@@ -41,21 +41,11 @@ export class InquiriesListComponent implements OnInit{
 
   ngOnInit() {
 
-      //Consuming service
-     if(!this.router.snapshot.params.medicId || this.router.snapshot.params.userToken === " "){
-      this.showError("No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
-    }
-    else{
       this.medicId = this.router.snapshot.params.medicId;
       this.token = this.router.snapshot.params.userToken;
       this.specialty = this.router.snapshot.params.medicSpecialty;
       this.inquiryId = this.router.snapshot.params.inquiryId;
       this.getInquiriesBySpecialty();
-
-
-
-
-    }
 
    }
 

@@ -92,6 +92,6 @@ describe('InquiriesComponent', () => {
   it('should call error method of toastr service with correct parameters', () => {
     const errorMsg = 'An error occurred';
     component.showError(errorMsg);
-    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error!');
+    expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error');
   });
 });
