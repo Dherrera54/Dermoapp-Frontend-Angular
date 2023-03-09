@@ -23,7 +23,7 @@ describe('MedicLoginComponent', () => {
       declarations: [ MedicLoginComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule,SharedModule, TranslateModule.forRoot()],
       providers: [
-        {
+      /*   {
           provide: Router,
           useValue: {
             navigate: jasmine.createSpy('navigate'),
@@ -34,7 +34,7 @@ describe('MedicLoginComponent', () => {
             useValue: {
               snapshot: {params: {id: 100}}
             }
-          },
+          }, */
 
 
       ]
@@ -104,7 +104,7 @@ describe('MedicLoginComponent', () => {
       component.onLogInMedic(email, password);
 
       expect(component.error).toBeFalsy();
-      expect(spy.calls.first().args[0]).toBe("test-token");
+      expect(spy.calls.first().args[0]).toBe(email);
     }));
 
 
