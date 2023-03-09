@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -13,6 +13,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Inquiry } from '../inquiriy';
 import { Patient } from 'src/app/shared/models/patient';
+import { of } from 'rxjs';
+import { MedicService } from 'src/app/medic/medic.service';
 
 describe('InquiriesComponent', () => {
   let component: InquiriesListComponent;
@@ -144,4 +146,46 @@ describe('InquiriesComponent', () => {
     expect(component.selectedInquiry).toBe(inquiry);
     expect(component.inquiry).toBe(inquiry);
   });
+
+  it('should set selected inquiry if if user coms fromother views', inject([MedicService], (medicService: MedicService) => {
+    const patient: Patient={
+      id: '22',
+      name: 'test',
+      birthDate: '2000-02-23T08:00:00.000Z',
+      country: 'test',
+      profilePicture: 'test'
+    }
+    const inquiry: Inquiry = {
+      id: '1',
+      shape: 'Example Shape',
+      numberOfInjuries: '2',
+      distribution: 'Example Distribution',
+      comment: 'Example Comment',
+      image: 'Example Image',
+      creationDate: '2022-02-23T08:00:00.000Z',
+      typeOfInjury: 'Example Type',
+      specialty: 'Example Specialty',
+      asigned: false,
+      diagnosis: 'Initial Diagnosis',
+      injuryQuantity: '',
+      patient: patient
+
+    };
+
+    component.medicId="medic-id-test";
+    component.specialty="specialty-test";
+    component.origin="origin-test";
+    component.token="token-test";
+    component.selectedInquiry=inquiry;
+    component.showInquiries=[inquiry,inquiry]
+    fixture.detectChanges();
+
+
+    spyOn(medicService, 'getInquiriesBySpecialty').and.returnValue(of([inquiry,inquiry]));
+
+
+    component.getInquiriesBySpecialty();
+
+    expect(component.selectedInquiry).toBe(inquiry);
+  }));
 });
