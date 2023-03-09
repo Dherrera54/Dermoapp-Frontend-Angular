@@ -50,6 +50,7 @@ describe('InquiriesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
   it('should scroll media scroller to the right', () => {
     const scrollAmount = 0;
     const val = 1;
