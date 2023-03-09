@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -15,7 +15,7 @@ describe('HeaderLoggedComponent', () => {
   let component: HeaderLoggedComponent;
   let fixture: ComponentFixture<HeaderLoggedComponent>;
   let debug: DebugElement;
-  let router:Router;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -45,8 +45,8 @@ describe('HeaderLoggedComponent', () => {
     fixture = TestBed.createComponent(HeaderLoggedComponent);
     component = fixture.componentInstance;
     debug = fixture.debugElement;
-    router = TestBed.inject(Router);
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
@@ -78,22 +78,42 @@ it('Should have an element Log Out', () => {
   );
 });
 
-it('should navigate to inquiries', () => {
+it('should navigate to inquiries', inject([Router], (mockRouter: Router) => {
+
+  component.medicId="medic-id-test";
+  component.specialty="specialty-test";
+  component.token="token-test";
+  fixture.detectChanges();
+  const spy = spyOn(mockRouter, 'navigate').and.stub();
+
   component.goTo('inquiries');
-  expect(router.navigate).toHaveBeenCalledWith([
+
+  expect(spy.calls.first().args[0]).toContain(
     `/inquiries/${component.medicId}/${component.specialty}/inquiryId/${component.token}`,
-  ]);
-});
+  );
+}));
 
-it('should navigate to patients', () => {
+it('should navigate to patients', inject([Router], (mockRouter: Router) => {
+  component.medicId="medic-id-test";
+  component.specialty="specialty-test";
+  component.token="token-test";
+  fixture.detectChanges();
+  const spy = spyOn(mockRouter, 'navigate').and.stub();
+
   component.goTo('patients');
-  expect(router.navigate).toHaveBeenCalledWith([
+  expect(spy.calls.first().args[0]).toContain(
     `/inquiries/${component.medicId}/${component.specialty}/inquiryId/${component.token}/claimed`,
-  ]);
-});
+  );
+}));
 
-it('should navigate to login', () => {
+it('should navigate to login', inject([Router], (mockRouter: Router) => {
+  component.medicId="medic-id-test";
+  component.specialty="specialty-test";
+  component.token="token-test";
+  fixture.detectChanges();
+  const spy = spyOn(mockRouter, 'navigate').and.stub();
+
   component.goTo('logOut');
-  expect(router.navigate).toHaveBeenCalledWith([`/login/`]);
-});
+  expect(spy.calls.first().args[0]).toContain(`/login/`);
+}));
 });
