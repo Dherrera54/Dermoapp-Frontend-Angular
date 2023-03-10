@@ -21,8 +21,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
   goTo(menu: string){
-    const userId = parseInt(this.router.snapshot.params.userId)
-    const token = this.router.snapshot.params.userToken
+
     if(menu === "logIn"){
       this.routerPath.navigate([`/login/`])
     }
