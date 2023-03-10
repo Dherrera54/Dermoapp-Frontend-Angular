@@ -163,4 +163,35 @@ describe('Service: Medic', () => {
         req.flush(mockResponse);
       });
 
+      it('should upload an image', async () => {
+        const imgName = 'test.png';
+        const imgBase64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA';
+        const mockResponse = 'https://example.com/test.png';
+
+        service.imgUpload(imgName, imgBase64).then((url: string) => {
+          expect(url).toBe(mockResponse);
+        });
+
+        const req = httpMock.expectOne(`${service.storageRef}/medic/profilePics/${imgName}`);
+        expect(req.request.method).toBe('PUT');
+        expect(req.request.body).toEqual(imgBase64);
+        req.flush({ ref: { getDownloadURL: () => mockResponse } });
+      });
+
+      it('should handle error', async () => {
+        const imgName = 'test.png';
+        const imgBase64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA';
+        const errorMsg = 'Server error';
+        const mockErrorResponse = { status: 500, statusText: errorMsg };
+
+        service.imgUpload(imgName, imgBase64).then((url: string) => {
+          expect(url).toBeNull();
+        });
+
+        const req = httpMock.expectOne(`${service.storageRef}/medic/profilePics/${imgName}`);
+        expect(req.request.method).toBe('PUT');
+        expect(req.request.body).toEqual(imgBase64);
+        req.flush(null, mockErrorResponse);
+      });
+
 });
