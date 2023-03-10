@@ -133,7 +133,7 @@ export class MedicSingupComponent implements OnInit {
       {
         this.selectedFileName = event.target.files[0].name;
       }
-   
+
   }
    createMedic(){
     this.medicService.medicCreate(
@@ -155,5 +155,5 @@ export class MedicSingupComponent implements OnInit {
       this.showError(`Ha ocurrido un error: ${error.message}`)
     });
    }
-
+  
 }

@@ -96,6 +96,22 @@ describe('MedicSingupComponent', () => {
       component.catchFile(mockEvent);
       expect(component.selectedFileName).toEqual('test.txt');
     });
+    it('should call medicService.medicCreate() with the correct parameters',  inject([MedicService], (medicService: MedicService) => {
+      let spy = spyOn(medicService, 'medicCreate').and.returnValue(of(null));
+
+      component.createMedic();
+
+      expect(medicService.medicCreate).toHaveBeenCalledWith(
+        component.medicForm.get('name')?.value,
+        component.medicForm.get('lastName')?.value,
+        component.medicForm.get('country')?.value,
+        component.medicForm.get('profesionalId')?.value,
+        component.profilePicUrl,
+        component.medicForm.get('email')?.value,
+        component.medicForm.get('password')?.value,
+        component.medicForm.get('specialty')?.value
+      );
+    }));
 
 
 

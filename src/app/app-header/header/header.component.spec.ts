@@ -21,21 +21,7 @@ describe('HeaderComponent', () => {
       declarations: [ HeaderComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule, SharedModule, TranslateModule.forRoot()],
       providers: [
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          }},
-
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              snapshot: {params: {id: 100}}
-            }
-          },
-
-
-      ]
+            ]
 
 
     })
