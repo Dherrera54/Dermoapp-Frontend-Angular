@@ -116,10 +116,23 @@ describe('MedicSingupComponent', () => {
       const mockResponse = {};
       const email = 'test@test.com';
       const password = '123456';
+      const confirmPassword = '123456';
+      const name= 'test';
+      const lastName= 'test';
+      const country= 'test';
+      const profesionalId='test';
+      const specialty='test';
       const formValues = {
         email: email,
         password: password,
-        profilePicture: ''
+        confirmPassword:confirmPassword,
+        profilePicture: '',
+        name:name,
+       lastName:lastName,
+       country:country,
+       profesionalId:profesionalId,
+       specialty:specialty
+
       };
       component.medicForm.setValue(formValues);
       medicServiceSpy.and.returnValue(of(mockResponse));
