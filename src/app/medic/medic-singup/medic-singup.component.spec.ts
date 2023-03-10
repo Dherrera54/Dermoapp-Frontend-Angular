@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { asNativeElements, DebugElement } from '@angular/core';
 
