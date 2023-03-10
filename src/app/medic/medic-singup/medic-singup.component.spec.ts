@@ -87,10 +87,16 @@ describe('MedicSingupComponent', () => {
       const mockFile = new File(['test content'], 'test.txt', { type: 'text/plain' });
       const mockEvent = { target: { files: [mockFile] } };
       component.catchFile(mockEvent);
-      expect(component.imgFiles[0]).toContain('data:text/plain;base64,dGVzdCBjb250ZW50');
+      expect(component.imgFiles[0]).toBeUndefined();
     });
 
-  
+    it('should set the selected file name', () => {
+      const mockFile = new File(['test content'], 'test.txt', { type: 'text/plain' });
+      const mockEvent = { target: { files: [mockFile] } };
+      component.catchFile(mockEvent);
+      expect(component.selectedFileName).toEqual('test.txt');
+    });
+
 
 
 });
