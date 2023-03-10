@@ -25,8 +25,9 @@ describe('MedicSingupComponent', () => {
 
 
   beforeEach(async(() => {
+    toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
+
     const medicServiceSpy = jasmine.createSpyObj('MedicService', ['userSignUp', 'medicCreate', 'imgUpload']);
-    let toastrServiceSpy = jasmine.createSpyObj('ToastrService', ['success', 'error']);
 
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
@@ -35,20 +36,10 @@ describe('MedicSingupComponent', () => {
         FormBuilder,
         { provide: MedicService, useValue: medicServiceSpy },
         { provide: ToastrService, useValue: toastrServiceSpy },
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          }},
 
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              snapshot: {params: {id: 100}}
-            }
-          },
-          {provide: FormBuilder},
-          {provide: ToastrService},
+
+        {provide: FormBuilder},
+        
 
       ]
 
