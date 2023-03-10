@@ -27,7 +27,7 @@ describe('MedicSingupComponent', () => {
   beforeEach(async(() => {
     toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
 
-   
+
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
@@ -111,6 +111,23 @@ describe('MedicSingupComponent', () => {
         component.medicForm.get('specialty')?.value
       );
     }));
+    it('should create medic with default profile picture when profile picture is not provided', inject([MedicService], (medicService: MedicService) => {
+      let medicServiceSpy = spyOn(medicService, 'userSignUp').and.returnValue(of(null));
+      const mockResponse = {};
+      const email = 'test@test.com';
+      const password = '123456';
+      const formValues = {
+        email: email,
+        password: password,
+        profilePicture: ''
+      };
+      component.medicForm.setValue(formValues);
+      medicServiceSpy.and.returnValue(of(mockResponse));
+      component.registerMedic();
+      expect(medicService.userSignUp).toHaveBeenCalledWith(email, password, 'Medico');
+
+    }));
+
 
 
 
