@@ -56,7 +56,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
     const spy = spyOn(mockRouter, 'navigate').and.stub();
 
-    component.goTo('logOut');
+    component.goTo('LogIn');
     expect(spy.calls.first().args[0]).toContain(`/login/`);
   }));
   it('should navigate to signup', inject([Router], (mockRouter: Router) => {

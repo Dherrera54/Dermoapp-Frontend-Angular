@@ -27,14 +27,13 @@ describe('MedicSingupComponent', () => {
   beforeEach(async(() => {
     toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
 
-    const medicServiceSpy = jasmine.createSpyObj('MedicService', ['userSignUp', 'medicCreate', 'imgUpload']);
-
+   
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
       providers: [
         FormBuilder,
-        { provide: MedicService, useValue: medicServiceSpy },
+
         { provide: ToastrService, useValue: toastrServiceSpy },
 
 
