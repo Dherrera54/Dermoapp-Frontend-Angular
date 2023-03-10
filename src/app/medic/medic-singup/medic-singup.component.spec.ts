@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { asNativeElements, DebugElement } from '@angular/core';
 
 import { MedicSingupComponent } from './medic-singup.component';
@@ -21,12 +21,12 @@ describe('MedicSingupComponent', () => {
   let fixture: ComponentFixture<MedicSingupComponent>;
   let debug: DebugElement;
   let medicService: jasmine.SpyObj<MedicService>;
-  let toastrService: jasmine.SpyObj<ToastrService>;
+  let toastrServiceSpy: jasmine.SpyObj<ToastrService>;
 
 
   beforeEach(async(() => {
     const medicServiceSpy = jasmine.createSpyObj('MedicService', ['userSignUp', 'medicCreate', 'imgUpload']);
-    const toastrServiceSpy = jasmine.createSpyObj('ToastrService', ['success', 'error']);
+    let toastrServiceSpy = jasmine.createSpyObj('ToastrService', ['success', 'error']);
 
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
@@ -55,7 +55,7 @@ describe('MedicSingupComponent', () => {
     })
     .compileComponents();
     medicService = TestBed.inject(MedicService) as jasmine.SpyObj<MedicService>;
-    toastrService = TestBed.inject(ToastrService) as jasmine.SpyObj<ToastrService>;
+
   }));
 
   beforeEach(() => {
@@ -72,8 +72,47 @@ describe('MedicSingupComponent', () => {
     const inputElements = FormElement.querySelectorAll('input');
     expect(inputElements.length).toEqual(8); });
 
- 
+    it('should call error method of toastr service with correct parameters', () => {
+      const errorMsg = 'An error occurred';
+      component.showError(errorMsg);
+      expect(toastrServiceSpy.error).toHaveBeenCalledWith(errorMsg, 'Error');
+    });
 
+    it('should call success method of toastr service with correct parameters', () => {
+      const successMsg = 'Operation successful';
+      component.showSuccess(successMsg);
+      expect(toastrServiceSpy.success).toHaveBeenCalledWith(successMsg, 'Registro exitoso');
+    });
+
+    it('should navigate to login', inject([Router], (mockRouter: Router) => {
+
+      const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+      component.goLogIn();
+      expect(spy.calls.first().args[0]).toContain(`/login/`);
+    }));
+
+    it('should capture the selected file', () => {
+      const mockFile = new File(['test content'], 'test.txt', { type: 'text/plain' });
+      const mockEvent = { target: { files: [mockFile] } };
+      component.catchFile(mockEvent);
+      expect(component.imgFiles[0]).toBeDefined();
+      expect(component.imgFiles[0]).toContain('data:text/plain;base64,dGVzdCBjb250ZW50');
+    });
+
+    it('should set the selected file name', () => {
+      const mockFile = new File(['test content'], 'test.txt', { type: 'text/plain' });
+      const mockEvent = { target: { files: [mockFile] } };
+      component.catchFile(mockEvent);
+      expect(component.selectedFileName).toEqual('test.txt');
+    });
+
+    it('should handle empty file list', () => {
+      const mockEvent = { target: { files: [] } };
+      component.catchFile(mockEvent);
+      expect(component.imgFiles[0]).toBeUndefined();
+      expect(component.selectedFileName).toBeUndefined();
+    });
 
 
 });
