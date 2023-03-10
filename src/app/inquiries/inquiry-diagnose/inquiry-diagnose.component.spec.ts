@@ -35,20 +35,7 @@ describe('InquiryDiagnoseComponent', () => {
       providers: [
         FormBuilder,
         {provide: ToastrService, useValue: toastrServiceSpy},
-        /* {
-
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          }},
-
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              snapshot: {params: {id: 100}}
-            }
-          }, */
-
+   
       ]
     })
     .compileComponents();

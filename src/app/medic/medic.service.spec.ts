@@ -163,4 +163,6 @@ describe('Service: Medic', () => {
         req.flush(mockResponse);
       });
 
+      
+
 });
