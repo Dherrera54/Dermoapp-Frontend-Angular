@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
@@ -21,21 +21,7 @@ describe('HeaderComponent', () => {
       declarations: [ HeaderComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule, SharedModule, TranslateModule.forRoot()],
       providers: [
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          }},
-
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              snapshot: {params: {id: 100}}
-            }
-          },
-
-
-      ]
+            ]
 
 
     })
@@ -66,4 +52,19 @@ describe('HeaderComponent', () => {
       "logIn"
     );
   });
+  it('should navigate to login', inject([Router], (mockRouter: Router) => {
+    fixture.detectChanges();
+    const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+    component.goTo('logIn');
+    expect(spy.calls.first().args[0]).toContain(`/login/`);
+  }));
+
+  it('should navigate to signup', inject([Router], (mockRouter: Router) => {
+    fixture.detectChanges();
+    const spy = spyOn(mockRouter, 'navigate').and.stub();
+
+    component.goTo('singUp');
+    expect(spy.calls.first().args[0]).toContain(`/singup/`);
+  }));
 });
