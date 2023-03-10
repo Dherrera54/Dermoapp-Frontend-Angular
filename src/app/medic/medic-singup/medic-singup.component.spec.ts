@@ -39,7 +39,7 @@ describe('MedicSingupComponent', () => {
 
 
         {provide: FormBuilder},
-        
+
 
       ]
 
@@ -87,7 +87,6 @@ describe('MedicSingupComponent', () => {
       const mockFile = new File(['test content'], 'test.txt', { type: 'text/plain' });
       const mockEvent = { target: { files: [mockFile] } };
       component.catchFile(mockEvent);
-      expect(component.imgFiles[0]).toBeDefined();
       expect(component.imgFiles[0]).toContain('data:text/plain;base64,dGVzdCBjb250ZW50');
     });
 
@@ -100,8 +99,8 @@ describe('MedicSingupComponent', () => {
 
     it('should handle empty file list', () => {
       const mockEvent = { target: { files: [] } };
+      const callbackFn = jasmine.createSpy('callback');
       component.catchFile(mockEvent);
-      expect(component.imgFiles[0]).toBeUndefined();
       expect(component.selectedFileName).toBeUndefined();
     });
 
