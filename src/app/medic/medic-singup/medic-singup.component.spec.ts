@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { asNativeElements, DebugElement } from '@angular/core';
 
@@ -27,7 +27,7 @@ describe('MedicSingupComponent', () => {
   beforeEach(async(() => {
     toastrServiceSpy = jasmine.createSpyObj<ToastrService>('ToastrService', ['error', 'success']);
 
-   
+
     TestBed.configureTestingModule({
       declarations: [ MedicSingupComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot(), HttpClientModule,SharedModule, TranslateModule.forRoot()],
@@ -111,6 +111,36 @@ describe('MedicSingupComponent', () => {
         component.medicForm.get('specialty')?.value
       );
     }));
+    it('should create medic with default profile picture when profile picture is not provided', inject([MedicService], (medicService: MedicService) => {
+      let medicServiceSpy = spyOn(medicService, 'userSignUp').and.returnValue(of(null));
+      const mockResponse = {};
+      const email = 'test@test.com';
+      const password = '123456';
+      const confirmPassword = '123456';
+      const name= 'test';
+      const lastName= 'test';
+      const country= 'test';
+      const profesionalId='test';
+      const specialty='test';
+      const formValues = {
+        email: email,
+        password: password,
+        confirmPassword:confirmPassword,
+        profilePicture: '',
+        name:name,
+       lastName:lastName,
+       country:country,
+       profesionalId:profesionalId,
+       specialty:specialty
+
+      };
+      component.medicForm.setValue(formValues);
+      medicServiceSpy.and.returnValue(of(mockResponse));
+      component.registerMedic();
+      expect(medicService.userSignUp).toHaveBeenCalledWith(email, password, 'Medico');
+
+    }));
+
 
 
 

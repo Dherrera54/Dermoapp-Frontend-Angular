@@ -15,6 +15,7 @@ import { Inquiry } from '../inquiriy';
 import { Patient } from 'src/app/shared/models/patient';
 import { of } from 'rxjs';
 import { MedicService } from 'src/app/medic/medic.service';
+import { InquiryService } from '../inquiry.service';
 
 describe('InquiriesComponent', () => {
   let component: InquiriesListComponent;
@@ -147,7 +148,7 @@ describe('InquiriesComponent', () => {
     expect(component.inquiry).toBe(inquiry);
   });
 
-  it('should set selected inquiry if if user coms fromother views', inject([MedicService], (medicService: MedicService) => {
+  it('should set selected inquiry if if user coms fromother views', inject([MedicService, InquiryService], (medicService: MedicService, inquiryService: InquiryService) => {
     const patient: Patient={
       id: '22',
       name: 'test',
@@ -181,11 +182,12 @@ describe('InquiriesComponent', () => {
     fixture.detectChanges();
 
 
+    spyOn(inquiryService, 'getInquiriesBySpecialty').and.returnValue(of([inquiry,inquiry]));
     spyOn(medicService, 'getMedicInquiriesById').and.returnValue(of([inquiry,inquiry]));
-
 
     component.getInquiriesBySpecialty();
 
     expect(component.selectedInquiry).toBe(inquiry);
   }));
+
 });
