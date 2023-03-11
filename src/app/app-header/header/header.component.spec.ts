@@ -48,7 +48,7 @@ describe('HeaderComponent', () => {
   });
   it('Should have an element Log in', () => {
 
-    expect(debug.query(By.css('#logInBtn')).nativeElement.innerText).toContain(
+    expect(debug.query(By.css('#logInBtnNavBar')).nativeElement.innerText).toContain(
       "logIn"
     );
   });
