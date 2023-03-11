@@ -7,8 +7,9 @@
     </button>
     <div class="collapse navbar-collapse d-flex me-2">
       <ul class="navbar-nav me-auto col-lg-auto"></ul>
+      <img class="col-lg-1" id="globeIcon"src="/assets/globe-americas.svg" alt="language-Globe-Icon" width="16" height="16">
       <ul class="navbar-nav me-2 mb-3 mb-lg-0 col-lg-3">
-        <img class="col-lg-1" id="globeIcon"src="/assets/globe-americas.svg" alt="language-Globe-Icon" width="16" height="16">
+
         <li class="nav-item col-lg-2 " id="switchLang">
 
           <app-switch-lang ></app-switch-lang>
@@ -19,7 +20,7 @@
           >
         </li>
         <li class="nav-item col-lg-4">
-          <a class="nav-link btn-login"  id='logInBtn' (click)="goTo('logIn')"
+          <a class="nav-link btn-login"  id='logInBtnNavBar' (click)="goTo('logIn')"
           i18n>{{'logIn'| translate }}</a
           >
         </li>
